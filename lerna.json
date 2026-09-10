@@ -9,6 +9,9 @@
     "formily/transformer"
   ],
   "command": {
+    "publish": {
+      "verifyAccess": false
+    },
     "version": {
       "exact": true,
       "message": "chore(versions): publish %s"
