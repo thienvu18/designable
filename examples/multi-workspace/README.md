@@ -1,1 +1,1 @@
-# @designable/playground
+# Designable multi-workspace example

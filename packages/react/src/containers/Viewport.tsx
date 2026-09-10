@@ -1,35 +1,40 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { usePrefix, useViewport } from '../hooks'
 import { AuxToolWidget, EmptyWidget } from '../widgets'
-import { Viewport as ViewportType } from '@designable/core'
-import { requestIdle, globalThisPolyfill } from '@designable/shared'
+import { Viewport as ViewportType } from '@thienvu18/designable-core'
+import { requestIdle, globalThisPolyfill } from '@thienvu18/designable-shared'
 import cls from 'classnames'
+
 export interface IViewportProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'> {
   placeholder?: React.ReactNode
   dragTipsDirection?: 'left' | 'right'
 }
 
-export const Viewport: React.FC<IViewportProps> = ({
+export const Viewport: React.FC<React.PropsWithChildren<IViewportProps>> = ({
   placeholder,
   dragTipsDirection,
+  children,
   ...props
 }) => {
   const [loaded, setLoaded] = useState(false)
   const prefix = usePrefix('viewport')
   const viewport = useViewport()
-  const ref = useRef<HTMLDivElement>()
-  const viewportRef = useRef<ViewportType>()
+  const ref = useRef<HTMLDivElement>(null)
+  const viewportRef = useRef<ViewportType | null>(null)
   const isFrameRef = useRef(false)
+
   useLayoutEffect(() => {
+    if (!ref.current || !viewport) return
     const frameElement = ref.current.querySelector('iframe')
-    if (!viewport) return
     if (viewportRef.current && viewportRef.current !== viewport) {
       viewportRef.current.onUnmount()
     }
     if (frameElement) {
       frameElement.addEventListener('load', () => {
-        viewport.onMount(frameElement, frameElement.contentWindow)
+        if (frameElement.contentWindow) {
+          viewport.onMount(frameElement, frameElement.contentWindow)
+        }
         requestIdle(() => {
           isFrameRef.current = true
           setLoaded(true)
@@ -59,7 +64,7 @@ export const Viewport: React.FC<IViewportProps> = ({
         ...props.style,
       }}
     >
-      {props.children}
+      {children}
       <AuxToolWidget />
       <EmptyWidget dragTipsDirection={dragTipsDirection}>
         {placeholder}

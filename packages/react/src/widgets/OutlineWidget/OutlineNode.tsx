@@ -4,8 +4,8 @@ import {
   ClosestPosition,
   CursorStatus,
   DragMoveEvent,
-} from '@designable/core'
-import { isFn } from '@designable/shared'
+} from '@thienvu18/designable-core'
+import { isFn } from '@thienvu18/designable-shared'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
 import {
@@ -31,7 +31,7 @@ export const OutlineTreeNode: React.FC<IOutlineTreeNodeProps> = observer(
   ({ node, className, style, workspaceId }) => {
     const prefix = usePrefix('outline-tree-node')
     const engine = useDesigner()
-    const ref = useRef<HTMLDivElement>()
+    const ref = useRef<HTMLDivElement>(null)
     const ctx = useContext(NodeContext)
     const request = useRef(null)
     const cursor = useCursor()

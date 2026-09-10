@@ -2,20 +2,48 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "jsx": "react",
+    "jsx": "react-jsx",
     "module": "commonjs",
-    "target": "es5",
+    "target": "ES2020",
     "allowJs": false,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "preserveConstEnums": true,
     "sourceMap": false,
     "declaration": true,
     "skipLibCheck": true,
     "experimentalDecorators": true,
-    "downlevelIteration": true,
-    "baseUrl": ".",
     "paths": {
-      "@designable/*": ["./packages/*/src"]
+      "@thienvu18/designable-shared": ["./packages/shared/src"],
+      "@thienvu18/designable-core": ["./packages/core/src"],
+      "@thienvu18/designable-react": ["./packages/react/src"],
+      "@thienvu18/designable-react-sandbox": ["./packages/react-sandbox/src"],
+      "@thienvu18/designable-react-settings-form": ["./packages/react-settings-form/src"],
+      "@thienvu18/designable-formily-transformer": ["./formily/transformer/src"],
+      "@thienvu18/designable-formily-setters": ["./formily/setters/src"],
+      "@thienvu18/designable-formily-antd": ["./formily/antd/src"],
+      "@thienvu18/designable-*": ["./packages/*/src", "./formily/*/src"]
     }
-  }
+  },
+  "include": [
+    "packages/*/src/**/*.ts",
+    "packages/*/src/**/*.tsx",
+    "formily/antd/src/**/*.ts",
+    "formily/antd/src/**/*.tsx",
+    "formily/setters/src/**/*.ts",
+    "formily/setters/src/**/*.tsx",
+    "formily/transformer/src/**/*.ts",
+    "formily/transformer/src/**/*.tsx",
+    "formily/antd/playground/**/*.ts",
+    "formily/antd/playground/**/*.tsx",
+    "examples/*/src/**/*.ts",
+    "examples/*/src/**/*.tsx",
+    "examples/*/config/**/*.ts",
+    "scripts/setupTests.ts"
+  ],
+  "exclude": [
+    "**/__tests__/**",
+    "**/lib/**",
+    "**/esm/**",
+    "formily/next/**"
+  ]
 }

@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button } from 'antd'
+import { Button, Space } from 'antd'
 import { observer } from '@formily/reactive-react'
-import { WorkbenchTypes } from '@designable/core'
+import { WorkbenchTypes } from '@thienvu18/designable-core'
 import { IconWidget } from '../IconWidget'
 import { usePrefix, useWorkbench } from '../../hooks'
 import cls from 'classnames'
@@ -13,16 +13,16 @@ export interface IViewToolsWidget {
 }
 
 export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
-  ({ use, style, className }) => {
+  ({ use = ['DESIGNABLE', 'JSONTREE', 'PREVIEW'], style, className }) => {
     const workbench = useWorkbench()
     const prefix = usePrefix('view-tools')
     return (
-      <Button.Group style={style} className={cls(prefix, className)}>
+      <Space.Compact style={style} className={cls(prefix, className)}>
         {use.includes('DESIGNABLE') && (
           <Button
-            disabled={workbench.type === 'DESIGNABLE'}
+            disabled={workbench?.type === 'DESIGNABLE'}
             onClick={() => {
-              workbench.type = 'DESIGNABLE'
+              if (workbench) workbench.type = 'DESIGNABLE'
             }}
             size="small"
           >
@@ -31,9 +31,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use.includes('JSONTREE') && (
           <Button
-            disabled={workbench.type === 'JSONTREE'}
+            disabled={workbench?.type === 'JSONTREE'}
             onClick={() => {
-              workbench.type = 'JSONTREE'
+              if (workbench) workbench.type = 'JSONTREE'
             }}
             size="small"
           >
@@ -42,9 +42,9 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use.includes('MARKUP') && (
           <Button
-            disabled={workbench.type === 'MARKUP'}
+            disabled={workbench?.type === 'MARKUP'}
             onClick={() => {
-              workbench.type = 'MARKUP'
+              if (workbench) workbench.type = 'MARKUP'
             }}
             size="small"
           >
@@ -53,20 +53,16 @@ export const ViewToolsWidget: React.FC<IViewToolsWidget> = observer(
         )}
         {use.includes('PREVIEW') && (
           <Button
-            disabled={workbench.type === 'PREVIEW'}
+            disabled={workbench?.type === 'PREVIEW'}
             onClick={() => {
-              workbench.type = 'PREVIEW'
+              if (workbench) workbench.type = 'PREVIEW'
             }}
             size="small"
           >
             <IconWidget infer="Play" />
           </Button>
         )}
-      </Button.Group>
+      </Space.Compact>
     )
   }
 )
-
-ViewToolsWidget.defaultProps = {
-  use: ['DESIGNABLE', 'JSONTREE', 'PREVIEW'],
-}

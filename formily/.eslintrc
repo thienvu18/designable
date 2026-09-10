@@ -3,13 +3,13 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "prettier",
     "plugin:markdown/recommended"
   ],
   "env": {
     "node": true
   },
-  "plugins": ["@typescript-eslint", "react", "prettier", "markdown"],
+  "plugins": ["@typescript-eslint", "react", "markdown"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 10,
@@ -33,6 +33,7 @@
     "react/jsx-boolean-value": 0,
     "react/jsx-key": 0,
     "react/no-did-update-set-state": 0,
+    "react/react-in-jsx-scope": 0,
     // maybe we should no-public
     "@typescript-eslint/explicit-member-accessibility": 0,
     "@typescript-eslint/interface-name-prefix": 0,

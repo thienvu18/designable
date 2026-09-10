@@ -1,5 +1,5 @@
 import React from 'react'
-import { Space, Typography, Divider, TypographyProps } from 'antd'
+import { Space, Typography, Divider } from 'antd'
 import { observer } from '@formily/reactive-react'
 import { usePrefix, useTreeNode, useSelected } from '../../hooks'
 import { IconWidget } from '../IconWidget'
@@ -11,11 +11,11 @@ export interface INodeActionsWidgetProps {
   className?: string
   style?: React.CSSProperties
   activeShown?: boolean
+  children?: React.ReactNode
 }
 
 export interface INodeActionsWidgetActionProps
-  extends Omit<React.ComponentProps<'a'>, 'title' | 'type' | 'ref'>,
-    Partial<TypographyProps['Link']> {
+  extends Omit<React.ComponentProps<typeof Typography.Link>, 'title'> {
   className?: string
   style?: React.CSSProperties
   title: React.ReactNode
@@ -32,7 +32,7 @@ export const NodeActionsWidget: React.FC<INodeActionsWidgetProps> & {
   return (
     <div className={cls(prefix, props.className)} style={props.style}>
       <div className={prefix + '-content'}>
-        <Space split={<Divider type="vertical" />}>{props.children}</Space>
+        <Space separator={<Divider type="vertical" />}>{props.children}</Space>
       </div>
     </div>
   )

@@ -1,4 +1,4 @@
-import { TreeNode, Engine } from '@designable/core'
+import { TreeNode, Engine } from '@thienvu18/designable-core'
 
 export type ComponentNameMatcher =
   | string

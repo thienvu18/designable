@@ -1,6 +1,6 @@
 import React from 'react'
-import { TreeNode } from '@designable/core'
-import { MonacoInput } from '@designable/react-settings-form'
+import { TreeNode } from '@thienvu18/designable-core'
+import { MonacoInput } from '@thienvu18/designable-react-settings-form'
 import { isEmpty, isPlainObj } from '@formily/shared'
 
 export interface IMarkupSchemaWidgetProps {
@@ -91,7 +91,7 @@ import {
   FormCollapse,
   ArrayTable,
   ArrayCards,
-} from '@formily/antd'
+} from '@thienvu18/formily-antd-v6'
 import { Card, Slider, Rate } from 'antd'
 
 const Text: React.FC<{

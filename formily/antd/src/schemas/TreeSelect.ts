@@ -62,7 +62,7 @@ export const TreeSelect: ISchema = {
       'x-decorator': 'FormItem',
       'x-component': 'Switch',
     },
-    dropdownMatchSelectWidth: {
+    popupMatchSelectWidth: {
       type: 'boolean',
       'x-decorator': 'FormItem',
       'x-component': 'Switch',

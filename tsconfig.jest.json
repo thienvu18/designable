@@ -1,10 +1,13 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "jsx": "react",
-    "paths": {
-      "@designable/*": ["./packages/*/src"]
-    }
+    "jsx": "react-jsx",
+    "allowJs": true
   },
-  "exclude": ["./packages/*/esm", "./packages/*/lib"]
+  "exclude": [
+    "./packages/*/esm",
+    "./packages/*/lib",
+    "./formily/*/esm",
+    "./formily/*/lib"
+  ]
 }

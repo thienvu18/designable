@@ -2,10 +2,10 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { clone, uid } from '@formily/shared'
 import { createForm, isVoidField } from '@formily/core'
 import { createSchemaField } from '@formily/react'
-import { GlobalRegistry } from '@designable/core'
-import { requestIdle } from '@designable/shared'
-import { usePrefix, TextWidget } from '@designable/react'
-import { MonacoInput } from '@designable/react-settings-form'
+import { GlobalRegistry } from '@thienvu18/designable-core'
+import { requestIdle } from '@thienvu18/designable-shared'
+import { usePrefix, TextWidget } from '@thienvu18/designable-react'
+import { MonacoInput } from '@thienvu18/designable-react-settings-form'
 import {
   Form,
   ArrayTable,
@@ -13,7 +13,7 @@ import {
   Select,
   FormItem,
   FormCollapse,
-} from '@formily/antd'
+} from '@thienvu18/formily-antd-v6'
 import { Modal, Card, Button, Tag, Tooltip } from 'antd'
 import { PathSelector } from './PathSelector'
 import { FieldPropertySetter } from './FieldPropertySetter'
@@ -178,12 +178,12 @@ export const ReactionsSetter: React.FC<IReactionsSetterProps> = (props) => {
         )}
         width="70%"
         centered
-        bodyStyle={{ padding: 10 }}
+        styles={{ body: { padding: 10 } }}
         transitionName=""
         maskTransitionName=""
-        visible={modalVisible}
+        open={modalVisible}
         onCancel={closeModal}
-        destroyOnClose
+        destroyOnHidden
         onOk={() => {
           form.submit((values) => {
             props.onChange?.(values)

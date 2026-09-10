@@ -3,13 +3,13 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "prettier",
     "plugin:markdown/recommended"
   ],
   "env": {
     "node": true
   },
-  "plugins": ["@typescript-eslint", "react", "prettier", "markdown"],
+  "plugins": ["@typescript-eslint", "react", "markdown"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 10,

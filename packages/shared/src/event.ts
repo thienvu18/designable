@@ -139,10 +139,12 @@ export class EventDriver<Engine extends Event = Event, Context = any>
   }
 
   attach(container: EventDriverContainer) {
+    void container
     console.error('attach must implement.')
   }
 
   detach(container: EventDriverContainer) {
+    void container
     console.error('attach must implement.')
   }
 

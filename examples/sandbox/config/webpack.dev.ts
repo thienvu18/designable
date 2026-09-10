@@ -18,15 +18,6 @@ const createPages = (pages) => {
   })
 }
 
-for (let key in baseConfig.entry) {
-  if (Array.isArray(baseConfig.entry[key])) {
-    baseConfig.entry[key].push(
-      require.resolve('webpack/hot/dev-server'),
-      `${require.resolve('webpack-dev-server/client')}?http://localhost:${PORT}`
-    )
-  }
-}
-
 export default {
   ...baseConfig,
   plugins: [

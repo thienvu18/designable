@@ -6,12 +6,12 @@ import {
   DragMoveEvent,
   DragStopEvent,
   CursorDragType,
-} from '@designable/core'
+} from '@thienvu18/designable-core'
 import {
   calcSpeedFactor,
   createUniformSpeedAnimation,
-} from '@designable/shared'
-import { useScreen, useDesigner, usePrefix } from '../../hooks'
+} from '@thienvu18/designable-shared'
+import { useDesigner, usePrefix } from '../../hooks'
 import { IconWidget } from '../../widgets'
 import { ResizeHandle, ResizeHandleType } from './handle'
 
@@ -19,8 +19,8 @@ import cls from 'classnames'
 import './styles.less'
 
 const useResizeEffect = (
-  container: React.MutableRefObject<HTMLDivElement>,
-  content: React.MutableRefObject<HTMLDivElement>,
+  container: React.RefObject<HTMLDivElement | null>,
+  content: React.RefObject<HTMLDivElement | null>,
   engine: Engine
 ) => {
   let status: ResizeHandleType = null
@@ -39,21 +39,22 @@ const useResizeEffect = (
 
   const updateSize = (deltaX: number, deltaY: number) => {
     const containerRect = container.current?.getBoundingClientRect()
+    if (!containerRect) return
     if (status === ResizeHandleType.Resize) {
       engine.screen.setSize(startWidth + deltaX, startHeight + deltaY)
-      container.current.scrollBy(
+      container.current?.scrollBy(
         containerRect.width + deltaX,
         containerRect.height + deltaY
       )
     } else if (status === ResizeHandleType.ResizeHeight) {
       engine.screen.setSize(startWidth, startHeight + deltaY)
-      container.current.scrollBy(
+      container.current?.scrollBy(
         container.current.scrollLeft,
         containerRect.height + deltaY
       )
     } else if (status === ResizeHandleType.ResizeWidth) {
       engine.screen.setSize(startWidth + deltaX, startHeight)
-      container.current.scrollBy(
+      container.current?.scrollBy(
         containerRect.width + deltaX,
         container.current.scrollTop
       )
@@ -63,10 +64,14 @@ const useResizeEffect = (
   engine.subscribeTo(DragStartEvent, (e) => {
     if (!engine.workbench.currentWorkspace?.viewport) return
     const target = e.data.target as HTMLElement
-    if (target?.closest(`*[${engine.props.screenResizeHandlerAttrName}]`)) {
-      const rect = content.current?.getBoundingClientRect()
+    if (target) {
+      const handler = target.closest(
+        `*[${engine.props.screenResizeHandlerAttrName}]`
+      )
+      if (!handler) return
+      const rect = handler.getBoundingClientRect()
       if (!rect) return
-      status = target.getAttribute(
+      status = handler.getAttribute(
         engine.props.screenResizeHandlerAttrName
       ) as ResizeHandleType
       engine.cursor.setStyle(getStyle(status))
@@ -83,6 +88,7 @@ const useResizeEffect = (
     const deltaX = e.data.topClientX - startX
     const deltaY = e.data.topClientY - startY
     const containerRect = container.current?.getBoundingClientRect()
+    if (!containerRect) return
     const distanceX = Math.floor(containerRect.right - e.data.topClientX)
     const distanceY = Math.floor(containerRect.bottom - e.data.topClientY)
     const factorX = calcSpeedFactor(distanceX, 10)
@@ -132,12 +138,11 @@ export interface IResponsiveSimulatorProps
   style?: React.CSSProperties
 }
 
-export const ResponsiveSimulator: React.FC<IResponsiveSimulatorProps> =
+export const ResponsiveSimulator: React.FC<React.PropsWithChildren<IResponsiveSimulatorProps>> =
   observer((props) => {
-    const container = useRef<HTMLDivElement>()
-    const content = useRef<HTMLDivElement>()
+    const container = useRef<HTMLDivElement>(null)
+    const content = useRef<HTMLDivElement>(null)
     const prefix = usePrefix('responsive-simulator')
-    const screen = useScreen()
     useDesigner((engine) => {
       useResizeEffect(container, content, engine)
     })
@@ -148,45 +153,27 @@ export const ResponsiveSimulator: React.FC<IResponsiveSimulatorProps> =
         style={{
           height: '100%',
           width: '100%',
-          minHeight: 100,
+          minHeight: '100%',
           position: 'relative',
           ...props.style,
         }}
+        ref={container}
       >
         <div
-          ref={container}
+          ref={content}
           style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
             height: '100%',
             width: '100%',
-            overflow: 'overlay',
+            paddingRight: 4,
+            paddingBottom: 4,
           }}
         >
-          <div
-            ref={content}
-            style={{
-              width: screen.width,
-              height: screen.height,
-              paddingRight: 15,
-              paddingBottom: 15,
-              position: 'relative',
-              boxSizing: 'border-box',
-              overflow: 'hidden',
-            }}
-          >
-            {props.children}
-            <ResizeHandle type={ResizeHandleType.Resize}>
-              <IconWidget infer="DragMove" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
-            <ResizeHandle type={ResizeHandleType.ResizeHeight}>
-              <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
-            <ResizeHandle type={ResizeHandleType.ResizeWidth}>
-              <IconWidget infer="Menu" style={{ pointerEvents: 'none' }} />
-            </ResizeHandle>
-          </div>
+          {props.children}
+          <ResizeHandle type={ResizeHandleType.Resize}>
+            <IconWidget infer="Corner" style={{ pointerEvents: 'none' }} />
+          </ResizeHandle>
+          <ResizeHandle type={ResizeHandleType.ResizeWidth} />
+          <ResizeHandle type={ResizeHandleType.ResizeHeight} />
         </div>
       </div>
     )

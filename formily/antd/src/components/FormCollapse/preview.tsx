@@ -1,15 +1,14 @@
 import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
-import { Collapse } from 'antd'
-import { CollapseProps, CollapsePanelProps } from 'antd/lib/collapse'
-import { TreeNode, createBehavior, createResource } from '@designable/core'
+import { Collapse, type CollapseProps } from 'antd'
+import { TreeNode, createBehavior, createResource } from '@thienvu18/designable-core'
 import {
   useTreeNode,
   useNodeIdProps,
   DroppableWidget,
   TreeNodeWidget,
   DnFC,
-} from '@designable/react'
+} from '@thienvu18/designable-react'
 import { toArr } from '@formily/shared'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
@@ -17,6 +16,11 @@ import { createVoidFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 import { matchComponent } from '../../shared'
+
+export interface CollapsePanelProps {
+  header?: React.ReactNode
+  style?: React.CSSProperties
+}
 
 const parseCollapse = (parent: TreeNode) => {
   const tabs: TreeNode[] = []
@@ -29,7 +33,7 @@ const parseCollapse = (parent: TreeNode) => {
 }
 
 export const FormCollapse: DnFC<CollapseProps> & {
-  CollapsePanel?: React.FC<CollapsePanelProps>
+  CollapsePanel?: React.FC<React.PropsWithChildren<CollapsePanelProps>>
 } = observer((props) => {
   const [activeKey, setActiveKey] = useState<string | string[]>([])
   const node = useTreeNode()
@@ -54,41 +58,39 @@ export const FormCollapse: DnFC<CollapseProps> & {
   const renderCollapse = () => {
     if (!node.children?.length) return <DroppableWidget />
     return (
-      <Collapse {...props} activeKey={panels.map((tab) => tab.id)}>
-        {panels.map((panel) => {
-          const props = panel.props['x-component-props'] || {}
-          return (
-            <Collapse.Panel
-              {...props}
-              style={{ ...props.style }}
-              header={
-                <span
-                  data-content-editable="x-component-props.header"
-                  data-content-editable-node-id={panel.id}
-                >
-                  {props.header}
-                </span>
-              }
-              key={panel.id}
-            >
-              {React.createElement(
-                'div',
-                {
-                  [designer.props.nodeIdAttrName]: panel.id,
-                  style: {
-                    padding: '20px 0',
-                  },
+      <Collapse
+        {...props}
+        activeKey={panels.map((tab) => tab.id)}
+        items={panels.map((panel) => {
+          const panelProps = panel.props['x-component-props'] || {}
+          return {
+            key: panel.id,
+            label: (
+              <span
+                data-content-editable="x-component-props.header"
+                data-content-editable-node-id={panel.id}
+              >
+                {panelProps.header}
+              </span>
+            ),
+            style: { ...panelProps.style },
+            children: React.createElement(
+              'div',
+              {
+                [designer.props.nodeIdAttrName]: panel.id,
+                style: {
+                  padding: '20px 0',
                 },
-                panel.children.length ? (
-                  <TreeNodeWidget node={panel} />
-                ) : (
-                  <DroppableWidget />
-                )
-              )}
-            </Collapse.Panel>
-          )
+              },
+              panel.children.length ? (
+                <TreeNodeWidget node={panel} />
+              ) : (
+                <DroppableWidget />
+              )
+            ),
+          }
         })}
-      </Collapse>
+      />
     )
   }
   return (

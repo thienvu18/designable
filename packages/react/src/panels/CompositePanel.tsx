@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { isValid } from '@designable/shared'
+import { isValid } from '@thienvu18/designable-shared'
 import cls from 'classnames'
 import { IconWidget, TextWidget } from '../widgets'
 import { usePrefix } from '../hooks'
@@ -12,6 +12,7 @@ export interface ICompositePanelProps {
   defaultActiveKey?: number
   activeKey?: number | string
   onChange?: (activeKey: number | string) => void
+  children?: React.ReactNode
 }
 export interface ICompositePanelItemProps {
   shape?: 'tab' | 'button' | 'link'
@@ -21,6 +22,7 @@ export interface ICompositePanelItemProps {
   href?: string
   onClick?: (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
   extra?: React.ReactNode
+  children?: React.ReactNode
 }
 
 const parseItems = (

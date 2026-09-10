@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react'
-import ReactDOM from 'react-dom'
+import React, { useEffect, useState } from 'react'
+import { createRoot } from 'react-dom/client'
 import {
   Designer,
   IconWidget,
@@ -16,20 +16,29 @@ import {
   ViewportPanel,
   SettingsPanel,
   HistoryWidget,
-} from '@designable/react'
-import { SettingsForm, MonacoInput } from '@designable/react-settings-form'
+} from '@thienvu18/designable-react'
+import {
+  SettingsForm,
+  MonacoInput,
+  ColorInput,
+} from '@thienvu18/designable-react-settings-form'
+import { DataSourceSetter } from '@thienvu18/designable-formily-setters'
+import {
+  Form as FormilyPreviewForm,
+  Input as FormilyPreviewInput,
+} from '@thienvu18/designable-formily-antd'
 import { observer } from '@formily/react'
 import {
   createDesigner,
   createResource,
   createBehavior,
   GlobalRegistry,
-} from '@designable/core'
+} from '@thienvu18/designable-core'
 import { Content } from './content'
-import { Space, Button, Radio } from 'antd'
+import { Space, Button, InputNumber, Radio } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'
-//import { Sandbox } from '@designable/react-sandbox'
-import 'antd/dist/antd.less'
+//import { Sandbox } from '@thienvu18/designable-react-sandbox'
+
 
 const RootBehavior = createBehavior({
   name: 'Root',
@@ -398,9 +407,38 @@ const Actions = observer(() => {
 })
 
 const engine = createDesigner()
-const App = () => {
+
+const VisualFixture = () => {
+  const [color, setColor] = useState('#1677ff')
   return (
-    <Designer engine={engine}>
+    <div data-testid="visual-fixture" style={{ margin: 12, maxWidth: 360 }}>
+      <ColorInput value={color} onChange={setColor} />
+      <div data-testid="visual-data-source-setter" style={{ marginTop: 12 }}>
+        <DataSourceSetter value={[]} onChange={() => undefined} />
+      </div>
+      <div
+        className="dn-designer-tools"
+        data-testid="visual-designer-tools"
+        style={{ marginTop: 12 }}
+      >
+        <InputNumber defaultValue={320} />
+      </div>
+      <FormilyPreviewForm style={{ marginTop: 12 }}>
+        <FormilyPreviewInput
+          data-testid="visual-formily-input"
+          placeholder="Visual pointer-event fixture"
+        />
+      </FormilyPreviewForm>
+    </div>
+  )
+}
+
+const App = () => {
+  const query = new URLSearchParams(window.location.search)
+  const theme = query.get('theme') === 'dark' ? 'dark' : 'light'
+  const showVisualFixture = query.has('visual')
+  return (
+    <Designer engine={engine} theme={theme}>
       <Workbench>
         <StudioPanel logo={<Logo />} actions={<Actions />}>
           <CompositePanel>
@@ -447,10 +485,15 @@ const App = () => {
           <SettingsPanel title="panels.PropertySettings">
             <SettingsForm uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" />
           </SettingsPanel>
+          {showVisualFixture && <VisualFixture />}
         </StudioPanel>
       </Workbench>
     </Designer>
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const container = document.getElementById('root')
+if (container) {
+  const root = createRoot(container)
+  root.render(<App />)
+}

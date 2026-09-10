@@ -1,7 +1,7 @@
 import React, { Fragment, useRef } from 'react'
-import { Button, InputNumber } from 'antd'
+import { Button, InputNumber, Space } from 'antd'
 import { observer } from '@formily/reactive-react'
-import { CursorType, ScreenType } from '@designable/core'
+import { CursorType, ScreenType } from '@thienvu18/designable-core'
 import {
   useCursor,
   useHistory,
@@ -15,7 +15,7 @@ import './styles.less'
 
 type DesignerToolsType = 'HISTORY' | 'CURSOR' | 'SCREEN_TYPE'
 
-export type IDesignerToolsWidgetProps = {
+export interface IDesignerToolsWidgetProps {
   className?: string
   style?: React.CSSProperties
   use?: DesignerToolsType[]
@@ -23,16 +23,18 @@ export type IDesignerToolsWidgetProps = {
 
 export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
   observer((props) => {
+    const { use = ['HISTORY', 'CURSOR', 'SCREEN_TYPE'], style, className } = props
     const screen = useScreen()
     const cursor = useCursor()
     const workbench = useWorkbench()
     const history = useHistory()
     const sizeRef = useRef<{ width?: any; height?: any }>({})
     const prefix = usePrefix('designer-tools')
+
     const renderHistoryController = () => {
-      if (!props.use.includes('HISTORY')) return null
+      if (!use.includes('HISTORY')) return null
       return (
-        <Button.Group size="small" style={{ marginRight: 20 }}>
+        <Space.Compact size="small" style={{ marginRight: 20 }}>
           <Button
             size="small"
             disabled={!history?.allowUndo}
@@ -51,15 +53,15 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
           >
             <IconWidget infer="Redo" />
           </Button>
-        </Button.Group>
+        </Space.Compact>
       )
     }
 
     const renderCursorController = () => {
       if (workbench.type !== 'DESIGNABLE') return null
-      if (!props.use.includes('CURSOR')) return null
+      if (!use.includes('CURSOR')) return null
       return (
-        <Button.Group size="small" style={{ marginRight: 20 }}>
+        <Space.Compact size="small" style={{ marginRight: 20 }}>
           <Button
             size="small"
             disabled={cursor.type === CursorType.Normal}
@@ -78,12 +80,12 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
           >
             <IconWidget infer="Selection" />
           </Button>
-        </Button.Group>
+        </Space.Compact>
       )
     }
 
     const renderResponsiveController = () => {
-      if (!props.use.includes('SCREEN_TYPE')) return null
+      if (!use.includes('SCREEN_TYPE')) return null
       if (screen.type !== ScreenType.Responsive) return null
       return (
         <Fragment>
@@ -134,9 +136,9 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     const renderScreenTypeController = () => {
-      if (!props.use.includes('SCREEN_TYPE')) return null
+      if (!use.includes('SCREEN_TYPE')) return null
       return (
-        <Button.Group size="small" style={{ marginRight: 20 }}>
+        <Space.Compact size="small" style={{ marginRight: 20 }}>
           <Button
             size="small"
             disabled={screen.type === ScreenType.PC}
@@ -164,12 +166,12 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
           >
             <IconWidget infer="Responsive" />
           </Button>
-        </Button.Group>
+        </Space.Compact>
       )
     }
 
     const renderMobileController = () => {
-      if (!props.use.includes('SCREEN_TYPE')) return null
+      if (!use.includes('SCREEN_TYPE')) return null
       if (screen.type !== ScreenType.Mobile) return
       return (
         <Button
@@ -191,7 +193,7 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
     }
 
     return (
-      <div style={props.style} className={cls(prefix, props.className)}>
+      <div style={style} className={cls(prefix, className)}>
         {renderHistoryController()}
         {renderCursorController()}
         {renderScreenTypeController()}
@@ -200,7 +202,3 @@ export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
       </div>
     )
   })
-
-DesignerToolsWidget.defaultProps = {
-  use: ['HISTORY', 'CURSOR', 'SCREEN_TYPE'],
-}

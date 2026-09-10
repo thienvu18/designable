@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.0.0
+
+Stable React 19 and Ant Design 6 migration of the eight maintained Designable packages under the `@thienvu18` namespace. See [the migration guide](docs/migration-v2.md) for the package mapping, peer requirements, breaking changes, and verification checklist. `formily/next` remains private and unsupported in this release.
+
 ## v1.0.0-beta.44(2022-02-16)
 
 ### :tada: Enhancements

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { TreeNode, ITreeNode, WorkbenchTypes } from '@designable/core'
+import { TreeNode, ITreeNode, WorkbenchTypes } from '@thienvu18/designable-core'
 import { observer } from '@formily/reactive-react'
 import { useTree, useWorkbench } from '../hooks'
 import { Viewport } from '../containers'
-import { requestIdle } from '@designable/shared'
+import { requestIdle } from '@thienvu18/designable-shared'
 
 export interface IViewPanelProps {
   type: WorkbenchTypes
@@ -16,11 +16,13 @@ export interface IViewPanelProps {
 }
 
 export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
+  const { type, children, scrollable = true, dragTipsDirection } = props
   const [visible, setVisible] = useState(true)
   const workbench = useWorkbench()
   const tree = useTree()
+
   useEffect(() => {
-    if (workbench.type === props.type) {
+    if (workbench?.type === type) {
       requestIdle(() => {
         requestAnimationFrame(() => {
           setVisible(true)
@@ -29,24 +31,29 @@ export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
     } else {
       setVisible(false)
     }
-  }, [workbench.type])
-  if (workbench.type !== props.type) return null
+  }, [workbench?.type, type])
+
+  if (workbench?.type !== type) return null
+
   const render = () => {
-    return props.children(tree, (payload) => {
+    return children(tree, (payload) => {
       tree.from(payload)
       tree.takeSnapshot()
     })
   }
-  if (workbench.type === 'DESIGNABLE')
+
+  if (workbench?.type === 'DESIGNABLE') {
     return (
-      <Viewport dragTipsDirection={props.dragTipsDirection}>
+      <Viewport dragTipsDirection={dragTipsDirection}>
         {render()}
       </Viewport>
     )
+  }
+
   return (
     <div
       style={{
-        overflow: props.scrollable ? 'overlay' : 'hidden',
+        overflow: scrollable ? 'overlay' : 'hidden',
         height: '100%',
         cursor: 'auto',
         userSelect: 'text',
@@ -56,7 +63,3 @@ export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
     </div>
   )
 })
-
-ViewPanel.defaultProps = {
-  scrollable: true,
-}

@@ -5,7 +5,7 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "prettier",
     "plugin:markdown/recommended"
   ],
   "globals": {
@@ -20,7 +20,7 @@
     }
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "react", "prettier", "markdown"],
+  "plugins": ["@typescript-eslint", "react", "markdown"],
   "settings": {
     "react": {
       "version": "detect"
@@ -28,7 +28,8 @@
   },
   "rules": {
     "@typescript-eslint/explicit-module-boundary-types": "off",
-    "@typescript-eslint/no-var-requires": "off"
+    "@typescript-eslint/no-var-requires": "off",
+    "react/react-in-jsx-scope": "off"
   },
   "overrides": [
     {

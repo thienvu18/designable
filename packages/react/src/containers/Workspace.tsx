@@ -1,19 +1,20 @@
 import React, { useMemo, useRef, Fragment } from 'react'
 import { useDesigner } from '../hooks'
 import { WorkspaceContext } from '../context'
+
 export interface IWorkspaceProps {
   id?: string
   title?: string
   description?: string
 }
 
-export const Workspace: React.FC<IWorkspaceProps> = ({
+export const Workspace: React.FC<React.PropsWithChildren<IWorkspaceProps>> = ({
   id,
   title,
   description,
-  ...props
+  children,
 }) => {
-  const oldId = useRef<string>()
+  const oldId = useRef<string | null>(null)
   const designer = useDesigner()
   const workspace = useMemo(() => {
     if (!designer) return
@@ -29,11 +30,12 @@ export const Workspace: React.FC<IWorkspaceProps> = ({
     designer.workbench.ensureWorkspace(workspace)
     oldId.current = workspace.id
     return workspace
-  }, [id, designer])
+  }, [id, title, description, designer])
+
   return (
     <Fragment>
       <WorkspaceContext.Provider value={workspace}>
-        {props.children}
+        {children}
       </WorkspaceContext.Provider>
     </Fragment>
   )

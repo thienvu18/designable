@@ -1,13 +1,14 @@
 import React from 'react'
 import { useTransformHelper, useCursor, usePrefix } from '../../hooks'
 import { observer } from '@formily/reactive-react'
-import { CursorStatus } from '@designable/core'
+import { CursorStatus } from '@thienvu18/designable-core'
+import { IRect } from '@thienvu18/designable-shared'
 
 export const SnapLine = observer(() => {
   const cursor = useCursor()
   const transformHelper = useTransformHelper()
   const prefix = usePrefix('aux-snap-line')
-  const createLineStyle = (rect: DOMRect) => {
+  const createLineStyle = (rect: IRect | DOMRect) => {
     const baseStyle: React.CSSProperties = {
       top: 0,
       left: 0,

@@ -26,7 +26,7 @@ export const Select: ISchema = {
         defaultChecked: true,
       },
     },
-    dropdownMatchSelectWidth: {
+    popupMatchSelectWidth: {
       type: 'boolean',
       'x-decorator': 'FormItem',
       'x-component': 'Switch',

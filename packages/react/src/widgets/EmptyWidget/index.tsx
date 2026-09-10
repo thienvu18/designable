@@ -8,7 +8,8 @@ export interface IEmptyWidgetProps {
   dragTipsDirection?: 'left' | 'right'
 }
 
-export const EmptyWidget: React.FC<IEmptyWidgetProps> = observer((props) => {
+export const EmptyWidget: React.FC<React.PropsWithChildren<IEmptyWidgetProps>> = observer((props) => {
+  const { dragTipsDirection = 'left', children } = props
   const tree = useTree()
   const prefix = usePrefix('empty')
   const renderEmpty = () => {
@@ -17,7 +18,7 @@ export const EmptyWidget: React.FC<IEmptyWidgetProps> = observer((props) => {
         <div className="animations">
           <IconWidget
             infer={
-              props.dragTipsDirection === 'left'
+              dragTipsDirection === 'left'
                 ? 'DragLeftSourceAnimation'
                 : 'DragRightSourceAnimation'
             }
@@ -45,13 +46,9 @@ export const EmptyWidget: React.FC<IEmptyWidgetProps> = observer((props) => {
   if (!tree?.children?.length) {
     return (
       <div className={prefix}>
-        {props.children ? props.children : renderEmpty()}
+        {children ? children : renderEmpty()}
       </div>
     )
   }
   return null
 })
-
-EmptyWidget.defaultProps = {
-  dragTipsDirection: 'left',
-}

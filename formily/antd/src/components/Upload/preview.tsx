@@ -1,13 +1,48 @@
 import React from 'react'
-import { Upload as FormilyUpload } from '@formily/antd'
-import { createBehavior, createResource } from '@designable/core'
-import { DnFC } from '@designable/react'
+import { Upload as AntdUpload, Button } from 'antd'
+import { UploadOutlined, InboxOutlined } from '@ant-design/icons'
+import { Upload as FormilyUpload } from '@thienvu18/formily-antd-v6'
+import { useField } from '@formily/react'
+import { createBehavior, createResource } from '@thienvu18/designable-core'
+import { DnFC } from '@thienvu18/designable-react'
 import { createFieldSchema } from '../Field'
 import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
 
-export const Upload: DnFC<React.ComponentProps<typeof FormilyUpload>> =
-  FormilyUpload
+export const Upload: DnFC<React.ComponentProps<typeof FormilyUpload>> & {
+  Dragger?: React.FC<any>
+} = (props: any) => {
+  const field = useField()
+  if (!field) {
+    const placeholder =
+      props.listType !== 'picture-card' ? (
+        <Button icon={<UploadOutlined />}>{props.textContent || 'Upload'}</Button>
+      ) : null
+    return <AntdUpload {...props}>{props.children || placeholder}</AntdUpload>
+  }
+  return <FormilyUpload {...props} />
+}
+
+Upload.Dragger = (props: any) => {
+  const field = useField()
+  if (!field) {
+    return (
+      <AntdUpload.Dragger {...props}>
+        {props.children || (
+          <>
+            <p className="ant-upload-drag-icon">
+              <InboxOutlined />
+            </p>
+            {props.textContent && (
+              <p className="ant-upload-text">{props.textContent}</p>
+            )}
+          </>
+        )}
+      </AntdUpload.Dragger>
+    )
+  }
+  return <FormilyUpload.Dragger {...props} />
+}
 
 Upload.Behavior = createBehavior(
   {

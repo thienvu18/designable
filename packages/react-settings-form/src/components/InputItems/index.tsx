@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { usePrefix, IconWidget } from '@designable/react'
+import { usePrefix, IconWidget } from '@thienvu18/designable-react'
 import cls from 'classnames'
 import './styles.less'
 
@@ -24,23 +24,20 @@ export interface IInputItemProps {
   title?: React.ReactNode
 }
 
-const InputItemsContext = React.createContext<IInputItemsContext>(null)
+const InputItemsContext = React.createContext<IInputItemsContext | null>(null)
 
-export const InputItems: React.FC<IInputItemsProps> & {
-  Item: React.FC<IInputItemProps>
+export const InputItems: React.FC<React.PropsWithChildren<IInputItemsProps>> & {
+  Item: React.FC<React.PropsWithChildren<IInputItemProps>>
 } = (props) => {
+  const { width = '100%', className, style, children } = props
   const prefix = usePrefix('input-items')
   return (
-    <InputItemsContext.Provider value={props}>
-      <div className={cls(prefix, props.className)} style={props.style}>
-        {props.children}
+    <InputItemsContext.Provider value={{ width, vertical: props.vertical }}>
+      <div className={cls(prefix, className)} style={style}>
+        {children}
       </div>
     </InputItemsContext.Provider>
   )
-}
-
-InputItems.defaultProps = {
-  width: '100%',
 }
 
 InputItems.Item = (props) => {
@@ -49,13 +46,17 @@ InputItems.Item = (props) => {
   return (
     <div
       className={cls(prefix, props.className, {
-        vertical: props.vertical || ctx.vertical,
+        vertical: props.vertical || ctx?.vertical,
       })}
-      style={{ width: props.width || ctx.width, ...props.style }}
+      style={{ width: props.width || ctx?.width, ...props.style }}
     >
       {props.icon && (
         <div className={prefix + '-icon'}>
-          <IconWidget infer={props.icon} size={16} />
+          {typeof props.icon === 'string' ? (
+            <IconWidget infer={props.icon} size={16} />
+          ) : (
+            props.icon
+          )}
         </div>
       )}
       {props.title && <div className={prefix + '-title'}>{props.title}</div>}

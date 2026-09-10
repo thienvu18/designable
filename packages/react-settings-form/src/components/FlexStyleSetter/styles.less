@@ -1,5 +1,4 @@
-@import '~antd/lib/style/themes/default.less';
-
+@ant-prefix: ant;
 .dn-flex-style-setter {
   .dn-input-items {
     margin-top: -10px;
@@ -7,7 +6,7 @@
     margin-right: -10px;
     margin-bottom: 10px;
     padding: 10px 10px 0 10px;
-    background-color: @border-color-split;
+    background-color: var(--dn-color-border-secondary, rgba(5, 5, 5, 0.06));
 
     .@{ant-prefix}-radio-group {
       display: flex;

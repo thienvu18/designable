@@ -1,7 +1,7 @@
 import React from 'react'
 import cls from 'classnames'
 import { useDesigner, usePrefix } from '../../hooks'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@thienvu18/designable-core'
 import { IconWidget } from '../IconWidget'
 
 export interface ITranslateHandlerProps {
@@ -20,10 +20,8 @@ export const TranslateHandler: React.FC<ITranslateHandlerProps> = (props) => {
   const allowTranslate = props.node.allowTranslate()
   if (!allowTranslate) return null
   return (
-    <>
-      <div {...createHandler('translate')}>
-        <IconWidget infer="FreeMove" />
-      </div>
-    </>
+    <div {...createHandler('translate')}>
+      <IconWidget infer="FreeMove" />
+    </div>
   )
 }

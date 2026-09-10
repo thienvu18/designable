@@ -3,13 +3,13 @@
   "extends": [
     "plugin:react/recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
+    "prettier",
     "plugin:markdown/recommended"
   ],
   "env": {
     "node": true
   },
-  "plugins": ["@typescript-eslint", "react", "prettier", "markdown"],
+  "plugins": ["@typescript-eslint", "react", "markdown"],
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 10,
@@ -49,6 +49,7 @@
     "@typescript-eslint/explicit-module-boundary-types": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/no-empty-interface": 1,
+    "@typescript-eslint/no-duplicate-enum-values": 0,
     "no-console": [
       "error",
       {

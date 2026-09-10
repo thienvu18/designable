@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
 import Editor, { EditorProps, loader } from '@monaco-editor/react'
-import { TextWidget, IconWidget, usePrefix, useTheme } from '@designable/react'
+import { TextWidget, IconWidget, usePrefix, useTheme } from '@thienvu18/designable-react'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import { Tooltip } from 'antd'
 import { parseExpression, parse } from '@babel/parser'
-import { uid } from '@designable/shared'
+import { uid } from '@thienvu18/designable-shared'
 import { format } from './format'
 import cls from 'classnames'
 import './styles.less'
@@ -41,9 +41,9 @@ export const MonacoInput: React.FC<MonacoInputProps> & {
   const validateRef = useRef(null)
   const submitRef = useRef(null)
   const declarationRef = useRef<string[]>([])
-  const extraLibRef = useRef<monaco.IDisposable>(null)
-  const monacoRef = useRef<Monaco>()
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor>()
+  const extraLibRef = useRef<monaco.IDisposable | null>(null)
+  const monacoRef = useRef<Monaco | null>(null)
+  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null)
   const computedLanguage = useRef<string>(language || defaultLanguage)
   const realLanguage = useRef<string>('')
   const unmountedRef = useRef(false)

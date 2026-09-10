@@ -1,5 +1,4 @@
-@import '~antd/lib/style/themes/default.less';
-
+@ant-prefix: ant;
 .dn-poly-input {
   display: flex;
   width: 100%;
@@ -20,7 +19,7 @@
   }
 
   .dn-poly-input-controller {
-    border: 1px solid @border-color-base;
+    border: 1px solid var(--dn-color-border, #d9d9d9);
     border-radius: 2px;
     cursor: pointer;
     padding: 0 8px;

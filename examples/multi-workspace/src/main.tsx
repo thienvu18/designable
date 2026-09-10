@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import {
   Designer,
   IconWidget,
@@ -17,19 +17,19 @@ import {
   ViewportPanel,
   SettingsPanel,
   HistoryWidget,
-} from '@designable/react'
-import { SettingsForm, MonacoInput } from '@designable/react-settings-form'
+} from '@thienvu18/designable-react'
+import { SettingsForm, MonacoInput } from '@thienvu18/designable-react-settings-form'
 import { observer } from '@formily/react'
 import {
   createDesigner,
   createResource,
   createBehavior,
   GlobalRegistry,
-} from '@designable/core'
+} from '@thienvu18/designable-core'
 import { Content } from './content'
 import { Space, Button, Radio } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'
-import 'antd/dist/antd.less'
+
 
 const RootBehavior = createBehavior({
   name: 'Root',
@@ -322,7 +322,7 @@ const Actions = observer(() => (
 ))
 
 const engine = createDesigner()
-window.engine = engine
+;(window as Window & { engine?: typeof engine }).engine = engine
 const App = () => {
   return (
     <Designer engine={engine}>
@@ -404,4 +404,8 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const container = document.getElementById('root')
+if (container) {
+  const root = createRoot(container)
+  root.render(<App />)
+}

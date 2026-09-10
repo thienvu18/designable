@@ -15,7 +15,7 @@ import {
   FormGrid,
   FormLayout,
   FormTab,
-} from '@formily/antd'
+} from '@thienvu18/formily-antd-v6'
 import { Slider } from 'antd'
 import {
   SizeInput,

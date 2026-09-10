@@ -8,7 +8,7 @@ import {
   isPointInRect,
   IPoint,
   Rect,
-} from '@designable/shared'
+} from '@thienvu18/designable-shared'
 import { DragNodeEvent, DropNodeEvent } from '../events'
 import { Viewport } from './Viewport'
 import { CursorDragType } from './Cursor'

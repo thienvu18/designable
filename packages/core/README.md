@@ -1,1 +1,1 @@
-# @designable/core
+# @thienvu18/designable-core

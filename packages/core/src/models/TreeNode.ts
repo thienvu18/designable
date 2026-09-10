@@ -1,5 +1,5 @@
 import { action, define, observable, toJS } from '@formily/reactive'
-import { uid, isFn, each } from '@designable/shared'
+import { uid, isFn, each } from '@thienvu18/designable-shared'
 import { Operation } from './Operation'
 import {
   InsertBeforeEvent,
@@ -338,12 +338,13 @@ export class TreeNode {
 
   triggerMutation<T>(event: any, callback?: () => T, defaults?: T): T {
     if (this.operation) {
-      const result = this.operation.dispatch(event, callback) || defaults
+      const result = this.operation.dispatch(event, callback) ?? defaults
       this.takeSnapshot(event?.type)
-      return result
+      return result as T
     } else if (isFn(callback)) {
       return callback()
     }
+    return defaults as T
   }
 
   find(finder: INodeFinder): TreeNode {

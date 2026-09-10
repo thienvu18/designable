@@ -4,8 +4,8 @@ import {
   isResourceList,
   IResourceLike,
   IResource,
-} from '@designable/core'
-import { isFn } from '@designable/shared'
+} from '@thienvu18/designable-core'
+import { isFn } from '@thienvu18/designable-shared'
 import { observer } from '@formily/reactive-react'
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
@@ -13,20 +13,21 @@ import { TextWidget } from '../TextWidget'
 import cls from 'classnames'
 import './styles.less'
 
-export type SourceMapper = (resource: IResource) => React.ReactChild
+export type SourceMapper = (resource: IResource) => React.ReactNode
 
 export interface IResourceWidgetProps {
   title: React.ReactNode
   sources?: IResourceLike[]
   className?: string
   defaultExpand?: boolean
-  children?: SourceMapper | React.ReactElement
+  children?: SourceMapper | React.ReactNode
 }
 
 export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
   (props) => {
+    const { defaultExpand = true, sources: rawSources = [], className, title, children } = props
     const prefix = usePrefix('resource')
-    const [expand, setExpand] = useState(props.defaultExpand)
+    const [expand, setExpand] = useState(defaultExpand)
     const renderNode = (source: IResource) => {
       const { node, icon, title, thumb, span } = source
       return (
@@ -36,7 +37,7 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
           key={node.id}
           data-designer-source-id={node.id}
         >
-          {thumb && <img className={prefix + '-item-thumb'} src={thumb} />}
+          {thumb && <img className={prefix + '-item-thumb'} src={thumb} alt="" />}
           {icon && React.isValidElement(icon) ? (
             <>{icon}</>
           ) : (
@@ -47,16 +48,14 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
             />
           )}
           <span className={prefix + '-item-text'}>
-            {
-              <TextWidget>
-                {title || node.children[0]?.getMessage('title')}
-              </TextWidget>
-            }
+            <TextWidget>
+              {title || node.children[0]?.getMessage('title')}
+            </TextWidget>
           </span>
         </div>
       )
     }
-    const sources = props.sources.reduce<IResource[]>((buf, source) => {
+    const sources = rawSources.reduce<IResource[]>((buf, source) => {
       if (isResourceList(source)) {
         return buf.concat(source)
       } else if (isResourceHost(source)) {
@@ -70,7 +69,7 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
       }, 0) % 3
     return (
       <div
-        className={cls(prefix, props.className, {
+        className={cls(prefix, className, {
           expand,
         })}
       >
@@ -86,12 +85,12 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
             <IconWidget infer="Expand" size={10} />
           </div>
           <div className={prefix + '-header-content'}>
-            <TextWidget>{props.title}</TextWidget>
+            <TextWidget>{title}</TextWidget>
           </div>
         </div>
         <div className={prefix + '-content-wrapper'}>
           <div className={prefix + '-content'}>
-            {sources.map(isFn(props.children) ? props.children : renderNode)}
+            {sources.map(isFn(children) ? (children as SourceMapper) : renderNode)}
             {remainItems ? (
               <div
                 className={prefix + '-item-remain'}
@@ -104,7 +103,3 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
     )
   }
 )
-
-ResourceWidget.defaultProps = {
-  defaultExpand: true,
-}

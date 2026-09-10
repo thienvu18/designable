@@ -2,8 +2,6 @@ import { observer } from '@formily/reactive-react'
 import React from 'react'
 import { useScreen, usePrefix, useTheme } from '../../hooks'
 
-export interface IMobileBodyProps {}
-
 const MockupImages = {
   dark: [
     '//img.alicdn.com/imgextra/i3/O1CN01zXMc8W26oJZGUaCK1_!!6000000007708-55-tps-946-459.svg',
@@ -15,7 +13,7 @@ const MockupImages = {
   ],
 }
 
-export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
+export const MobileBody: React.FC<React.PropsWithChildren> = observer((props) => {
   const screen = useScreen()
   const theme = useTheme()
   const prefix = usePrefix('mobile-simulator-body')
@@ -56,6 +54,7 @@ export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
         }}
       >
         <img
+          alt=""
           src={screen.flip ? MockupImages[theme][0] : MockupImages[theme][1]}
           style={{
             display: 'block',
@@ -66,7 +65,7 @@ export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
             borderRadius: 60,
             backfaceVisibility: 'hidden',
           }}
-        ></img>
+        />
         <div className={prefix + '-content'} style={getContentStyles()}>
           {props.children}
         </div>
@@ -74,5 +73,3 @@ export const MobileBody: React.FC<IMobileBodyProps> = observer((props) => {
     </div>
   )
 })
-
-MobileBody.defaultProps = {}

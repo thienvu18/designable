@@ -2,13 +2,13 @@ import React, { Fragment } from 'react'
 import { Tree, Button, TreeProps } from 'antd'
 import { uid } from '@formily/shared'
 import { observer } from '@formily/reactive-react'
-import { usePrefix, TextWidget, IconWidget } from '@designable/react'
+import { usePrefix, TextWidget, IconWidget } from '@thienvu18/designable-react'
 import { Title } from './Title'
 import { Header } from './Header'
 import { traverseTree } from './shared'
 import { ITreeDataSource, INodeItem } from './types'
 import './styles.less'
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from '@thienvu18/designable-core'
 
 const limitTreeDrag = ({ dropPosition }) => {
   if (dropPosition === 0) {
@@ -126,9 +126,11 @@ export const TreePanel: React.FC<ITreePanelProps> = observer((props) => {
           onDragEnter={() => {}}
           onDrop={dropHandler}
           titleRender={(titleProps: INodeItem) => {
+            const { key, ...rest } = titleProps
             return (
               <Title
-                {...titleProps}
+                key={key}
+                {...rest}
                 treeDataSource={props.treeDataSource}
               ></Title>
             )

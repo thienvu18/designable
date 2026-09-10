@@ -1,5 +1,5 @@
 import { Engine } from '../models'
-import { ICustomEvent } from '@designable/shared'
+import { ICustomEvent } from '@thienvu18/designable-shared'
 import { IEngineContext } from '../types'
 import { SelectNodeEvent } from '../events'
 

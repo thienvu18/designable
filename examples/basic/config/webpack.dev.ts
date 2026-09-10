@@ -5,7 +5,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import webpack from 'webpack'
 import path from 'path'
 
-const PORT = 3000
+const PORT = Number(process.env.PORT || 3000)
 
 const createPages = (pages) => {
   return pages.map(({ filename, template, chunk }) => {
@@ -16,15 +16,6 @@ const createPages = (pages) => {
       chunks: chunk,
     })
   })
-}
-
-for (let key in baseConfig.entry) {
-  if (Array.isArray(baseConfig.entry[key])) {
-    baseConfig.entry[key].push(
-      require.resolve('webpack/hot/dev-server'),
-      `${require.resolve('webpack-dev-server/client')}?http://localhost:${PORT}`
-    )
-  }
 }
 
 export default {
@@ -46,7 +37,7 @@ export default {
   ],
   devServer: {
     host: '127.0.0.1',
-    open: true,
+    open: false,
     port: PORT,
   },
 }

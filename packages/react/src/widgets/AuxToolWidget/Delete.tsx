@@ -1,5 +1,5 @@
 import React from 'react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@thienvu18/designable-core'
 import { IconWidget } from '../IconWidget'
 import { usePrefix } from '../../hooks'
 import { Button } from 'antd'

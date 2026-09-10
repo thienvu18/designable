@@ -4,9 +4,9 @@ import { useTree, usePrefix, useOutline, useWorkbench } from '../../hooks'
 import { observer } from '@formily/reactive-react'
 import { OutlineTreeNode } from './OutlineNode'
 import { Insertion } from './Insertion'
-import { TreeNode, Viewport } from '@designable/core'
+import { TreeNode, Viewport } from '@thienvu18/designable-core'
 import { NodeContext } from './context'
-import { globalThisPolyfill } from '@designable/shared'
+import { globalThisPolyfill } from '@thienvu18/designable-shared'
 
 export interface IOutlineTreeWidgetProps {
   className?: string
@@ -18,14 +18,15 @@ export interface IOutlineTreeWidgetProps {
 
 export const OutlineTreeWidget: React.FC<IOutlineTreeWidgetProps> = observer(
   ({ onClose, style, renderActions, renderTitle, className, ...props }) => {
-    const ref = useRef<HTMLDivElement>()
+    void onClose
+    const ref = useRef<HTMLDivElement>(null)
     const prefix = usePrefix('outline-tree')
     const workbench = useWorkbench()
     const current = workbench?.activeWorkspace || workbench?.currentWorkspace
     const workspaceId = current?.id
     const tree = useTree(workspaceId)
     const outline = useOutline(workspaceId)
-    const outlineRef = useRef<Viewport>()
+    const outlineRef = useRef<Viewport | null>(null)
     useLayoutEffect(() => {
       if (!workspaceId) return
       if (outlineRef.current && outlineRef.current !== outline) {

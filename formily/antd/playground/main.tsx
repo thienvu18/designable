@@ -1,6 +1,6 @@
-import 'antd/dist/antd.less'
+
 import React, { useMemo } from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import {
   Designer,
   DesignerToolsWidget,
@@ -17,17 +17,17 @@ import {
   ViewPanel,
   SettingsPanel,
   ComponentTreeWidget,
-} from '@designable/react'
+} from '@thienvu18/designable-react'
 import {
   SettingsForm,
   setNpmCDNRegistry,
-} from '@designable/react-settings-form'
+} from '@thienvu18/designable-react-settings-form'
 import {
   createDesigner,
   GlobalRegistry,
   Shortcut,
   KeyCode,
-} from '@designable/core'
+} from '@thienvu18/designable-core'
 import {
   LogoWidget,
   ActionsWidget,
@@ -230,4 +230,8 @@ const App = () => {
   )
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+const container = document.getElementById('root')
+if (container) {
+  const root = createRoot(container)
+  root.render(<App />)
+}

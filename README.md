@@ -9,6 +9,10 @@
 If you are worrying about something builder, Such as form builder/table builder/chart builder/app builder etc.
 Designable is your perfect choice.
 
+## Designable 2.0
+
+This repository's maintained release line targets React 19 and Ant Design 6. See the [2.0 migration guide](docs/migration-v2.md) for renamed packages, required peers, styling changes, and the consumer verification checklist.
+
 ## Screenshot
 
 <img src="https://img.alicdn.com/imgextra/i1/O1CN01UYmA8f1apczHZRygt_!!6000000003379-2-tps-3040-1802.png" style="box-shadow:0px 0px 20px #aaa;border:1px solid #ddd"/>

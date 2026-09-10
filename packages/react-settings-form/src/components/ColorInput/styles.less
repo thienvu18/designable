@@ -1,5 +1,4 @@
-@import '~antd/lib/style/themes/default.less';
-
+@ant-prefix: ant;
 .dn-color-input {
   width: 100%;
 
@@ -12,7 +11,7 @@
     width: 20px;
     height: 20px;
     border-radius: 2px;
-    border: 1px solid @border-color-base;
+    border: 1px solid var(--dn-color-border, #d9d9d9);
     cursor: pointer;
   }
 }

@@ -1,6 +1,7 @@
 import React, { useRef, useState, useLayoutEffect } from 'react'
-import { TreeNode } from '@designable/core'
+import { TreeNode } from '@thienvu18/designable-core'
 import { reaction } from '@formily/reactive'
+import { IRect } from '@thienvu18/designable-shared'
 import { usePrefix, useViewport } from '../../hooks'
 import { Selector } from './Selector'
 import { Copy } from './Copy'
@@ -12,7 +13,7 @@ const HELPER_DEBOUNCE_TIMEOUT = 100
 
 export interface IHelpersProps {
   node: TreeNode
-  nodeRect: DOMRect
+  nodeRect: IRect | DOMRect
 }
 export interface IViewportState {
   viewportWidth?: number
@@ -27,14 +28,17 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
   const prefix = usePrefix('aux-helpers')
   const viewport = useViewport()
   const unmountRef = useRef(false)
-  const ref = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement>(null)
   const [position, setPosition] = useState('top-right')
 
   useLayoutEffect(() => {
     let request = null
 
-    const getYInViewport = (nodeRect: DOMRect, helpersRect: DOMRect) => {
-      if (nodeRect.top - viewport.scrollY > helpersRect.height) {
+    const getYInViewport = (
+      nodeRect: IRect | DOMRect,
+      helpersRect: DOMRect | IRect
+    ) => {
+      if (nodeRect.y - viewport.scrollY > helpersRect.height) {
         return 'top'
       } else if (
         viewport.isScrollTop &&
@@ -42,7 +46,7 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
       ) {
         return 'inner-top'
       } else if (
-        nodeRect.bottom >= viewport.scrollY + viewport.height &&
+        nodeRect.y + nodeRect.height >= viewport.scrollY + viewport.height &&
         nodeRect.height + helpersRect.height > viewport.height
       ) {
         return 'inner-bottom'
@@ -51,12 +55,15 @@ export const Helpers: React.FC<IHelpersProps> = ({ node, nodeRect }) => {
       return 'bottom'
     }
 
-    const getXInViewport = (nodeRect: DOMRect, helpersRect: DOMRect) => {
+    const getXInViewport = (
+      nodeRect: IRect | DOMRect,
+      helpersRect: DOMRect | IRect
+    ) => {
       const widthDelta = helpersRect.width - nodeRect.width
       if (widthDelta >= 0) {
         if (nodeRect.x < widthDelta) {
           return 'left'
-        } else if (nodeRect.right + widthDelta > viewport.width) {
+        } else if (nodeRect.x + nodeRect.width + widthDelta > viewport.width) {
           return 'right'
         } else {
           return 'center'

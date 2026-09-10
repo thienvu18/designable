@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useRef } from 'react'
-import { isStr, isFn, isObj, isPlainObj } from '@designable/shared'
+import { isStr, isFn, isObj, isPlainObj } from '@thienvu18/designable-shared'
 import { observer } from '@formily/reactive-react'
 import { Tooltip, TooltipProps } from 'antd'
 import { usePrefix, useRegistry, useTheme } from '../../hooks'
@@ -25,7 +25,7 @@ export interface IIconWidgetProps extends React.HTMLAttributes<HTMLElement> {
 }
 
 export const IconWidget: React.FC<IIconWidgetProps> & {
-  Provider?: React.FC<IconProviderProps>
+  Provider?: React.FC<React.PropsWithChildren<IconProviderProps>>
   ShadowSVG?: React.FC<IShadowSVGProps>
 } = observer((props: React.PropsWithChildren<IIconWidgetProps>) => {
   const theme = useTheme()
@@ -35,7 +35,7 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
   const size = props.size || '1em'
   const height = props.style?.height || size
   const width = props.style?.width || size
-  const takeIcon = (infer: React.ReactNode) => {
+  const takeIcon = (infer: any) => {
     if (isStr(infer)) {
       const finded = registry.getDesignerIcon(infer)
       if (finded) {
@@ -50,11 +50,12 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
       })
     } else if (React.isValidElement(infer)) {
       if (infer.type === 'svg') {
-        return React.cloneElement(infer, {
+        const svgElement = infer as React.ReactElement<any>
+        return React.cloneElement(svgElement, {
           height,
           width,
           fill: 'currentColor',
-          viewBox: infer.props.viewBox || '0 0 1024 1024',
+          viewBox: svgElement.props?.viewBox || '0 0 1024 1024',
           focusable: 'false',
           'aria-hidden': 'true',
         })
@@ -127,7 +128,7 @@ export const IconWidget: React.FC<IIconWidgetProps> & {
 })
 
 IconWidget.ShadowSVG = (props) => {
-  const ref = useRef<HTMLDivElement>()
+  const ref = useRef<HTMLDivElement>(null)
   const width = isNumSize(props.width) ? `${props.width}px` : props.width
   const height = isNumSize(props.height) ? `${props.height}px` : props.height
   useEffect(() => {
@@ -137,11 +138,11 @@ IconWidget.ShadowSVG = (props) => {
       })
       root.innerHTML = `<svg viewBox="0 0 1024 1024" style="width:${width};height:${height}">${props.content}</svg>`
     }
-  }, [])
+  }, [height, props.content, width])
   return <div ref={ref}></div>
 }
 
-IconWidget.Provider = (props) => {
+IconWidget.Provider = (props: React.PropsWithChildren<IconProviderProps>) => {
   return (
     <IconContext.Provider value={props}>{props.children}</IconContext.Provider>
   )

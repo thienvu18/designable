@@ -1,41 +1,48 @@
 import React, { Fragment, useRef, useMemo } from 'react'
-import { FormItem, IFormItemProps } from '@formily/antd'
+import { FormItem, IFormItemProps } from '@thienvu18/formily-antd-v6'
 import { useField, observer } from '@formily/react'
 import { observable } from '@formily/reactive'
-import { IconWidget, usePrefix } from '@designable/react'
+import { IconWidget, usePrefix } from '@thienvu18/designable-react'
 import cls from 'classnames'
 import './styles.less'
 
 const ExpandedMap = new Map<string, boolean>()
 
-export const FoldItem: React.FC<IFormItemProps> & {
-  Base?: React.FC
-  Extra?: React.FC
+export const FoldItem: React.FC<React.PropsWithChildren<IFormItemProps>> & {
+  Base?: React.FC<React.PropsWithChildren<{}>>
+  Extra?: React.FC<React.PropsWithChildren<{}>>
 } = observer(({ className, style, children, ...props }) => {
   const prefix = usePrefix('fold-item')
   const field = useField()
   const expand = useMemo(
-    () => observable.ref(ExpandedMap.get(field.address.toString())),
-    []
+    () => observable.ref(ExpandedMap.get(field?.address?.toString() || '')),
+    [field?.address]
   )
-  const slots = useRef({ base: null, extra: null })
+  const slots = useRef<{ base: React.ReactNode; extra: React.ReactNode }>({
+    base: null,
+    extra: null,
+  })
+
+  slots.current = { base: null, extra: null }
   React.Children.forEach(children, (node) => {
     if (React.isValidElement(node)) {
-      if (node?.['type']?.['displayName'] === 'FoldItem.Base') {
-        slots.current.base = node['props'].children
+      if ((node?.type as any)?.displayName === 'FoldItem.Base') {
+        slots.current.base = (node.props as any)?.children
       }
-      if (node?.['type']?.['displayName'] === 'FoldItem.Extra') {
-        slots.current.extra = node['props'].children
+      if ((node?.type as any)?.displayName === 'FoldItem.Extra') {
+        slots.current.extra = (node.props as any)?.children
       }
     }
   })
   return (
-    <div className={cls(prefix, className)}>
+    <div className={cls(prefix, className)} style={style}>
       <div
         className={prefix + '-base'}
         onClick={() => {
           expand.value = !expand.value
-          ExpandedMap.set(field.address.toString(), expand.value)
+          if (field?.address) {
+            ExpandedMap.set(field.address.toString(), expand.value)
+          }
         }}
       >
         <FormItem.BaseItem
@@ -68,13 +75,13 @@ export const FoldItem: React.FC<IFormItemProps> & {
   )
 })
 
-const Base: React.FC = () => {
+const Base: React.FC<React.PropsWithChildren<{}>> = () => {
   return <Fragment />
 }
 
 Base.displayName = 'FoldItem.Base'
 
-const Extra: React.FC = () => {
+const Extra: React.FC<React.PropsWithChildren<{}>> = () => {
   return <Fragment />
 }
 

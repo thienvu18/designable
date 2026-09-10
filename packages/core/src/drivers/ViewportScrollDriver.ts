@@ -1,4 +1,4 @@
-import { EventDriver, globalThisPolyfill } from '@designable/shared'
+import { EventDriver, globalThisPolyfill } from '@thienvu18/designable-shared'
 import { Engine } from '../models/Engine'
 import { ViewportScrollEvent } from '../events'
 

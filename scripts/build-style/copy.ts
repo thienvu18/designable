@@ -1,59 +1,36 @@
-/* eslint-disable @typescript-eslint/explicit-module-boundary-types */
-import { copy, readFile, writeFile, existsSync } from 'fs-extra'
+import { copy, existsSync } from 'fs-extra'
 import glob from 'glob'
 
-export type CopyBaseOptions = Record<'esStr' | 'libStr', string>
-
-const importLibToEs = async ({
-  libStr,
-  esStr,
-  filename,
-}: CopyBaseOptions & { filename: string }) => {
-  if (!existsSync(filename)) {
-    return Promise.resolve()
-  }
-
-  const fileContent: string = (await readFile(filename)).toString()
-
-  return writeFile(
-    filename,
-    fileContent.replace(new RegExp(libStr, 'g'), esStr)
-  )
+export interface CopyBaseOptions {
+  esStr?: string
+  libStr?: string
 }
 
-export const runCopy = ({
-  resolveForItem,
-  ...lastOpts
-}: CopyBaseOptions & { resolveForItem?: (filename: string) => unknown }) => {
-  return new Promise((resolve, reject) => {
-    glob(`./src/**/*`, (err, files) => {
+export const runCopy = (
+  opts?: CopyBaseOptions & { resolveForItem?: (filename: string) => unknown }
+) => {
+  return new Promise<void>((resolve, reject) => {
+    glob('./src/**/*', (err, files) => {
       if (err) {
         return reject(err)
       }
 
-      const all = [] as Promise<unknown>[]
+      const all: Promise<void>[] = []
 
       for (let i = 0; i < files.length; i += 1) {
         const filename = files[i]
 
-        resolveForItem?.(filename)
+        opts?.resolveForItem?.(filename)
 
-        if (/\.(less|scss)$/.test(filename)) {
-          all.push(copy(filename, filename.replace(/src\//, 'esm/')))
-          all.push(copy(filename, filename.replace(/src\//, 'lib/')))
-
-          continue
-        }
-
-        if (/\/style.ts$/.test(filename)) {
-          importLibToEs({
-            ...lastOpts,
-            filename: filename.replace(/src\//, 'esm/').replace(/\.ts$/, '.js'),
-          })
-
-          continue
+        if (/\.(less|scss|css|png|jpg|jpeg|gif|svg)$/.test(filename)) {
+          all.push(copy(filename, filename.replace(/^(\.\/)?src\//, 'esm/')))
+          all.push(copy(filename, filename.replace(/^(\.\/)?src\//, 'lib/')))
         }
       }
+
+      Promise.all(all)
+        .then(() => resolve())
+        .catch(reject)
     })
   })
 }

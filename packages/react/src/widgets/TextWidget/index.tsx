@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import { isStr, isPlainObj } from '@designable/shared'
-import { GlobalRegistry, IDesignerMiniLocales } from '@designable/core'
+import { isStr, isPlainObj } from '@thienvu18/designable-shared'
+import { GlobalRegistry, IDesignerMiniLocales } from '@thienvu18/designable-core'
 import { observer } from '@formily/reactive-react'
 
 export interface ITextWidgetProps {
@@ -8,6 +8,7 @@ export interface ITextWidgetProps {
   sourceName?: string
   token?: string | IDesignerMiniLocales
   defaultMessage?: string | IDesignerMiniLocales
+  children?: React.ReactNode
 }
 
 export const TextWidget: React.FC<ITextWidgetProps> = observer((props) => {

@@ -1,5 +1,4 @@
-@import '~antd/lib/style/themes/default.less';
-
+@ant-prefix: ant;
 .dn-input-items {
   display: flex;
   flex-wrap: wrap;
@@ -9,7 +8,7 @@
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-    color: @text-color;
+    color: var(--dn-color-text, rgba(0, 0, 0, 0.88));
     &-icon {
       display: flex;
       align-items: center;
@@ -17,7 +16,7 @@
       margin: 0 8px;
       flex-shrink: 0;
       flex-grow: 0;
-      color: @text-color;
+      color: var(--dn-color-text, rgba(0, 0, 0, 0.88));
     }
 
     &-controller {

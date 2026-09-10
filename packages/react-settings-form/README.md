@@ -1,1 +1,1 @@
-# @designable/react-settings-form
+# @thienvu18/designable-react-settings-form

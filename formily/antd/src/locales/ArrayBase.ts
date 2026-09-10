@@ -1,4 +1,4 @@
-import { GlobalRegistry } from '@designable/core'
+import { GlobalRegistry } from '@thienvu18/designable-core'
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {

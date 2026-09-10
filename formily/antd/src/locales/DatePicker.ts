@@ -1,4 +1,4 @@
-import { createLocales } from '@designable/core'
+import { createLocales } from '@thienvu18/designable-core'
 
 export const DatePicker = {
   'zh-CN': {

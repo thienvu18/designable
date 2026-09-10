@@ -1,1 +1,1 @@
-# @designable/playground
+# Designable sandbox example
