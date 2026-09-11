@@ -1,6 +1,14 @@
 {
   "name": "@thienvu18/designable-core",
-  "version": "2.0.0",
+  "version": "2.0.1",
+  "homepage": "https://github.com/thienvu18/designable#readme",
+  "bugs": {
+    "url": "https://github.com/thienvu18/designable/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thienvu18/designable.git"
+  },
   "license": "MIT",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -11,36 +19,28 @@
     "README.md",
     "LICENSE.md"
   ],
-  "engines": {
-    "node": ">=20 <25"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thienvu18/designable.git"
-  },
-  "bugs": {
-    "url": "https://github.com/thienvu18/designable/issues"
-  },
-  "homepage": "https://github.com/thienvu18/designable#readme",
   "scripts": {
     "build": "rimraf -rf lib esm && npm run build:cjs && npm run build:esm",
     "build:cjs": "tsc --project tsconfig.build.json --outDir lib",
     "build:esm": "tsc --project tsconfig.build.json --module es2020 --outDir esm"
   },
-  "peerDependencies": {
-    "@formily/json-schema": ">=2.3.7 <3",
-    "@formily/path": ">=2.3.7 <3",
-    "@formily/reactive": ">=2.3.7 <3"
-  },
   "dependencies": {
     "@juggle/resize-observer": "^3.3.1",
-    "@thienvu18/designable-shared": "2.0.0"
+    "@thienvu18/designable-shared": "2.0.1"
   },
   "devDependencies": {
     "@formily/json-schema": "^2.3.7",
     "@formily/path": "^2.3.7",
     "@formily/reactive": "^2.3.7",
     "typescript": "5.2.2"
+  },
+  "peerDependencies": {
+    "@formily/json-schema": ">=2.3.7 <3",
+    "@formily/path": ">=2.3.7 <3",
+    "@formily/reactive": ">=2.3.7 <3"
+  },
+  "engines": {
+    "node": ">=20 <25"
   },
   "publishConfig": {
     "access": "public"

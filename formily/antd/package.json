@@ -1,6 +1,14 @@
 {
   "name": "@thienvu18/designable-formily-antd",
-  "version": "2.0.0",
+  "version": "2.0.1",
+  "homepage": "https://github.com/thienvu18/designable#readme",
+  "bugs": {
+    "url": "https://github.com/thienvu18/designable/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thienvu18/designable.git"
+  },
   "license": "MIT",
   "main": "lib/index.js",
   "module": "esm/index.js",
@@ -11,17 +19,6 @@
     "README.md",
     "LICENSE.md"
   ],
-  "engines": {
-    "node": ">=20 <25"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thienvu18/designable.git"
-  },
-  "bugs": {
-    "url": "https://github.com/thienvu18/designable/issues"
-  },
-  "homepage": "https://github.com/thienvu18/designable#readme",
   "scripts": {
     "build": "rimraf -rf lib esm && npm run build:cjs && npm run build:esm && ts-node copy",
     "build:cjs": "tsc --project tsconfig.build.json --outDir lib",
@@ -29,21 +26,11 @@
     "build:playground": "webpack --config playground/webpack.prod.ts",
     "start": "webpack-dev-server --config playground/webpack.dev.ts"
   },
-  "peerDependencies": {
-    "@formily/core": ">=2.3.7 <3",
-    "@formily/react": ">=2.3.7 <3",
-    "@formily/reactive": ">=2.3.7 <3",
-    "@formily/shared": ">=2.3.7 <3",
-    "@thienvu18/formily-antd-v6": ">=2 <3",
-    "antd": ">=6 <7",
-    "react": ">=19 <20",
-    "react-dom": ">=19 <20"
-  },
   "dependencies": {
-    "@thienvu18/designable-core": "2.0.0",
-    "@thienvu18/designable-formily-setters": "2.0.0",
-    "@thienvu18/designable-formily-transformer": "2.0.0",
-    "@thienvu18/designable-react": "2.0.0",
+    "@thienvu18/designable-core": "2.0.1",
+    "@thienvu18/designable-formily-setters": "2.0.1",
+    "@thienvu18/designable-formily-transformer": "2.0.1",
+    "@thienvu18/designable-react": "2.0.1",
     "classnames": "^2.3.2"
   },
   "devDependencies": {
@@ -60,6 +47,19 @@
     "react-dom": "^19.2.8",
     "react-is": "^19.2.8",
     "typescript": "5.2.2"
+  },
+  "peerDependencies": {
+    "@formily/core": ">=2.3.7 <3",
+    "@formily/react": ">=2.3.7 <3",
+    "@formily/reactive": ">=2.3.7 <3",
+    "@formily/shared": ">=2.3.7 <3",
+    "@thienvu18/formily-antd-v6": ">=2 <3",
+    "antd": ">=6 <7",
+    "react": ">=19 <20",
+    "react-dom": ">=19 <20"
+  },
+  "engines": {
+    "node": ">=20 <25"
   },
   "publishConfig": {
     "access": "public"
