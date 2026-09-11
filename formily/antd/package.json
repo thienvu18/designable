@@ -1,6 +1,6 @@
 {
   "name": "@thienvu18/designable-formily-antd",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "homepage": "https://github.com/thienvu18/designable#readme",
   "bugs": {
     "url": "https://github.com/thienvu18/designable/issues"
@@ -27,10 +27,10 @@
     "start": "webpack-dev-server --config playground/webpack.dev.ts"
   },
   "dependencies": {
-    "@thienvu18/designable-core": "2.0.1",
-    "@thienvu18/designable-formily-setters": "2.0.1",
-    "@thienvu18/designable-formily-transformer": "2.0.1",
-    "@thienvu18/designable-react": "2.0.1",
+    "@thienvu18/designable-core": "2.0.2",
+    "@thienvu18/designable-formily-setters": "2.0.2",
+    "@thienvu18/designable-formily-transformer": "2.0.2",
+    "@thienvu18/designable-react": "2.0.2",
     "classnames": "^2.3.2"
   },
   "devDependencies": {

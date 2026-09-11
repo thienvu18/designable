@@ -1,6 +1,6 @@
 {
   "name": "@thienvu18/designable-react-settings-form",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "homepage": "https://github.com/thienvu18/designable#readme",
   "bugs": {
     "url": "https://github.com/thienvu18/designable/issues"
@@ -27,9 +27,9 @@
   "dependencies": {
     "@babel/parser": "^7.24.0",
     "@monaco-editor/react": "^4.6.0",
-    "@thienvu18/designable-core": "2.0.1",
-    "@thienvu18/designable-react": "2.0.1",
-    "@thienvu18/designable-shared": "2.0.1",
+    "@thienvu18/designable-core": "2.0.2",
+    "@thienvu18/designable-react": "2.0.2",
+    "@thienvu18/designable-shared": "2.0.2",
     "classnames": "^2.3.2",
     "monaco-editor": "^0.47.0",
     "prettier": "^2.8.8",

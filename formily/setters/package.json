@@ -1,6 +1,6 @@
 {
   "name": "@thienvu18/designable-formily-setters",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "homepage": "https://github.com/thienvu18/designable#readme",
   "bugs": {
     "url": "https://github.com/thienvu18/designable/issues"
@@ -25,10 +25,10 @@
     "build:esm": "tsc --project tsconfig.build.json --module es2020 --outDir esm"
   },
   "dependencies": {
-    "@thienvu18/designable-core": "2.0.1",
-    "@thienvu18/designable-formily-transformer": "2.0.1",
-    "@thienvu18/designable-react": "2.0.1",
-    "@thienvu18/designable-react-settings-form": "2.0.1",
+    "@thienvu18/designable-core": "2.0.2",
+    "@thienvu18/designable-formily-transformer": "2.0.2",
+    "@thienvu18/designable-react": "2.0.2",
+    "@thienvu18/designable-react-settings-form": "2.0.2",
     "classnames": "^2.3.2"
   },
   "devDependencies": {

@@ -4872,7 +4872,21 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@thienvu18/designable-core@npm:2.0.1, @thienvu18/designable-core@workspace:packages/core":
+"@thienvu18/designable-core@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@thienvu18/designable-core@npm:2.0.1"
+  dependencies:
+    "@juggle/resize-observer": "npm:^3.3.1"
+    "@thienvu18/designable-shared": "npm:2.0.1"
+  peerDependencies:
+    "@formily/json-schema": ">=2.3.7 <3"
+    "@formily/path": ">=2.3.7 <3"
+    "@formily/reactive": ">=2.3.7 <3"
+  checksum: 10c0/834b8056a576294163cd325fc42e51b36bc9181412519840850ca98e51c657205c0e80a07bd41b730d12cb7f4292b22c034913bdbda61563e71928c0b675bfec
+  languageName: node
+  linkType: hard
+
+"@thienvu18/designable-core@npm:2.0.2, @thienvu18/designable-core@workspace:packages/core":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-core@workspace:packages/core"
   dependencies:
@@ -4880,7 +4894,7 @@ __metadata:
     "@formily/path": "npm:^2.3.7"
     "@formily/reactive": "npm:^2.3.7"
     "@juggle/resize-observer": "npm:^3.3.1"
-    "@thienvu18/designable-shared": "npm:2.0.1"
+    "@thienvu18/designable-shared": "npm:2.0.2"
     typescript: "npm:5.2.2"
   peerDependencies:
     "@formily/json-schema": ">=2.3.7 <3"
@@ -4900,10 +4914,10 @@ __metadata:
     "@formily/reactive": "npm:^2.3.7"
     "@formily/reactive-react": "npm:^2.3.7"
     "@formily/shared": "npm:^2.3.7"
-    "@thienvu18/designable-core": "npm:2.0.1"
-    "@thienvu18/designable-formily-setters": "npm:2.0.1"
-    "@thienvu18/designable-formily-transformer": "npm:2.0.1"
-    "@thienvu18/designable-react": "npm:2.0.1"
+    "@thienvu18/designable-core": "npm:2.0.2"
+    "@thienvu18/designable-formily-setters": "npm:2.0.2"
+    "@thienvu18/designable-formily-transformer": "npm:2.0.2"
+    "@thienvu18/designable-react": "npm:2.0.2"
     "@thienvu18/formily-antd-v6": "npm:^2.0.0"
     antd: "npm:^6.6.3"
     classnames: "npm:^2.3.2"
@@ -4923,7 +4937,28 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@thienvu18/designable-formily-setters@npm:2.0.1, @thienvu18/designable-formily-setters@workspace:formily/setters":
+"@thienvu18/designable-formily-setters@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@thienvu18/designable-formily-setters@npm:2.0.1"
+  dependencies:
+    "@thienvu18/designable-core": "npm:2.0.1"
+    "@thienvu18/designable-formily-transformer": "npm:2.0.1"
+    "@thienvu18/designable-react": "npm:2.0.1"
+    "@thienvu18/designable-react-settings-form": "npm:2.0.1"
+    classnames: "npm:^2.3.2"
+  peerDependencies:
+    "@formily/core": ">=2.3.7 <3"
+    "@formily/react": ">=2.3.7 <3"
+    "@formily/shared": ">=2.3.7 <3"
+    "@thienvu18/formily-antd-v6": ">=2 <3"
+    antd: ">=6 <7"
+    react: ">=19 <20"
+    react-dom: ">=19 <20"
+  checksum: 10c0/09c390fc0ea925ef1a8fece82be60c563808aa342be4e00d67ca0c97d8ac40426e60e630ee53726defd7168560d9a5a59f3817d75442877a6aa66c89173745f2
+  languageName: node
+  linkType: hard
+
+"@thienvu18/designable-formily-setters@npm:2.0.2, @thienvu18/designable-formily-setters@workspace:formily/setters":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-formily-setters@workspace:formily/setters"
   dependencies:
@@ -4934,10 +4969,10 @@ __metadata:
     "@formily/reactive": "npm:^2.3.7"
     "@formily/reactive-react": "npm:^2.3.7"
     "@formily/shared": "npm:^2.3.7"
-    "@thienvu18/designable-core": "npm:2.0.1"
-    "@thienvu18/designable-formily-transformer": "npm:2.0.1"
-    "@thienvu18/designable-react": "npm:2.0.1"
-    "@thienvu18/designable-react-settings-form": "npm:2.0.1"
+    "@thienvu18/designable-core": "npm:2.0.2"
+    "@thienvu18/designable-formily-transformer": "npm:2.0.2"
+    "@thienvu18/designable-react": "npm:2.0.2"
+    "@thienvu18/designable-react-settings-form": "npm:2.0.2"
     "@thienvu18/formily-antd-v6": "npm:^2.0.0"
     antd: "npm:^6.6.3"
     classnames: "npm:^2.3.2"
@@ -4956,7 +4991,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@thienvu18/designable-formily-transformer@npm:2.0.1, @thienvu18/designable-formily-transformer@workspace:formily/transformer":
+"@thienvu18/designable-formily-transformer@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@thienvu18/designable-formily-transformer@npm:2.0.1"
+  dependencies:
+    "@thienvu18/designable-core": "npm:2.0.1"
+    "@thienvu18/designable-shared": "npm:2.0.1"
+  peerDependencies:
+    "@formily/core": ">=2.3.7 <3"
+    "@formily/json-schema": ">=2.3.7 <3"
+  checksum: 10c0/055f0a471ebd77a154c5bc6c0435b88f19fe8974f8673e3f341bb7bb7d9c32371d1596bbd94c430165dd98726896247dd275f3b18fc57a8195ae90b9fc6148ac
+  languageName: node
+  linkType: hard
+
+"@thienvu18/designable-formily-transformer@npm:2.0.2, @thienvu18/designable-formily-transformer@workspace:formily/transformer":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-formily-transformer@workspace:formily/transformer"
   dependencies:
@@ -4964,8 +5012,8 @@ __metadata:
     "@formily/json-schema": "npm:^2.3.7"
     "@formily/path": "npm:^2.3.7"
     "@formily/reactive": "npm:^2.3.7"
-    "@thienvu18/designable-core": "npm:2.0.1"
-    "@thienvu18/designable-shared": "npm:2.0.1"
+    "@thienvu18/designable-core": "npm:2.0.2"
+    "@thienvu18/designable-shared": "npm:2.0.2"
     typescript: "npm:5.2.2"
   peerDependencies:
     "@formily/core": ">=2.3.7 <3"
@@ -5012,7 +5060,20 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@thienvu18/designable-react-sandbox@npm:2.0.1, @thienvu18/designable-react-sandbox@workspace:packages/react-sandbox":
+"@thienvu18/designable-react-sandbox@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@thienvu18/designable-react-sandbox@npm:2.0.1"
+  dependencies:
+    "@thienvu18/designable-react": "npm:2.0.1"
+    "@thienvu18/designable-shared": "npm:2.0.1"
+  peerDependencies:
+    react: ">=19 <20"
+    react-dom: ">=19 <20"
+  checksum: 10c0/4eb69d61c60e4f15113eb1af3c601e643f2f459cb8ccf64e639961bce0f41567e24c38348d434618a0d85e230bf517a0b49c9f86214e70fb8d78c4927724267c
+  languageName: node
+  linkType: hard
+
+"@thienvu18/designable-react-sandbox@workspace:packages/react-sandbox":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-react-sandbox@workspace:packages/react-sandbox"
   dependencies:
@@ -5020,8 +5081,8 @@ __metadata:
     "@formily/path": "npm:^2.3.7"
     "@formily/reactive": "npm:^2.3.7"
     "@formily/reactive-react": "npm:^2.3.7"
-    "@thienvu18/designable-react": "npm:2.0.1"
-    "@thienvu18/designable-shared": "npm:2.0.1"
+    "@thienvu18/designable-react": "npm:2.0.2"
+    "@thienvu18/designable-shared": "npm:2.0.2"
     antd: "npm:^6.6.3"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
@@ -5033,7 +5094,34 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@thienvu18/designable-react-settings-form@npm:2.0.1, @thienvu18/designable-react-settings-form@workspace:packages/react-settings-form":
+"@thienvu18/designable-react-settings-form@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@thienvu18/designable-react-settings-form@npm:2.0.1"
+  dependencies:
+    "@babel/parser": "npm:^7.24.0"
+    "@monaco-editor/react": "npm:^4.6.0"
+    "@thienvu18/designable-core": "npm:2.0.1"
+    "@thienvu18/designable-react": "npm:2.0.1"
+    "@thienvu18/designable-shared": "npm:2.0.1"
+    classnames: "npm:^2.3.2"
+    monaco-editor: "npm:^0.47.0"
+    prettier: "npm:^2.8.8"
+    react-tiny-popover: "npm:^8.1.6"
+  peerDependencies:
+    "@formily/core": ">=2.3.7 <3"
+    "@formily/react": ">=2.3.7 <3"
+    "@formily/reactive": ">=2.3.7 <3"
+    "@formily/reactive-react": ">=2.3.7 <3"
+    "@formily/shared": ">=2.3.7 <3"
+    "@thienvu18/formily-antd-v6": ">=2 <3"
+    antd: ">=6 <7"
+    react: ">=19 <20"
+    react-dom: ">=19 <20"
+  checksum: 10c0/8e1d8ea818aef54979e3b53100b76dba8bfbf49fe25283f62df1fd0139e75ca4ce366c1bf6450387013c1b286520a12389698e516352bfa0b36af5f1d02a7d3a
+  languageName: node
+  linkType: hard
+
+"@thienvu18/designable-react-settings-form@npm:2.0.2, @thienvu18/designable-react-settings-form@workspace:packages/react-settings-form":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-react-settings-form@workspace:packages/react-settings-form"
   dependencies:
@@ -5046,9 +5134,9 @@ __metadata:
     "@formily/reactive-react": "npm:^2.3.7"
     "@formily/shared": "npm:^2.3.7"
     "@monaco-editor/react": "npm:^4.6.0"
-    "@thienvu18/designable-core": "npm:2.0.1"
-    "@thienvu18/designable-react": "npm:2.0.1"
-    "@thienvu18/designable-shared": "npm:2.0.1"
+    "@thienvu18/designable-core": "npm:2.0.2"
+    "@thienvu18/designable-react": "npm:2.0.2"
+    "@thienvu18/designable-shared": "npm:2.0.2"
     "@thienvu18/formily-antd-v6": "npm:^2.0.0"
     antd: "npm:^6.6.3"
     classnames: "npm:^2.3.2"
@@ -5072,7 +5160,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@thienvu18/designable-react@npm:2.0.1, @thienvu18/designable-react@workspace:packages/react":
+"@thienvu18/designable-react@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@thienvu18/designable-react@npm:2.0.1"
+  dependencies:
+    "@thienvu18/designable-core": "npm:2.0.1"
+    "@thienvu18/designable-shared": "npm:2.0.1"
+    classnames: "npm:^2.3.2"
+    dateformat: "npm:^4.5.1"
+  peerDependencies:
+    "@formily/reactive": ">=2.3.7 <3"
+    "@formily/reactive-react": ">=2.3.7 <3"
+    antd: ">=6 <7"
+    react: ">=19 <20"
+    react-dom: ">=19 <20"
+  checksum: 10c0/c18689525c7c036af2241357362d66a32afae748b9d33781c57927c70ff6bf9e72833a34f811c02cd50590c6749d016339a2f9af5cbc68876e6fb6258c2df904
+  languageName: node
+  linkType: hard
+
+"@thienvu18/designable-react@npm:2.0.2, @thienvu18/designable-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-react@workspace:packages/react"
   dependencies:
@@ -5080,8 +5186,8 @@ __metadata:
     "@formily/path": "npm:^2.3.7"
     "@formily/reactive": "npm:^2.3.7"
     "@formily/reactive-react": "npm:^2.3.7"
-    "@thienvu18/designable-core": "npm:2.0.1"
-    "@thienvu18/designable-shared": "npm:2.0.1"
+    "@thienvu18/designable-core": "npm:2.0.2"
+    "@thienvu18/designable-shared": "npm:2.0.2"
     antd: "npm:^6.6.3"
     classnames: "npm:^2.3.2"
     dateformat: "npm:^4.5.1"
@@ -5176,7 +5282,16 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@thienvu18/designable-shared@npm:2.0.1, @thienvu18/designable-shared@workspace:packages/shared":
+"@thienvu18/designable-shared@npm:2.0.1":
+  version: 2.0.1
+  resolution: "@thienvu18/designable-shared@npm:2.0.1"
+  dependencies:
+    requestidlecallback: "npm:^0.3.0"
+  checksum: 10c0/fee107858aeaad6ed695e5bce049544da0d01c39f01d794ee444138706d1d59c238e649f27bab1aa81500063360604a1aa29902244685a0fac81be1d6ecf87cf
+  languageName: node
+  linkType: hard
+
+"@thienvu18/designable-shared@npm:2.0.2, @thienvu18/designable-shared@workspace:packages/shared":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-shared@workspace:packages/shared"
   dependencies:
