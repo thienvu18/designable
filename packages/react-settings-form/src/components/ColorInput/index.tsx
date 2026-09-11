@@ -1,7 +1,6 @@
 import React, { useRef } from 'react'
-import { Input, Popover } from 'antd'
+import { ColorPicker, Input } from 'antd'
 import { usePrefix } from '@thienvu18/designable-react'
-import { SketchPicker } from 'react-color'
 import './styles.less'
 
 export interface IColorInputProps {
@@ -22,19 +21,14 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
         }}
         placeholder="Color"
         prefix={
-          <Popover
+          <ColorPicker
+            value={color}
             autoAdjustOverflow
-            trigger="click"
-            styles={{ content: { padding: 0 } }}
             getPopupContainer={() => container.current || document.body}
-            content={
-              <SketchPicker
-                color={color}
-                onChange={({ rgb }) => {
-                  props.onChange?.(`rgba(${rgb.r},${rgb.g},${rgb.b},${rgb.a})`)
-                }}
-              />
-            }
+            onChange={(nextColor) => {
+              const { r, g, b, a } = nextColor.toRgb()
+              props.onChange?.(`rgba(${r},${g},${b},${a})`)
+            }}
           >
             <div
               className={prefix + '-color-tips'}
@@ -42,7 +36,7 @@ export const ColorInput: React.FC<IColorInputProps> = (props) => {
                 backgroundColor: color,
               }}
             ></div>
-          </Popover>
+          </ColorPicker>
         }
       />
     </div>
