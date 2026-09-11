@@ -3,15 +3,18 @@ import prettyFormat from 'pretty-format'
 
 // Polyfills and DOM utilities
 globalThis['prettyFormat'] = prettyFormat
-globalThis['sleep'] = (time: number) => new Promise((resolve) => setTimeout(resolve, time))
-globalThis['requestAnimationFrame'] = (fn: FrameRequestCallback) => setTimeout(fn, 0) as unknown as number
+globalThis['sleep'] = (time: number) =>
+  new Promise((resolve) => setTimeout(resolve, time))
+globalThis['requestAnimationFrame'] = (fn: FrameRequestCallback) =>
+  setTimeout(fn, 0) as unknown as number
 globalThis['cancelAnimationFrame'] = (id: number) => clearTimeout(id)
 
 if (typeof window !== 'undefined') {
   const getComputedStyle = window.getComputedStyle.bind(window)
-  window.getComputedStyle = ((element: Element) => getComputedStyle(element)) as typeof window.getComputedStyle
+  window.getComputedStyle = ((element: Element) =>
+    getComputedStyle(element)) as typeof window.getComputedStyle
 
-  window.matchMedia ||= ((query: string) =>
+  window.matchMedia ||= (query: string) =>
     ({
       matches: false,
       media: query,
@@ -23,7 +26,7 @@ if (typeof window !== 'undefined') {
       dispatchEvent() {
         return false
       },
-    }) as MediaQueryList)
+    } as MediaQueryList)
 
   window.ResizeObserver =
     window.ResizeObserver ||

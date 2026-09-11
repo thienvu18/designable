@@ -1,6 +1,6 @@
-import path from 'path'
 import fs from 'fs-extra'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import path from 'path'
 
 const getAlias = () => {
   const packagesDir = path.resolve(__dirname, '../../../packages')

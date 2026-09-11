@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
-import { Space, Button, Radio } from 'antd'
 import { GithubOutlined } from '@ant-design/icons'
-import { useDesigner, TextWidget } from '@thienvu18/designable-react'
-import { GlobalRegistry } from '@thienvu18/designable-core'
 import { observer } from '@formily/react'
+import { GlobalRegistry } from '@thienvu18/designable-core'
+import { TextWidget, useDesigner } from '@thienvu18/designable-react'
+import { Button, Radio, Space } from 'antd'
+import { useEffect } from 'react'
 import { loadInitialSchema, saveSchema } from '../service'
 
 export const ActionsWidget = observer(() => {

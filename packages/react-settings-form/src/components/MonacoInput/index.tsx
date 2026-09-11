@@ -1,15 +1,20 @@
-import React, { useState, useRef, useEffect } from 'react'
+import { parse, parseExpression } from '@babel/parser'
 import Editor, { EditorProps, loader } from '@monaco-editor/react'
-import { TextWidget, IconWidget, usePrefix, useTheme } from '@thienvu18/designable-react'
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { Tooltip } from 'antd'
-import { parseExpression, parse } from '@babel/parser'
+import {
+  IconWidget,
+  TextWidget,
+  usePrefix,
+  useTheme,
+} from '@thienvu18/designable-react'
 import { uid } from '@thienvu18/designable-shared'
-import { format } from './format'
+import { Tooltip } from 'antd'
 import cls from 'classnames'
-import './styles.less'
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import React, { useEffect, useRef, useState } from 'react'
 import './config'
 import { initMonaco } from './config'
+import { format } from './format'
+import './styles.less'
 
 export type Monaco = typeof monaco
 export interface MonacoInputProps extends EditorProps {

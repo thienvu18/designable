@@ -1,12 +1,12 @@
 import {
-  BooleanHelper,
-  PatternHelper,
-  StringHelper,
   AnyHelper,
+  BooleanHelper,
+  ComponentPropsHelper,
   DataSourceHelper,
   DecoratorPropsHelper,
   DisplayHelper,
-  ComponentPropsHelper,
+  PatternHelper,
+  StringHelper,
 } from './helpers'
 
 export const FieldProperties = [

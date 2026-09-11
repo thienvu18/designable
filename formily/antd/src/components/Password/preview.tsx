@@ -1,10 +1,10 @@
-import React from 'react'
-import { Password as FormilyPassword } from '@thienvu18/formily-antd-v6'
 import { createBehavior, createResource } from '@thienvu18/designable-core'
 import { DnFC } from '@thienvu18/designable-react'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import { Password as FormilyPassword } from '@thienvu18/formily-antd-v6'
+import React from 'react'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 
 export const Password: DnFC<React.ComponentProps<typeof FormilyPassword>> =
   FormilyPassword

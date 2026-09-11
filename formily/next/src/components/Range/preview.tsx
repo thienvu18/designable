@@ -1,10 +1,10 @@
-import React from 'react'
 import { Range as NextRange } from '@alifd/next'
 import { createBehavior, createResource } from '@designable/core'
 import { DnComponent } from '@designable/react'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import React from 'react'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 
 export const Range: DnComponent<React.ComponentProps<typeof NextRange>> =
   NextRange

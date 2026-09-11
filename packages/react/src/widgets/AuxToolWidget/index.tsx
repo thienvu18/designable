@@ -1,12 +1,12 @@
-import React, { useEffect, useRef } from 'react'
-import { useViewport, useDesigner, usePrefix } from '../../hooks'
-import { Insertion } from './Insertion'
-import { Selection } from './Selection'
-import { FreeSelection } from './FreeSelection'
+import { useEffect, useRef } from 'react'
+import { useDesigner, usePrefix, useViewport } from '../../hooks'
 import { Cover } from './Cover'
 import { DashedBox } from './DashedBox'
-import { SpaceBlock } from './SpaceBlock'
+import { FreeSelection } from './FreeSelection'
+import { Insertion } from './Insertion'
+import { Selection } from './Selection'
 import { SnapLine } from './SnapLine'
+import { SpaceBlock } from './SpaceBlock'
 import './styles.less'
 
 export const AuxToolWidget = () => {

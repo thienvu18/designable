@@ -1,14 +1,32 @@
 {
   "name": "@thienvu18/designable-multi-workspace-example",
   "version": "2.0.0",
-  "license": "MIT",
   "private": true,
-  "engines": {
-    "node": ">=20 <25"
-  },
+  "license": "MIT",
   "scripts": {
     "build": "rimraf dist && webpack --config config/webpack.prod.ts",
     "start": "webpack-dev-server --config config/webpack.dev.ts"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "@formily/core": "^2.3.7",
+    "@formily/json-schema": "^2.3.7",
+    "@formily/path": "^2.3.7",
+    "@formily/react": "^2.3.7",
+    "@formily/reactive": "^2.3.7",
+    "@formily/reactive-react": "^2.3.7",
+    "@formily/shared": "^2.3.7",
+    "@thienvu18/designable-core": "2.0.1",
+    "@thienvu18/designable-react": "2.0.1",
+    "@thienvu18/designable-react-sandbox": "2.0.1",
+    "@thienvu18/designable-react-settings-form": "2.0.1",
+    "@thienvu18/designable-shared": "2.0.1",
+    "@thienvu18/formily-antd-v6": "^2.0.0",
+    "antd": "^6.6.3",
+    "classnames": "^2.3.2",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "react-is": "^19.2.8"
   },
   "devDependencies": {
     "css-loader": "^6.10.0",
@@ -25,25 +43,7 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   },
-  "dependencies": {
-    "@ant-design/icons": "^6.3.4",
-    "@formily/core": "^2.3.7",
-    "@formily/json-schema": "^2.3.7",
-    "@formily/path": "^2.3.7",
-    "@formily/react": "^2.3.7",
-    "@formily/reactive": "^2.3.7",
-    "@formily/reactive-react": "^2.3.7",
-    "@formily/shared": "^2.3.7",
-    "@thienvu18/designable-core": "2.0.0",
-    "@thienvu18/designable-react": "2.0.0",
-    "@thienvu18/designable-react-sandbox": "2.0.0",
-    "@thienvu18/designable-react-settings-form": "2.0.0",
-    "@thienvu18/designable-shared": "2.0.0",
-    "@thienvu18/formily-antd-v6": "^2.0.0",
-    "antd": "^6.6.3",
-    "classnames": "^2.3.2",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "react-is": "^19.2.8"
+  "engines": {
+    "node": ">=20 <25"
   }
 }

@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
 import { isValid } from '@thienvu18/designable-shared'
 import cls from 'classnames'
-import { IconWidget, TextWidget } from '../widgets'
+import React, { useEffect, useRef, useState } from 'react'
 import { usePrefix } from '../hooks'
+import { IconWidget, TextWidget } from '../widgets'
 
 export interface ICompositePanelProps {
   direction?: 'left' | 'right'

@@ -1,15 +1,15 @@
-import React, { Fragment, useMemo, useState } from 'react'
-import cls from 'classnames'
-import { Modal, Button } from 'antd'
 import { Form } from '@formily/core'
 import { observable } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
-import { usePrefix, useTheme, TextWidget } from '@thienvu18/designable-react'
+import { TextWidget, usePrefix, useTheme } from '@thienvu18/designable-react'
+import { Button, Modal } from 'antd'
+import cls from 'classnames'
+import React, { Fragment, useMemo, useState } from 'react'
 import { DataSettingPanel } from './DataSettingPanel'
 import { TreePanel } from './TreePanel'
 import { transformDataToValue, transformValueToData } from './shared'
-import { IDataSourceItem, ITreeDataSource } from './types'
 import './styles.less'
+import { IDataSourceItem, ITreeDataSource } from './types'
 
 export interface IDataSourceSetterProps {
   className?: string

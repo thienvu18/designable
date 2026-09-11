@@ -1,12 +1,12 @@
-import { Engine } from './Engine'
-import { Workspace, IWorkspaceProps } from './Workspace'
-import { observable, define, action } from '@formily/reactive'
+import { action, define, observable } from '@formily/reactive'
 import {
   AddWorkspaceEvent,
   RemoveWorkspaceEvent,
   SwitchWorkspaceEvent,
 } from '../events'
 import { IEngineContext, WorkbenchTypes } from '../types'
+import { Engine } from './Engine'
+import { IWorkspaceProps, Workspace } from './Workspace'
 export class Workbench {
   workspaces: Workspace[]
 

@@ -1,6 +1,6 @@
-import React, { useRef } from 'react'
-import { ColorPicker, Input } from 'antd'
 import { usePrefix } from '@thienvu18/designable-react'
+import { ColorPicker, Input } from 'antd'
+import React, { useRef } from 'react'
 import './styles.less'
 
 export interface IColorInputProps {

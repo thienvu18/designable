@@ -1,24 +1,24 @@
-import React, { Fragment, useState } from 'react'
-import { observer } from '@formily/react'
 import { Collapse } from '@alifd/next'
 import {
-  CollapseProps,
   PanelProps as CollapsePanelProps,
+  CollapseProps,
 } from '@alifd/next/types/collapse'
 import { TreeNode, createBehavior, createResource } from '@designable/core'
 import {
-  useTreeNode,
-  useNodeIdProps,
-  TreeNodeWidget,
-  DroppableWidget,
   DnFC,
+  DroppableWidget,
+  TreeNodeWidget,
+  useNodeIdProps,
+  useTreeNode,
 } from '@designable/react'
+import { observer } from '@formily/react'
+import React, { Fragment, useState } from 'react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
-import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
 import { matchComponent } from '../../shared'
+import { createVoidFieldSchema } from '../Field'
 
 const parseCollapse = (parent: TreeNode) => {
   const panels: TreeNode[] = []

@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const PushPinOutlined = (
   <svg
     viewBox="64 64 896 896"

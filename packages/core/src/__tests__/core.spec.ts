@@ -1,15 +1,15 @@
-import {
-  createDesigner,
-  TreeNode,
-  GlobalRegistry,
-  createBehavior,
-  createResource,
-  Shortcut,
-  KeyCode,
-  SelectNodeEvent,
-} from '../index'
 import { globalThisPolyfill } from '@thienvu18/designable-shared'
 import { ViewportResizeDriver } from '../drivers/ViewportResizeDriver'
+import {
+  GlobalRegistry,
+  KeyCode,
+  SelectNodeEvent,
+  Shortcut,
+  TreeNode,
+  createBehavior,
+  createDesigner,
+  createResource,
+} from '../index'
 
 describe('@thienvu18/designable-core', () => {
   describe('Engine & createDesigner', () => {
@@ -64,7 +64,9 @@ describe('@thienvu18/designable-core', () => {
         .spyOn(globalThisPolyfill, 'cancelAnimationFrame')
         .mockImplementation(() => undefined)
       const dispatch = jest.spyOn(engine, 'dispatch')
-      const entries = [{ target: container }] as unknown as ResizeObserverEntry[]
+      const entries = [
+        { target: container },
+      ] as unknown as ResizeObserverEntry[]
 
       driver.onResize(entries)
       driver.onResize(entries)

@@ -1,8 +1,8 @@
-import React from 'react'
 import { TreeNode } from '@thienvu18/designable-core'
+import { Button } from 'antd'
+import React from 'react'
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
-import { Button } from 'antd'
 export interface ICopyProps {
   node: TreeNode
   style?: React.CSSProperties

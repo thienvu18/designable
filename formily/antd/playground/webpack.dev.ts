@@ -1,10 +1,10 @@
-import baseConfig from './webpack.base'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import MonacoPlugin from 'monaco-editor-webpack-plugin'
+import baseConfig from './webpack.base'
 //import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
-import webpack from 'webpack'
 import path from 'path'
+import webpack from 'webpack'
 
 const PORT = 3000
 

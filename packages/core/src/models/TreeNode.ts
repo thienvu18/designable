@@ -1,26 +1,26 @@
 import { action, define, observable, toJS } from '@formily/reactive'
-import { uid, isFn, each } from '@thienvu18/designable-shared'
-import { Operation } from './Operation'
+import { each, isFn, uid } from '@thienvu18/designable-shared'
 import {
-  InsertBeforeEvent,
-  InsertAfterEvent,
-  InsertChildrenEvent,
-  PrependNodeEvent,
   AppendNodeEvent,
-  WrapNodeEvent,
-  UpdateChildrenEvent,
-  RemoveNodeEvent,
-  UpdateNodePropsEvent,
   CloneNodeEvent,
   FromNodeEvent,
+  InsertAfterEvent,
+  InsertBeforeEvent,
+  InsertChildrenEvent,
+  PrependNodeEvent,
+  RemoveNodeEvent,
+  UpdateChildrenEvent,
+  UpdateNodePropsEvent,
+  WrapNodeEvent,
 } from '../events'
+import { mergeLocales } from '../internals'
+import { GlobalRegistry } from '../registry'
 import {
   IDesignerControllerProps,
-  IDesignerProps,
   IDesignerLocales,
+  IDesignerProps,
 } from '../types'
-import { GlobalRegistry } from '../registry'
-import { mergeLocales } from '../internals'
+import { Operation } from './Operation'
 
 export interface ITreeNode {
   componentName?: string

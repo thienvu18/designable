@@ -1,6 +1,8 @@
 const { test, expect } = require('@playwright/test')
 
-test('basic example renders design tokens, overlays, popups, and modals without warnings', async ({ page }) => {
+test('basic example renders design tokens, overlays, popups, and modals without warnings', async ({
+  page,
+}) => {
   const failures = []
   page.on('console', (message) => {
     if (['error', 'warning'].includes(message.type())) {
@@ -31,10 +33,15 @@ test('basic example renders design tokens, overlays, popups, and modals without 
     'dn-aux-helpers': 'all',
     'dn-ghost': 'none',
   })
-  const toolbarInput = page.getByTestId('visual-designer-tools').locator('.ant-input-number')
+  const toolbarInput = page
+    .getByTestId('visual-designer-tools')
+    .locator('.ant-input-number')
   await expect(toolbarInput).toBeVisible()
   await expect(toolbarInput).toHaveCSS('font-size', '12px')
-  await expect(page.getByTestId('visual-formily-input')).toHaveCSS('pointer-events', 'none')
+  await expect(page.getByTestId('visual-formily-input')).toHaveCSS(
+    'pointer-events',
+    'none'
+  )
 
   await page.locator('.dn-color-input-color-tips').click()
   const popup = page.locator('.dn-color-input .ant-popover')
@@ -43,13 +50,18 @@ test('basic example renders design tokens, overlays, popups, and modals without 
   await page.mouse.click(1200, 700)
   await expect(popup).toBeHidden()
 
-  await page.getByTestId('visual-data-source-setter').getByRole('button').click()
+  await page
+    .getByTestId('visual-data-source-setter')
+    .getByRole('button')
+    .click()
   const modal = page.locator('.ant-modal')
   await expect(modal).toBeVisible()
   const modalBox = await modal.boundingBox()
   expect(modalBox).not.toBeNull()
   expect(modalBox.x).toBeGreaterThan(0)
-  expect(modalBox.x + modalBox.width).toBeLessThan(await page.evaluate(() => innerWidth))
+  expect(modalBox.x + modalBox.width).toBeLessThan(
+    await page.evaluate(() => innerWidth)
+  )
   await modal.getByRole('button', { name: 'Cancel' }).click()
   await expect(modal).toBeHidden()
 

@@ -1,5 +1,5 @@
-import { GlobalRegistry } from '@thienvu18/designable-core'
 import { ISchema } from '@formily/react'
+import { GlobalRegistry } from '@thienvu18/designable-core'
 
 export const Slider: ISchema = {
   type: 'object',

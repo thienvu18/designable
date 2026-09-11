@@ -1,7 +1,7 @@
 import { ISchema } from '@formily/json-schema'
 import {
-  ReactionsSetter,
   DataSourceSetter,
+  ReactionsSetter,
   ValidatorSetter,
 } from '@thienvu18/designable-formily-setters'
 import { FormItemSwitcher } from '../../common/FormItemSwitcher'

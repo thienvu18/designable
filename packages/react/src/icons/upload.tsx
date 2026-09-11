@@ -1,5 +1,3 @@
-import React from 'react'
-
 export const CloudUpload = (
   <svg viewBox="64 64 896 896">
     <path d="M518.3 459a8 8 0 00-12.6 0l-112 141.7a7.98 7.98 0 006.3 12.9h73.9V856c0 4.4 3.6 8 8 8h60c4.4 0 8-3.6 8-8V613.7H624c6.7 0 10.4-7.7 6.3-12.9L518.3 459z"></path>

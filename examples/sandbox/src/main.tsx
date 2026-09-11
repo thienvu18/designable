@@ -1,34 +1,36 @@
-import React, { useEffect } from 'react'
-import { createRoot } from 'react-dom/client'
-import {
-  Designer,
-  IconWidget,
-  Workbench,
-  ViewPanel,
-  DesignerToolsWidget,
-  ViewToolsWidget,
-  OutlineTreeWidget,
-  ResourceWidget,
-  StudioPanel,
-  CompositePanel,
-  WorkspacePanel,
-  ToolbarPanel,
-  ViewportPanel,
-  SettingsPanel,
-  HistoryWidget,
-} from '@thienvu18/designable-react'
-import { SettingsForm, MonacoInput } from '@thienvu18/designable-react-settings-form'
+import { GithubOutlined } from '@ant-design/icons'
 import { observer } from '@formily/react'
 import {
+  GlobalRegistry,
+  createBehavior,
   createDesigner,
   createResource,
-  createBehavior,
-  GlobalRegistry,
 } from '@thienvu18/designable-core'
-import { Space, Button, Radio } from 'antd'
-import { GithubOutlined } from '@ant-design/icons'
+import {
+  CompositePanel,
+  Designer,
+  DesignerToolsWidget,
+  HistoryWidget,
+  IconWidget,
+  OutlineTreeWidget,
+  ResourceWidget,
+  SettingsPanel,
+  StudioPanel,
+  ToolbarPanel,
+  ViewPanel,
+  ViewToolsWidget,
+  ViewportPanel,
+  Workbench,
+  WorkspacePanel,
+} from '@thienvu18/designable-react'
 import { Sandbox } from '@thienvu18/designable-react-sandbox'
-
+import {
+  MonacoInput,
+  SettingsForm,
+} from '@thienvu18/designable-react-settings-form'
+import { Button, Radio, Space } from 'antd'
+import React, { useEffect } from 'react'
+import { createRoot } from 'react-dom/client'
 
 const RootBehavior = createBehavior({
   name: 'Root',
@@ -360,13 +362,7 @@ const App = () => {
             </ToolbarPanel>
             <ViewportPanel>
               <ViewPanel type="DESIGNABLE">
-                {() => (
-                    <Sandbox
-                      jsAssets={[
-                        './sandbox.bundle.js',
-                      ]}
-                  />
-                )}
+                {() => <Sandbox jsAssets={['./sandbox.bundle.js']} />}
               </ViewPanel>
               <ViewPanel type="JSONTREE">
                 {() => {

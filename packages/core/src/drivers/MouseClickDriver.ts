@@ -1,6 +1,6 @@
 import { EventDriver } from '@thienvu18/designable-shared'
-import { Engine } from '../models/Engine'
 import { MouseClickEvent, MouseDoubleClickEvent } from '../events'
+import { Engine } from '../models/Engine'
 
 export class MouseClickDriver extends EventDriver<Engine> {
   onMouseClick = (e: MouseEvent) => {

@@ -1,7 +1,7 @@
-import { useContext, useEffect } from 'react'
 import { Engine } from '@thienvu18/designable-core'
+import { globalThisPolyfill, isFn } from '@thienvu18/designable-shared'
+import { useContext, useEffect } from 'react'
 import { DesignerEngineContext } from '../context'
-import { isFn, globalThisPolyfill } from '@thienvu18/designable-shared'
 export interface IEffects {
   (engine: Engine): void
 }

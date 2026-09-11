@@ -1,9 +1,9 @@
+import { Viewport as ViewportType } from '@thienvu18/designable-core'
+import { globalThisPolyfill, requestIdle } from '@thienvu18/designable-shared'
+import cls from 'classnames'
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { usePrefix, useViewport } from '../hooks'
 import { AuxToolWidget, EmptyWidget } from '../widgets'
-import { Viewport as ViewportType } from '@thienvu18/designable-core'
-import { requestIdle, globalThisPolyfill } from '@thienvu18/designable-shared'
-import cls from 'classnames'
 
 export interface IViewportProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'placeholder'> {

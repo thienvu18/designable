@@ -1,10 +1,10 @@
-import React from 'react'
-import { Space, Typography, Divider } from 'antd'
 import { observer } from '@formily/reactive-react'
-import { usePrefix, useTreeNode, useSelected } from '../../hooks'
+import { Divider, Space, Typography } from 'antd'
+import cls from 'classnames'
+import React from 'react'
+import { usePrefix, useSelected, useTreeNode } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { TextWidget } from '../TextWidget'
-import cls from 'classnames'
 import './styles.less'
 
 export interface INodeActionsWidgetProps {

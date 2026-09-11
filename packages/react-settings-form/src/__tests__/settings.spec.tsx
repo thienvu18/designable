@@ -1,14 +1,12 @@
-import React from 'react'
-import { render } from '@testing-library/react'
 import { createForm } from '@formily/core'
-import { FormProvider, Field } from '@formily/react'
-import { createDesigner, TreeNode } from '@thienvu18/designable-core'
+import { Field, FormProvider } from '@formily/react'
+import { render } from '@testing-library/react'
+import { TreeNode, createDesigner } from '@thienvu18/designable-core'
 import { Designer, Workbench } from '@thienvu18/designable-react'
 import {
-  SettingsForm,
-  BoxStyleSetter,
   BorderRadiusStyleSetter,
   BorderStyleSetter,
+  BoxStyleSetter,
   ColorInput,
   CornerInput,
   DisplayStyleSetter,
@@ -16,6 +14,7 @@ import {
   FoldItem,
   FontStyleSetter,
   InputItems,
+  SettingsForm,
   SizeInput,
   ValueInput,
 } from '../index'

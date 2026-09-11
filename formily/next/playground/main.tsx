@@ -1,68 +1,68 @@
-import 'antd/dist/antd.less'
 import '@alifd/next/dist/next.css'
-import React, { useMemo } from 'react'
-import ReactDOM from 'react-dom'
 import {
-  Designer,
-  DesignerToolsWidget,
-  ViewToolsWidget,
-  Workspace,
-  OutlineTreeWidget,
-  ResourceWidget,
-  HistoryWidget,
-  StudioPanel,
-  CompositePanel,
-  WorkspacePanel,
-  ToolbarPanel,
-  ViewportPanel,
-  ViewPanel,
-  SettingsPanel,
-  ComponentTreeWidget,
-} from '@designable/react'
-import { SettingsForm } from '@designable/react-settings-form'
-import {
-  createDesigner,
   GlobalRegistry,
-  Shortcut,
   KeyCode,
+  Shortcut,
+  createDesigner,
 } from '@designable/core'
 import {
-  LogoWidget,
-  ActionsWidget,
-  PreviewWidget,
-  SchemaEditorWidget,
-  MarkupSchemaWidget,
-} from './widgets'
-import { saveSchema } from './service'
+  ComponentTreeWidget,
+  CompositePanel,
+  Designer,
+  DesignerToolsWidget,
+  HistoryWidget,
+  OutlineTreeWidget,
+  ResourceWidget,
+  SettingsPanel,
+  StudioPanel,
+  ToolbarPanel,
+  ViewPanel,
+  ViewToolsWidget,
+  ViewportPanel,
+  Workspace,
+  WorkspacePanel,
+} from '@designable/react'
+import { SettingsForm } from '@designable/react-settings-form'
+import 'antd/dist/antd.less'
+import { useMemo } from 'react'
+import ReactDOM from 'react-dom'
 import {
-  Form,
-  Field,
-  Input,
-  Select,
-  TreeSelect,
+  ArrayCards,
+  ArrayTable,
+  Card,
   Cascader,
-  Radio,
   Checkbox,
+  DatePicker,
+  Field,
+  Form,
+  FormCollapse,
+  FormGrid,
+  FormLayout,
+  FormTab,
+  Input,
+  NumberPicker,
+  ObjectContainer,
+  Password,
+  Radio,
   Range,
   Rating,
-  NumberPicker,
-  Transfer,
-  Password,
-  DatePicker,
-  TimePicker,
-  Upload,
+  Select,
+  Space,
   Switch,
   Text,
-  Card,
-  ArrayCards,
-  ObjectContainer,
-  ArrayTable,
-  Space,
-  FormTab,
-  FormCollapse,
-  FormLayout,
-  FormGrid,
+  TimePicker,
+  Transfer,
+  TreeSelect,
+  Upload,
 } from '../src'
+import { saveSchema } from './service'
+import {
+  ActionsWidget,
+  LogoWidget,
+  MarkupSchemaWidget,
+  PreviewWidget,
+  SchemaEditorWidget,
+} from './widgets'
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {

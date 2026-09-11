@@ -1,16 +1,16 @@
-import React, { Fragment, useRef } from 'react'
-import { Button, InputNumber, Space } from 'antd'
 import { observer } from '@formily/reactive-react'
 import { CursorType, ScreenType } from '@thienvu18/designable-core'
+import { Button, InputNumber, Space } from 'antd'
+import cls from 'classnames'
+import React, { Fragment, useRef } from 'react'
 import {
   useCursor,
   useHistory,
-  useScreen,
   usePrefix,
+  useScreen,
   useWorkbench,
 } from '../../hooks'
 import { IconWidget } from '../IconWidget'
-import cls from 'classnames'
 import './styles.less'
 
 type DesignerToolsType = 'HISTORY' | 'CURSOR' | 'SCREEN_TYPE'
@@ -23,7 +23,11 @@ export interface IDesignerToolsWidgetProps {
 
 export const DesignerToolsWidget: React.FC<IDesignerToolsWidgetProps> =
   observer((props) => {
-    const { use = ['HISTORY', 'CURSOR', 'SCREEN_TYPE'], style, className } = props
+    const {
+      use = ['HISTORY', 'CURSOR', 'SCREEN_TYPE'],
+      style,
+      className,
+    } = props
     const screen = useScreen()
     const cursor = useCursor()
     const workbench = useWorkbench()

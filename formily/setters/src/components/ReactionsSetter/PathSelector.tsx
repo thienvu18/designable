@@ -1,7 +1,7 @@
-import React from 'react'
 import { TreeNode } from '@thienvu18/designable-core'
 import { useSelectedNode } from '@thienvu18/designable-react'
-import { TreeSelectProps, TreeSelect } from 'antd'
+import { TreeSelect, TreeSelectProps } from 'antd'
+import React from 'react'
 
 export interface IPathSelectorProps
   extends Omit<TreeSelectProps<any>, 'onChange'> {

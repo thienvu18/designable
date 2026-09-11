@@ -73,13 +73,19 @@ try {
     const paths = new Set(packed.files.map((file) => file.path))
     const missing = required.filter((file) => !paths.has(file))
     if (missing.length) {
-      throw new Error(`${name} pack is missing required files: ${missing.join(', ')}`)
+      throw new Error(
+        `${name} pack is missing required files: ${missing.join(', ')}`
+      )
     }
     const forbidden = packed.files
       .map((file) => file.path)
       .filter((file) => /^(?:src|coverage|node_modules|\.cache)\//.test(file))
     if (forbidden.length) {
-      throw new Error(`${name} pack contains unpublished source or cache files: ${forbidden.join(', ')}`)
+      throw new Error(
+        `${name} pack contains unpublished source or cache files: ${forbidden.join(
+          ', '
+        )}`
+      )
     }
     return join(packDir, packed.filename)
   })
@@ -208,7 +214,13 @@ try {
   console.log('📥 Installing packed tarballs into consumer...')
   run(
     'npm',
-    ['install', '--ignore-scripts', '--no-package-lock', '--no-progress', ...tarballs],
+    [
+      'install',
+      '--ignore-scripts',
+      '--no-package-lock',
+      '--no-progress',
+      ...tarballs,
+    ],
     consumerDir
   )
 

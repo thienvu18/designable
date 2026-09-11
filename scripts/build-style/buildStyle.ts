@@ -1,6 +1,6 @@
-import { copy, readFile, outputFile, existsSync } from 'fs-extra'
+import { copy, existsSync, outputFile, readFile } from 'fs-extra'
 
-import { getRollupBasePlugin, build } from './helper'
+import { build, getRollupBasePlugin } from './helper'
 
 export type BuildStyleOptions = {
   filename: string

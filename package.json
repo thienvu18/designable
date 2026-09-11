@@ -1,10 +1,10 @@
 {
   "name": "root",
   "private": true,
-  "engines": {
-    "node": ">=20 <25"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thienvu18/designable.git"
   },
-  "packageManager": "yarn@4.6.0",
   "workspaces": [
     "packages/*",
     "formily/antd",
@@ -19,22 +19,22 @@
     "build:docs": "dumi build",
     "build:examples": "yarn workspaces foreach --all --include '@thienvu18/designable-*-example' --topological-dev run build",
     "build:playground": "yarn workspace @thienvu18/designable-formily-antd build:playground",
+    "format": "prettier --write .",
     "lint": "eslint packages formily/antd formily/setters formily/transformer examples scripts/audit-deprecated-apis.cjs scripts/verify-pack.cjs scripts/setupTests.ts tests playwright.config.cjs --ext .js,.cjs,.jsx,.ts,.tsx",
     "lint:fix": "eslint packages formily/antd formily/setters formily/transformer examples scripts/audit-deprecated-apis.cjs scripts/verify-pack.cjs scripts/setupTests.ts tests playwright.config.cjs --ext .js,.cjs,.jsx,.ts,.tsx --fix",
-    "format": "prettier --write .",
+    "release": "lerna publish from-package --yes",
     "test": "jest --coverage",
     "test:prod": "jest --coverage --silent",
     "test:visual": "playwright test",
     "typecheck": "tsc --noEmit",
     "verify": "yarn audit:deprecated && yarn lint && yarn typecheck && yarn build && yarn audit:emitted && yarn build:docs && yarn build:examples && yarn build:playground && CI=true yarn test:prod --runInBand && yarn test:visual && yarn verify:pack",
     "verify:pack": "node scripts/verify-pack.cjs",
-    "release": "lerna publish from-package --yes",
     "version:alpha": "lerna version prerelease --preid alpha",
     "version:beta": "lerna version prerelease --preid beta",
-    "version:rc": "lerna version prerelease --preid rc",
-    "version:patch": "lerna version patch",
+    "version:major": "lerna version major",
     "version:minor": "lerna version minor",
-    "version:major": "lerna version major"
+    "version:patch": "lerna version patch",
+    "version:rc": "lerna version prerelease --preid rc"
   },
   "resolutions": {
     "less-loader@npm:11.1.0": "npm:12.2.0",
@@ -101,8 +101,8 @@
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/thienvu18/designable.git"
+  "packageManager": "yarn@4.6.0",
+  "engines": {
+    "node": ">=20 <25"
   }
 }

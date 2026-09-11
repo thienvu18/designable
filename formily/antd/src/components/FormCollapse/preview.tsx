@@ -1,21 +1,25 @@
-import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
-import { Collapse, type CollapseProps } from 'antd'
-import { TreeNode, createBehavior, createResource } from '@thienvu18/designable-core'
+import { toArr } from '@formily/shared'
 import {
-  useTreeNode,
-  useNodeIdProps,
+  TreeNode,
+  createBehavior,
+  createResource,
+} from '@thienvu18/designable-core'
+import {
+  DnFC,
   DroppableWidget,
   TreeNodeWidget,
-  DnFC,
+  useNodeIdProps,
+  useTreeNode,
 } from '@thienvu18/designable-react'
-import { toArr } from '@formily/shared'
+import { Collapse, type CollapseProps } from 'antd'
+import React, { Fragment, useState } from 'react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
-import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
 import { matchComponent } from '../../shared'
+import { createVoidFieldSchema } from '../Field'
 
 export interface CollapsePanelProps {
   header?: React.ReactNode

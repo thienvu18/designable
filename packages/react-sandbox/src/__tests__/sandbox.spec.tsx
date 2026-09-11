@@ -1,7 +1,7 @@
-import React from 'react'
 import { render, screen } from '@testing-library/react'
 import { createDesigner } from '@thienvu18/designable-core'
 import { Designer, Workbench } from '@thienvu18/designable-react'
+import React from 'react'
 import {
   Sandbox,
   renderSandboxContent,
@@ -59,7 +59,9 @@ describe('@thienvu18/designable-react-sandbox', () => {
       ))
     })
 
-    expect(screen.getByTestId('sandbox-inner')).toHaveTextContent('Designable 2.0')
+    expect(screen.getByTestId('sandbox-inner')).toHaveTextContent(
+      'Designable 2.0'
+    )
 
     // Re-render to verify reusing the single Root instance
     await React.act(async () => {
@@ -68,8 +70,9 @@ describe('@thienvu18/designable-react-sandbox', () => {
       ))
     })
 
-    expect(screen.getByTestId('sandbox-inner')).toHaveTextContent('Updated Designable 2.0')
-
+    expect(screen.getByTestId('sandbox-inner')).toHaveTextContent(
+      'Updated Designable 2.0'
+    )
   })
 
   it('replaces the root when the sandbox document container changes and unmounts once', async () => {
@@ -89,11 +92,15 @@ describe('@thienvu18/designable-react-sandbox', () => {
     second.id = '__SANDBOX_ROOT__'
     document.body.appendChild(second)
     await React.act(async () => {
-      renderSandboxContent(() => <div data-testid="replacement">second document</div>)
+      renderSandboxContent(() => (
+        <div data-testid="replacement">second document</div>
+      ))
     })
 
     expect(unmount).toHaveBeenCalledTimes(1)
-    expect(screen.getByTestId('replacement')).toHaveTextContent('second document')
+    expect(screen.getByTestId('replacement')).toHaveTextContent(
+      'second document'
+    )
 
     await React.act(async () => {
       unmountSandboxContent()

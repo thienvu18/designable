@@ -1,16 +1,16 @@
-import React from 'react'
 import { ArrayField } from '@formily/core'
 import {
+  ISchema,
+  Schema,
+  SchemaContext,
   observer,
   useField,
-  SchemaContext,
-  Schema,
-  ISchema,
 } from '@formily/react'
 import { GlobalRegistry } from '@thienvu18/designable-core'
-import { ArrayItems } from '@thienvu18/formily-antd-v6'
 import { FoldItem } from '@thienvu18/designable-react-settings-form'
+import { ArrayItems } from '@thienvu18/formily-antd-v6'
 import { Select } from 'antd'
+import React from 'react'
 
 export interface IValidatorSetterProps {
   value?: any

@@ -1,7 +1,10 @@
-import React, { Fragment } from 'react'
-import { isStr, isPlainObj } from '@thienvu18/designable-shared'
-import { GlobalRegistry, IDesignerMiniLocales } from '@thienvu18/designable-core'
 import { observer } from '@formily/reactive-react'
+import {
+  GlobalRegistry,
+  IDesignerMiniLocales,
+} from '@thienvu18/designable-core'
+import { isPlainObj, isStr } from '@thienvu18/designable-shared'
+import React, { Fragment } from 'react'
 
 export interface ITextWidgetProps {
   componentName?: string

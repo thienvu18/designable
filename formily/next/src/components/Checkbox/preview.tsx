@@ -1,10 +1,10 @@
-import React from 'react'
-import { Checkbox as FormilyCheckbox } from '@formily/next'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import { Checkbox as FormilyCheckbox } from '@formily/next'
+import React from 'react'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 
 export const Checkbox: DnFC<React.ComponentProps<typeof FormilyCheckbox>> =
   FormilyCheckbox

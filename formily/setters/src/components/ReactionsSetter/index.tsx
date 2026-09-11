@@ -1,26 +1,26 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { clone, uid } from '@formily/shared'
 import { createForm, isVoidField } from '@formily/core'
 import { createSchemaField } from '@formily/react'
+import { clone, uid } from '@formily/shared'
 import { GlobalRegistry } from '@thienvu18/designable-core'
-import { requestIdle } from '@thienvu18/designable-shared'
-import { usePrefix, TextWidget } from '@thienvu18/designable-react'
+import { TextWidget, usePrefix } from '@thienvu18/designable-react'
 import { MonacoInput } from '@thienvu18/designable-react-settings-form'
+import { requestIdle } from '@thienvu18/designable-shared'
 import {
-  Form,
   ArrayTable,
+  Form,
+  FormCollapse,
+  FormItem,
   Input,
   Select,
-  FormItem,
-  FormCollapse,
 } from '@thienvu18/formily-antd-v6'
-import { Modal, Card, Button, Tag, Tooltip } from 'antd'
-import { PathSelector } from './PathSelector'
+import { Button, Card, Modal, Tag, Tooltip } from 'antd'
+import React, { useEffect, useMemo, useState } from 'react'
 import { FieldPropertySetter } from './FieldPropertySetter'
-import { FulfillRunHelper } from './helpers'
-import { IReaction } from './types'
+import { PathSelector } from './PathSelector'
 import { initDeclaration } from './declarations'
+import { FulfillRunHelper } from './helpers'
 import './styles.less'
+import { IReaction } from './types'
 
 export interface IReactionsSetterProps {
   value?: IReaction

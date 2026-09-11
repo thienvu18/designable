@@ -1,12 +1,12 @@
-import React from 'react'
-import { TreeNode } from '@thienvu18/designable-core'
 import { observer } from '@formily/reactive-react'
-import { useTreeNode, useNodeIdProps } from '../../hooks'
-import { NodeTitleWidget } from '../NodeTitleWidget'
+import { TreeNode } from '@thienvu18/designable-core'
+import React from 'react'
+import { useNodeIdProps, useTreeNode } from '../../hooks'
 import {
-  NodeActionsWidget,
   INodeActionsWidgetActionProps,
+  NodeActionsWidget,
 } from '../NodeActionsWidget'
+import { NodeTitleWidget } from '../NodeTitleWidget'
 import './styles.less'
 
 export interface IDroppableWidgetProps {
@@ -19,7 +19,9 @@ export interface IDroppableWidgetProps {
   hasChildren?: boolean
 }
 
-export const DroppableWidget: React.FC<React.PropsWithChildren<IDroppableWidgetProps>> = observer(
+export const DroppableWidget: React.FC<
+  React.PropsWithChildren<IDroppableWidgetProps>
+> = observer(
   ({
     node,
     actions,
@@ -34,7 +36,9 @@ export const DroppableWidget: React.FC<React.PropsWithChildren<IDroppableWidgetP
     const currentNode = useTreeNode()
     const nodeId = useNodeIdProps(node)
     const target = node ?? currentNode
-    const hasChildren = hasChildrenProp ?? (target?.children?.length ? target.children.length > 0 : false)
+    const hasChildren =
+      hasChildrenProp ??
+      (target?.children?.length ? target.children.length > 0 : false)
     return (
       <div {...nodeId} {...props} className={className} style={style}>
         {hasChildren ? (

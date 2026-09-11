@@ -1,8 +1,7 @@
-import React from 'react'
-import { readFileSync } from 'fs'
-import path from 'path'
 import { render } from '@testing-library/react'
 import { createDesigner } from '@thienvu18/designable-core'
+import { readFileSync } from 'fs'
+import path from 'path'
 import { Designer, Workbench } from '../index'
 
 const readSource = (...parts: string[]) =>
@@ -12,7 +11,11 @@ describe('@thienvu18/designable-react visual regression contracts', () => {
   it('mounts light and dark layout roots with their custom variables', () => {
     const engine = createDesigner()
     const { container, rerender, unmount } = render(
-      <Designer engine={engine} theme="light" variables={{ 'visual-accent': '#123456' }}>
+      <Designer
+        engine={engine}
+        theme="light"
+        variables={{ 'visual-accent': '#123456' }}
+      >
         <Workbench />
       </Designer>
     )
@@ -22,7 +25,11 @@ describe('@thienvu18/designable-react visual regression contracts', () => {
     expect(app.style.getPropertyValue('--visual-accent')).toBe('#123456')
 
     rerender(
-      <Designer engine={engine} theme="dark" variables={{ 'visual-accent': '#654321' }}>
+      <Designer
+        engine={engine}
+        theme="dark"
+        variables={{ 'visual-accent': '#654321' }}
+      >
         <Workbench />
       </Designer>
     )
@@ -49,8 +56,12 @@ describe('@thienvu18/designable-react visual regression contracts', () => {
       expect(theme).toContain(token)
     }
 
-    expect(overlays).toMatch(/\.@\{prefix-cls\}-auxtool[\s\S]*?pointer-events:\s*none/)
-    expect(overlays).toMatch(/\.@\{prefix-cls\}-aux-helpers[\s\S]*?pointer-events:\s*all/)
+    expect(overlays).toMatch(
+      /\.@\{prefix-cls\}-auxtool[\s\S]*?pointer-events:\s*none/
+    )
+    expect(overlays).toMatch(
+      /\.@\{prefix-cls\}-aux-helpers[\s\S]*?pointer-events:\s*all/
+    )
     expect(ghost).toMatch(/pointer-events:\s*none/)
   })
 })

@@ -21,15 +21,15 @@ Target runtime versions:
 
 ### Active migration surfaces
 
-| Area | Purpose | Required changes |
-|---|---|---|
-| Root manifests, Lerna, TypeScript, CI | Workspace, dependency, build, release control | Explicitly exclude `formily/next`; modernize Node/Yarn/Lerna/TypeScript/Jest/Webpack; add complete verification command |
-| `packages/{shared,core,react,react-sandbox,react-settings-form}` | Designable runtime and React UI | Rename packages/imports, adopt React 19 types and roots, migrate AntD APIs/styles |
-| `formily/{transformer,setters,antd}` | Formily integration | Rename packages/imports, move to Formily 2.3.7 and the v6 adapter, migrate settings and preview components |
-| Four examples and AntD playground | Behavioral and visual fixtures | React 19 roots, AntD 6 assets, current package names, production builds |
-| Build/style scripts | CJS/ESM and Less processing | Remove UMD assumptions, deep AntD style rewriting, and obsolete Webpack 4 behavior |
-| README, changelog, migration guide | Consumer upgrade instructions | Document renamed packages, dropped support, required peer dependencies, code and styling changes |
-| `formily/next` | Retained legacy Fusion implementation | Keep source; add legacy status notice; prevent workspace linking and accidental publication |
+| Area                                                             | Purpose                                       | Required changes                                                                                                        |
+| ---------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Root manifests, Lerna, TypeScript, CI                            | Workspace, dependency, build, release control | Explicitly exclude `formily/next`; modernize Node/Yarn/Lerna/TypeScript/Jest/Webpack; add complete verification command |
+| `packages/{shared,core,react,react-sandbox,react-settings-form}` | Designable runtime and React UI               | Rename packages/imports, adopt React 19 types and roots, migrate AntD APIs/styles                                       |
+| `formily/{transformer,setters,antd}`                             | Formily integration                           | Rename packages/imports, move to Formily 2.3.7 and the v6 adapter, migrate settings and preview components              |
+| Four examples and AntD playground                                | Behavioral and visual fixtures                | React 19 roots, AntD 6 assets, current package names, production builds                                                 |
+| Build/style scripts                                              | CJS/ESM and Less processing                   | Remove UMD assumptions, deep AntD style rewriting, and obsolete Webpack 4 behavior                                      |
+| README, changelog, migration guide                               | Consumer upgrade instructions                 | Document renamed packages, dropped support, required peer dependencies, code and styling changes                        |
+| `formily/next`                                                   | Retained legacy Fusion implementation         | Keep source; add legacy status notice; prevent workspace linking and accidental publication                             |
 
 No test files currently exist, and the principal CI workflow is disabled. New tests and active CI are mandatory release gates.
 
@@ -48,17 +48,17 @@ Reuse the already verified patterns from the `Community/antd` fork:
 
 ### Stable 2.0 package mapping
 
-| Old package | Stable 2.0 package |
-|---|---|
-| `@designable/shared` | `@thienvu18/designable-shared@2.0.0` |
-| `@designable/core` | `@thienvu18/designable-core@2.0.0` |
-| `@designable/react` | `@thienvu18/designable-react@2.0.0` |
-| `@designable/react-sandbox` | `@thienvu18/designable-react-sandbox@2.0.0` |
+| Old package                       | Stable 2.0 package                                |
+| --------------------------------- | ------------------------------------------------- |
+| `@designable/shared`              | `@thienvu18/designable-shared@2.0.0`              |
+| `@designable/core`                | `@thienvu18/designable-core@2.0.0`                |
+| `@designable/react`               | `@thienvu18/designable-react@2.0.0`               |
+| `@designable/react-sandbox`       | `@thienvu18/designable-react-sandbox@2.0.0`       |
 | `@designable/react-settings-form` | `@thienvu18/designable-react-settings-form@2.0.0` |
 | `@designable/formily-transformer` | `@thienvu18/designable-formily-transformer@2.0.0` |
-| `@designable/formily-setters` | `@thienvu18/designable-formily-setters@2.0.0` |
-| `@designable/formily-antd` | `@thienvu18/designable-formily-antd@2.0.0` |
-| `@designable/formily-next` | No 2.0 replacement; retained legacy source only |
+| `@designable/formily-setters`     | `@thienvu18/designable-formily-setters@2.0.0`     |
+| `@designable/formily-antd`        | `@thienvu18/designable-formily-antd@2.0.0`        |
+| `@designable/formily-next`        | No 2.0 replacement; retained legacy source only   |
 
 The proposed names are currently unoccupied in the npm registry.
 

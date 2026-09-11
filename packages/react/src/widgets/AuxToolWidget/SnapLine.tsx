@@ -1,8 +1,8 @@
-import React from 'react'
-import { useTransformHelper, useCursor, usePrefix } from '../../hooks'
 import { observer } from '@formily/reactive-react'
 import { CursorStatus } from '@thienvu18/designable-core'
 import { IRect } from '@thienvu18/designable-shared'
+import React from 'react'
+import { useCursor, usePrefix, useTransformHelper } from '../../hooks'
 
 export const SnapLine = observer(() => {
   const cursor = useCursor()

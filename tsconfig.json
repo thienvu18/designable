@@ -17,8 +17,12 @@
       "@thienvu18/designable-core": ["./packages/core/src"],
       "@thienvu18/designable-react": ["./packages/react/src"],
       "@thienvu18/designable-react-sandbox": ["./packages/react-sandbox/src"],
-      "@thienvu18/designable-react-settings-form": ["./packages/react-settings-form/src"],
-      "@thienvu18/designable-formily-transformer": ["./formily/transformer/src"],
+      "@thienvu18/designable-react-settings-form": [
+        "./packages/react-settings-form/src"
+      ],
+      "@thienvu18/designable-formily-transformer": [
+        "./formily/transformer/src"
+      ],
       "@thienvu18/designable-formily-setters": ["./formily/setters/src"],
       "@thienvu18/designable-formily-antd": ["./formily/antd/src"],
       "@thienvu18/designable-*": ["./packages/*/src", "./formily/*/src"]
@@ -40,10 +44,5 @@
     "examples/*/config/**/*.ts",
     "scripts/setupTests.ts"
   ],
-  "exclude": [
-    "**/__tests__/**",
-    "**/lib/**",
-    "**/esm/**",
-    "formily/next/**"
-  ]
+  "exclude": ["**/__tests__/**", "**/lib/**", "**/esm/**", "formily/next/**"]
 }

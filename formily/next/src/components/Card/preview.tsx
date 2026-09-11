@@ -1,10 +1,10 @@
-import React from 'react'
 import { Card as NextCard } from '@alifd/next'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
-import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import React from 'react'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createVoidFieldSchema } from '../Field'
 
 export const Card: DnFC<React.ComponentProps<typeof NextCard>> = (props) => {
   return (

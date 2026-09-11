@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
+import { observer } from '@formily/reactive-react'
 import {
+  IResource,
+  IResourceLike,
   isResourceHost,
   isResourceList,
-  IResourceLike,
-  IResource,
 } from '@thienvu18/designable-core'
 import { isFn } from '@thienvu18/designable-shared'
-import { observer } from '@formily/reactive-react'
+import cls from 'classnames'
+import React, { useState } from 'react'
 import { usePrefix } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { TextWidget } from '../TextWidget'
-import cls from 'classnames'
 import './styles.less'
 
 export type SourceMapper = (resource: IResource) => React.ReactNode
@@ -25,7 +25,13 @@ export interface IResourceWidgetProps {
 
 export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
   (props) => {
-    const { defaultExpand = true, sources: rawSources = [], className, title, children } = props
+    const {
+      defaultExpand = true,
+      sources: rawSources = [],
+      className,
+      title,
+      children,
+    } = props
     const prefix = usePrefix('resource')
     const [expand, setExpand] = useState(defaultExpand)
     const renderNode = (source: IResource) => {
@@ -37,7 +43,9 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
           key={node.id}
           data-designer-source-id={node.id}
         >
-          {thumb && <img className={prefix + '-item-thumb'} src={thumb} alt="" />}
+          {thumb && (
+            <img className={prefix + '-item-thumb'} src={thumb} alt="" />
+          )}
           {icon && React.isValidElement(icon) ? (
             <>{icon}</>
           ) : (
@@ -90,7 +98,9 @@ export const ResourceWidget: React.FC<IResourceWidgetProps> = observer(
         </div>
         <div className={prefix + '-content-wrapper'}>
           <div className={prefix + '-content'}>
-            {sources.map(isFn(children) ? (children as SourceMapper) : renderNode)}
+            {sources.map(
+              isFn(children) ? (children as SourceMapper) : renderNode
+            )}
             {remainItems ? (
               <div
                 className={prefix + '-item-remain'}

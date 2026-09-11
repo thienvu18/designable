@@ -1,12 +1,12 @@
+import { Field, observer, useField } from '@formily/react'
+import { IconWidget, usePrefix } from '@thienvu18/designable-react'
+import { NumberPicker, Radio, Select } from '@thienvu18/formily-antd-v6'
+import cls from 'classnames'
 import React from 'react'
-import { usePrefix, IconWidget } from '@thienvu18/designable-react'
-import { useField, Field, observer } from '@formily/react'
-import { Select, Radio, NumberPicker } from '@thienvu18/formily-antd-v6'
+import { ColorInput } from '../ColorInput'
 import { FoldItem } from '../FoldItem'
 import { InputItems } from '../InputItems'
 import { SizeInput } from '../SizeInput'
-import { ColorInput } from '../ColorInput'
-import cls from 'classnames'
 export interface IFontStyleSetterProps {
   className?: string
   style?: React.CSSProperties

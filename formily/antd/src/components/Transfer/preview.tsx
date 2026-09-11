@@ -1,11 +1,11 @@
-import { Transfer as AntdTransfer } from 'antd'
-import { Transfer as FormilyTransfer } from '@thienvu18/formily-antd-v6'
 import { useField } from '@formily/react'
 import { createBehavior, createResource } from '@thienvu18/designable-core'
 import { DnFC } from '@thienvu18/designable-react'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import { Transfer as FormilyTransfer } from '@thienvu18/formily-antd-v6'
+import { Transfer as AntdTransfer } from 'antd'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 
 export const Transfer: DnFC<React.ComponentProps<typeof FormilyTransfer>> = (
   props

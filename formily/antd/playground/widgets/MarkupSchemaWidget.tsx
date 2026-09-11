@@ -1,7 +1,7 @@
-import React from 'react'
+import { isEmpty, isPlainObj } from '@formily/shared'
 import { TreeNode } from '@thienvu18/designable-core'
 import { MonacoInput } from '@thienvu18/designable-react-settings-form'
-import { isEmpty, isPlainObj } from '@formily/shared'
+import React from 'react'
 
 export interface IMarkupSchemaWidgetProps {
   tree: TreeNode

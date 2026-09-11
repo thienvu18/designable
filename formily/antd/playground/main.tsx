@@ -1,70 +1,69 @@
-
-import React, { useMemo } from 'react'
-import { createRoot } from 'react-dom/client'
 import {
+  GlobalRegistry,
+  KeyCode,
+  Shortcut,
+  createDesigner,
+} from '@thienvu18/designable-core'
+import {
+  ComponentTreeWidget,
+  CompositePanel,
   Designer,
   DesignerToolsWidget,
-  ViewToolsWidget,
-  Workspace,
+  HistoryWidget,
   OutlineTreeWidget,
   ResourceWidget,
-  HistoryWidget,
-  StudioPanel,
-  CompositePanel,
-  WorkspacePanel,
-  ToolbarPanel,
-  ViewportPanel,
-  ViewPanel,
   SettingsPanel,
-  ComponentTreeWidget,
+  StudioPanel,
+  ToolbarPanel,
+  ViewPanel,
+  ViewToolsWidget,
+  ViewportPanel,
+  Workspace,
+  WorkspacePanel,
 } from '@thienvu18/designable-react'
 import {
   SettingsForm,
   setNpmCDNRegistry,
 } from '@thienvu18/designable-react-settings-form'
+import { useMemo } from 'react'
+import { createRoot } from 'react-dom/client'
 import {
-  createDesigner,
-  GlobalRegistry,
-  Shortcut,
-  KeyCode,
-} from '@thienvu18/designable-core'
-import {
-  LogoWidget,
-  ActionsWidget,
-  PreviewWidget,
-  SchemaEditorWidget,
-  MarkupSchemaWidget,
-} from './widgets'
-import { saveSchema } from './service'
-import {
-  Form,
-  Field,
-  Input,
-  Select,
-  TreeSelect,
+  ArrayCards,
+  ArrayTable,
+  Card,
   Cascader,
-  Radio,
   Checkbox,
-  Slider,
-  Rate,
-  NumberPicker,
-  Transfer,
-  Password,
   DatePicker,
-  TimePicker,
-  Upload,
+  Field,
+  Form,
+  FormCollapse,
+  FormGrid,
+  FormLayout,
+  FormTab,
+  Input,
+  NumberPicker,
+  ObjectContainer,
+  Password,
+  Radio,
+  Rate,
+  Select,
+  Slider,
+  Space,
   Switch,
   Text,
-  Card,
-  ArrayCards,
-  ObjectContainer,
-  ArrayTable,
-  Space,
-  FormTab,
-  FormCollapse,
-  FormLayout,
-  FormGrid,
+  TimePicker,
+  Transfer,
+  TreeSelect,
+  Upload,
 } from '../src'
+import { saveSchema } from './service'
+import {
+  ActionsWidget,
+  LogoWidget,
+  MarkupSchemaWidget,
+  PreviewWidget,
+  SchemaEditorWidget,
+} from './widgets'
 
 setNpmCDNRegistry('//unpkg.com')
 

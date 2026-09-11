@@ -1,20 +1,20 @@
+import { action, define, observable } from '@formily/reactive'
 import {
+  IPoint,
+  IRect,
+  Rect,
   calcBoundingRect,
   calcElementLayout,
-  isHTMLElement,
-  isPointInRect,
-  IPoint,
-  requestIdle,
   cancelIdle,
   globalThisPolyfill,
-  Rect,
-  IRect,
+  isHTMLElement,
+  isPointInRect,
   isRectInRect,
+  requestIdle,
 } from '@thienvu18/designable-shared'
-import { action, define, observable } from '@formily/reactive'
-import { Workspace } from './Workspace'
 import { Engine } from './Engine'
 import { TreeNode } from './TreeNode'
+import { Workspace } from './Workspace'
 
 export interface IViewportProps {
   engine: Engine

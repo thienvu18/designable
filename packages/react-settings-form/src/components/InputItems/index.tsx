@@ -1,6 +1,6 @@
-import React, { useContext } from 'react'
-import { usePrefix, IconWidget } from '@thienvu18/designable-react'
+import { IconWidget, usePrefix } from '@thienvu18/designable-react'
 import cls from 'classnames'
+import React, { useContext } from 'react'
 import './styles.less'
 
 export interface IInputItemsContext {

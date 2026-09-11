@@ -1,14 +1,9 @@
-import React from 'react'
-import { render, fireEvent, act } from '@testing-library/react'
 import { createForm } from '@formily/core'
-import { FormProvider, Field } from '@formily/react'
+import { Field, FormProvider } from '@formily/react'
+import { act, fireEvent, render } from '@testing-library/react'
 import { createDesigner } from '@thienvu18/designable-core'
 import { Designer, Workbench } from '@thienvu18/designable-react'
-import {
-  DataSourceSetter,
-  ReactionsSetter,
-  ValidatorSetter,
-} from '../index'
+import { DataSourceSetter, ReactionsSetter, ValidatorSetter } from '../index'
 
 describe('@thienvu18/designable-formily-setters', () => {
   let engine: ReturnType<typeof createDesigner>
@@ -32,10 +27,7 @@ describe('@thienvu18/designable-formily-setters', () => {
     const { container, unmount } = render(
       <Designer engine={engine}>
         <Workbench>
-          <DataSourceSetter
-            value={value}
-            onChange={onChange}
-          />
+          <DataSourceSetter value={value} onChange={onChange} />
         </Workbench>
       </Designer>
     )
@@ -52,7 +44,9 @@ describe('@thienvu18/designable-formily-setters', () => {
     await act(async () => {
       fireEvent.click(document.querySelector('.ant-modal .ant-btn-default')!)
     })
-    expect(document.querySelector('.ant-modal')).toHaveStyle({ display: 'none' })
+    expect(document.querySelector('.ant-modal')).toHaveStyle({
+      display: 'none',
+    })
     expect(onChange).not.toHaveBeenCalled()
 
     await act(async () => {
@@ -64,7 +58,9 @@ describe('@thienvu18/designable-formily-setters', () => {
     expect(onChange).toHaveBeenCalledWith(
       expect.arrayContaining(value.map((item) => expect.objectContaining(item)))
     )
-    expect(document.querySelector('.ant-modal')).toHaveStyle({ display: 'none' })
+    expect(document.querySelector('.ant-modal')).toHaveStyle({
+      display: 'none',
+    })
 
     unmount()
     expect(document.querySelector('.ant-modal')).not.toBeInTheDocument()

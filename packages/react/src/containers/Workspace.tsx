@@ -1,6 +1,6 @@
-import React, { useMemo, useRef, Fragment } from 'react'
-import { useDesigner } from '../hooks'
+import React, { Fragment, useMemo, useRef } from 'react'
 import { WorkspaceContext } from '../context'
+import { useDesigner } from '../hooks'
 
 export interface IWorkspaceProps {
   id?: string

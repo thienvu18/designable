@@ -1,10 +1,10 @@
-import React, { Fragment, useEffect } from 'react'
-import { useTree, usePrefix, useDesigner, useComponents } from '../../hooks'
-import { TreeNodeContext, DesignerComponentsContext } from '../../context'
-import { IDesignerComponents } from '../../types'
-import { TreeNode, GlobalRegistry } from '@thienvu18/designable-core'
 import { observer } from '@formily/reactive-react'
+import { GlobalRegistry, TreeNode } from '@thienvu18/designable-core'
 import cls from 'classnames'
+import React, { Fragment, useEffect } from 'react'
+import { DesignerComponentsContext, TreeNodeContext } from '../../context'
+import { useComponents, useDesigner, usePrefix, useTree } from '../../hooks'
+import { IDesignerComponents } from '../../types'
 import './styles.less'
 
 export interface IComponentTreeWidgetProps {

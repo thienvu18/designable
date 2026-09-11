@@ -1,30 +1,33 @@
-import React from 'react'
 import { render } from '@testing-library/react'
 import { createDesigner, TreeNode } from '@thienvu18/designable-core'
-import { Designer, Workbench, TreeNodeContext } from '@thienvu18/designable-react'
 import {
-  Form,
-  FormLayout,
-  FormGrid,
+  Designer,
+  TreeNodeContext,
+  Workbench,
+} from '@thienvu18/designable-react'
+import {
   Card,
-  Space,
-  Input,
-  Select,
-  Radio,
-  Checkbox,
-  Switch,
-  DatePicker,
-  TimePicker,
-  NumberPicker,
-  Slider,
-  Rate,
   Cascader,
-  TreeSelect,
-  Password,
-  Upload,
-  Transfer,
-  FormTab,
+  Checkbox,
+  DatePicker,
+  Form,
   FormCollapse,
+  FormGrid,
+  FormLayout,
+  FormTab,
+  Input,
+  NumberPicker,
+  Password,
+  Radio,
+  Rate,
+  Select,
+  Slider,
+  Space,
+  Switch,
+  TimePicker,
+  Transfer,
+  TreeSelect,
+  Upload,
 } from '../index'
 
 describe('@thienvu18/designable-formily-antd preview components', () => {

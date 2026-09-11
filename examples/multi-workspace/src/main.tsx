@@ -1,35 +1,37 @@
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import {
-  Designer,
-  IconWidget,
-  Workbench,
-  Workspace,
-  ViewPanel,
-  DesignerToolsWidget,
-  ViewToolsWidget,
-  OutlineTreeWidget,
-  ResourceWidget,
-  StudioPanel,
-  CompositePanel,
-  WorkspacePanel,
-  ToolbarPanel,
-  ViewportPanel,
-  SettingsPanel,
-  HistoryWidget,
-} from '@thienvu18/designable-react'
-import { SettingsForm, MonacoInput } from '@thienvu18/designable-react-settings-form'
+import { GithubOutlined } from '@ant-design/icons'
 import { observer } from '@formily/react'
 import {
+  GlobalRegistry,
+  createBehavior,
   createDesigner,
   createResource,
-  createBehavior,
-  GlobalRegistry,
 } from '@thienvu18/designable-core'
+import {
+  CompositePanel,
+  Designer,
+  DesignerToolsWidget,
+  HistoryWidget,
+  IconWidget,
+  OutlineTreeWidget,
+  ResourceWidget,
+  SettingsPanel,
+  StudioPanel,
+  ToolbarPanel,
+  ViewPanel,
+  ViewToolsWidget,
+  ViewportPanel,
+  Workbench,
+  Workspace,
+  WorkspacePanel,
+} from '@thienvu18/designable-react'
+import {
+  MonacoInput,
+  SettingsForm,
+} from '@thienvu18/designable-react-settings-form'
+import { Button, Radio, Space } from 'antd'
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 import { Content } from './content'
-import { Space, Button, Radio } from 'antd'
-import { GithubOutlined } from '@ant-design/icons'
-
 
 const RootBehavior = createBehavior({
   name: 'Root',

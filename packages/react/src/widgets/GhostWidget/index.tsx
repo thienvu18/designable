@@ -1,8 +1,8 @@
-import React, { useRef, useEffect } from 'react'
-import { useCursor, usePrefix, useDesigner } from '../../hooks'
-import { CursorStatus } from '@thienvu18/designable-core'
 import { autorun } from '@formily/reactive'
 import { observer } from '@formily/reactive-react'
+import { CursorStatus } from '@thienvu18/designable-core'
+import { useEffect, useRef } from 'react'
+import { useCursor, useDesigner, usePrefix } from '../../hooks'
 import { NodeTitleWidget } from '../NodeTitleWidget'
 import './styles.less'
 

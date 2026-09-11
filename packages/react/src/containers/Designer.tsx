@@ -1,16 +1,24 @@
-import React, { useEffect, useRef } from 'react'
 import { Engine, GlobalRegistry } from '@thienvu18/designable-core'
+import React, { useEffect, useRef } from 'react'
 import { DesignerEngineContext } from '../context'
+import { useDesigner } from '../hooks'
+import * as icons from '../icons'
 import { IDesignerProps } from '../types'
 import { GhostWidget } from '../widgets'
-import { useDesigner } from '../hooks'
 import { Layout } from './Layout'
-import * as icons from '../icons'
 
 GlobalRegistry.registerDesignerIcons(icons)
 
-export const Designer: React.FC<React.PropsWithChildren<IDesignerProps>> = (props) => {
-  const { prefixCls = 'dn-', theme = 'light', engine: engineProp, children, ...rest } = props
+export const Designer: React.FC<React.PropsWithChildren<IDesignerProps>> = (
+  props
+) => {
+  const {
+    prefixCls = 'dn-',
+    theme = 'light',
+    engine: engineProp,
+    children,
+    ...rest
+  } = props
   const existingEngine = useDesigner()
   const ref = useRef<Engine | null>(null)
 

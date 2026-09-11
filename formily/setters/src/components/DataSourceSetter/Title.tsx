@@ -1,10 +1,10 @@
-import React from 'react'
-import { clone, toArr } from '@formily/shared'
 import { observer } from '@formily/reactive-react'
+import { clone, toArr } from '@formily/shared'
 import { IconWidget, TextWidget, usePrefix } from '@thienvu18/designable-react'
-import { INodeItem, ITreeDataSource } from './types'
+import React from 'react'
 import { traverseTree } from './shared'
 import './styles.less'
+import { INodeItem, ITreeDataSource } from './types'
 export interface ITitleProps extends INodeItem {
   treeDataSource: ITreeDataSource
 }

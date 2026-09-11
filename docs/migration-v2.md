@@ -4,17 +4,17 @@ Designable 2.0 supports React 19, Ant Design 6, Node.js 20–24, and modern brow
 
 ## Package names
 
-| 1.x package | 2.0 package |
-| --- | --- |
-| `@designable/shared` | `@thienvu18/designable-shared` |
-| `@designable/core` | `@thienvu18/designable-core` |
-| `@designable/react` | `@thienvu18/designable-react` |
-| `@designable/react-sandbox` | `@thienvu18/designable-react-sandbox` |
+| 1.x package                       | 2.0 package                                 |
+| --------------------------------- | ------------------------------------------- |
+| `@designable/shared`              | `@thienvu18/designable-shared`              |
+| `@designable/core`                | `@thienvu18/designable-core`                |
+| `@designable/react`               | `@thienvu18/designable-react`               |
+| `@designable/react-sandbox`       | `@thienvu18/designable-react-sandbox`       |
 | `@designable/react-settings-form` | `@thienvu18/designable-react-settings-form` |
 | `@designable/formily-transformer` | `@thienvu18/designable-formily-transformer` |
-| `@designable/formily-setters` | `@thienvu18/designable-formily-setters` |
-| `@designable/formily-antd` | `@thienvu18/designable-formily-antd` |
-| `@designable/formily-next` | No 2.0 release |
+| `@designable/formily-setters`     | `@thienvu18/designable-formily-setters`     |
+| `@designable/formily-antd`        | `@thienvu18/designable-formily-antd`        |
+| `@designable/formily-next`        | No 2.0 release                              |
 
 `formily/next` remains a preserved, private Alibaba Fusion source tree. It is not part of Designable 2.0 and is not verified with React 19.
 

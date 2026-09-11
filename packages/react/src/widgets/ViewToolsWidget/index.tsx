@@ -1,10 +1,10 @@
-import React from 'react'
-import { Button, Space } from 'antd'
 import { observer } from '@formily/reactive-react'
 import { WorkbenchTypes } from '@thienvu18/designable-core'
-import { IconWidget } from '../IconWidget'
-import { usePrefix, useWorkbench } from '../../hooks'
+import { Button, Space } from 'antd'
 import cls from 'classnames'
+import React from 'react'
+import { usePrefix, useWorkbench } from '../../hooks'
+import { IconWidget } from '../IconWidget'
 
 export interface IViewToolsWidget {
   use?: WorkbenchTypes[]

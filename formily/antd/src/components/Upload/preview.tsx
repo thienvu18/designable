@@ -1,13 +1,13 @@
-import React from 'react'
-import { Upload as AntdUpload, Button } from 'antd'
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons'
-import { Upload as FormilyUpload } from '@thienvu18/formily-antd-v6'
+import { InboxOutlined, UploadOutlined } from '@ant-design/icons'
 import { useField } from '@formily/react'
 import { createBehavior, createResource } from '@thienvu18/designable-core'
 import { DnFC } from '@thienvu18/designable-react'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import { Upload as FormilyUpload } from '@thienvu18/formily-antd-v6'
+import { Upload as AntdUpload, Button } from 'antd'
+import React from 'react'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 
 export const Upload: DnFC<React.ComponentProps<typeof FormilyUpload>> & {
   Dragger?: React.FC<any>
@@ -16,7 +16,9 @@ export const Upload: DnFC<React.ComponentProps<typeof FormilyUpload>> & {
   if (!field) {
     const placeholder =
       props.listType !== 'picture-card' ? (
-        <Button icon={<UploadOutlined />}>{props.textContent || 'Upload'}</Button>
+        <Button icon={<UploadOutlined />}>
+          {props.textContent || 'Upload'}
+        </Button>
       ) : null
     return <AntdUpload {...props}>{props.children || placeholder}</AntdUpload>
   }

@@ -1,10 +1,10 @@
-import React from 'react'
-import { Transfer as FormilyTransfer } from '@formily/next'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import { Transfer as FormilyTransfer } from '@formily/next'
+import React from 'react'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 
 export const Transfer: DnFC<React.ComponentProps<typeof FormilyTransfer>> =
   FormilyTransfer

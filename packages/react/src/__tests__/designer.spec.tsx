@@ -1,21 +1,21 @@
-import React, { StrictMode } from 'react'
 import { render, screen } from '@testing-library/react'
-import { createDesigner, TreeNode } from '@thienvu18/designable-core'
+import { TreeNode, createDesigner } from '@thienvu18/designable-core'
+import { StrictMode } from 'react'
 import {
-  Designer,
-  Workbench,
-  StudioPanel,
-  WorkspacePanel,
-  ToolbarPanel,
-  ViewportPanel,
-  ViewPanel,
   CompositePanel,
-  SettingsPanel,
-  ResourceWidget,
+  Designer,
   HistoryWidget,
   IconWidget,
   NodePathWidget,
+  ResourceWidget,
+  SettingsPanel,
+  StudioPanel,
   TextWidget,
+  ToolbarPanel,
+  ViewPanel,
+  ViewportPanel,
+  Workbench,
+  WorkspacePanel,
   useDesigner,
   useWorkbench,
   useWorkspace,
@@ -40,9 +40,15 @@ describe('@thienvu18/designable-react', () => {
 
       return (
         <div>
-          <span data-testid="designer-status">{designer ? 'active' : 'inactive'}</span>
-          <span data-testid="workbench-status">{workbench ? 'active' : 'inactive'}</span>
-          <span data-testid="workspace-status">{workspace ? 'active' : 'inactive'}</span>
+          <span data-testid="designer-status">
+            {designer ? 'active' : 'inactive'}
+          </span>
+          <span data-testid="workbench-status">
+            {workbench ? 'active' : 'inactive'}
+          </span>
+          <span data-testid="workspace-status">
+            {workspace ? 'active' : 'inactive'}
+          </span>
         </div>
       )
     }

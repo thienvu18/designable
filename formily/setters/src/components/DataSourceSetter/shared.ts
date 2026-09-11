@@ -1,4 +1,4 @@
-import { uid, clone, toArr } from '@formily/shared'
+import { clone, toArr, uid } from '@formily/shared'
 import { IDataSourceItem, INodeItem } from './types'
 
 export interface INode {

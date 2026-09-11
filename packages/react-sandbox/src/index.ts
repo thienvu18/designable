@@ -1,18 +1,19 @@
-import React, { useRef, useEffect } from 'react'
-import { createRoot, Root } from 'react-dom/client'
-import { isFn, globalThisPolyfill } from '@thienvu18/designable-shared'
 import {
   useDesigner,
-  useWorkspace,
   useLayout,
   usePrefix,
+  useWorkspace,
 } from '@thienvu18/designable-react'
+import { globalThisPolyfill, isFn } from '@thienvu18/designable-shared'
+import React, { useEffect, useRef } from 'react'
+import { Root, createRoot } from 'react-dom/client'
 
 const ROOT_INSTANCE_KEY = '__DESIGNABLE_SANDBOX_ROOT_INSTANCE__'
 const ROOT_CONTAINER_KEY = '__DESIGNABLE_SANDBOX_ROOT_CONTAINER__'
 const UNMOUNT_KEY = '__DESIGNABLE_SANDBOX_UNMOUNT__'
 
-export interface ISandboxProps extends React.IframeHTMLAttributes<HTMLIFrameElement> {
+export interface ISandboxProps
+  extends React.IframeHTMLAttributes<HTMLIFrameElement> {
   style?: React.CSSProperties
   cssAssets?: string[]
   jsAssets?: string[]
@@ -132,12 +133,15 @@ export const useSandboxScope = () => {
   return globalThisPolyfill['__DESIGNABLE_SANDBOX_SCOPE__']
 }
 
-export const renderSandboxContent = (render: (scope?: any) => React.ReactNode) => {
+export const renderSandboxContent = (
+  render: (scope?: any) => React.ReactNode
+) => {
   if (isFn(render)) {
     const container = document.getElementById('__SANDBOX_ROOT__')
     if (!container) return
     let root: Root | undefined = globalThisPolyfill[ROOT_INSTANCE_KEY]
-    const rootContainer: HTMLElement | undefined = globalThisPolyfill[ROOT_CONTAINER_KEY]
+    const rootContainer: HTMLElement | undefined =
+      globalThisPolyfill[ROOT_CONTAINER_KEY]
     if (root && rootContainer !== container) {
       unmountSandboxContent()
       root = undefined

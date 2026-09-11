@@ -1,4 +1,4 @@
-import { define, observable, action } from '@formily/reactive'
+import { action, define, observable } from '@formily/reactive'
 
 export interface IHistoryProps<T> {
   onPush?: (item: T) => void

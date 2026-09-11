@@ -1,8 +1,8 @@
-import baseConfig from './webpack.base'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import MonacoPlugin from 'monaco-editor-webpack-plugin'
 import path from 'path'
+import baseConfig from './webpack.base'
 
 const createPages = (pages) => {
   return pages.map(({ filename, template, chunk }) => {

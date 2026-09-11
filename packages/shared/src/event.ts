@@ -1,6 +1,6 @@
-import { isArr, isWindow } from './types'
-import { Subscribable, ISubscriber } from './subscribable'
 import { globalThisPolyfill } from './globalThisPolyfill'
+import { ISubscriber, Subscribable } from './subscribable'
+import { isArr, isWindow } from './types'
 
 const ATTACHED_SYMBOL = Symbol('ATTACHED_SYMBOL')
 const EVENTS_SYMBOL = Symbol('__EVENTS_SYMBOL__')

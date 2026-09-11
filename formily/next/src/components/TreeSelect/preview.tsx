@@ -1,10 +1,10 @@
-import React from 'react'
-import { TreeSelect as FormilyTreeSelect } from '@formily/next'
 import { createBehavior, createResource } from '@designable/core'
 import { DnFC } from '@designable/react'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
+import { TreeSelect as FormilyTreeSelect } from '@formily/next'
+import React from 'react'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 
 export const TreeSelect: DnFC<React.ComponentProps<typeof FormilyTreeSelect>> =
   FormilyTreeSelect

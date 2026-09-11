@@ -1,44 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { createRoot } from 'react-dom/client'
+import { GithubOutlined } from '@ant-design/icons'
+import { observer } from '@formily/react'
 import {
-  Designer,
-  IconWidget,
-  Workbench,
-  ViewPanel,
-  DesignerToolsWidget,
-  ViewToolsWidget,
-  OutlineTreeWidget,
-  ResourceWidget,
-  StudioPanel,
-  CompositePanel,
-  WorkspacePanel,
-  ToolbarPanel,
-  ViewportPanel,
-  SettingsPanel,
-  HistoryWidget,
-} from '@thienvu18/designable-react'
-import {
-  SettingsForm,
-  MonacoInput,
-  ColorInput,
-} from '@thienvu18/designable-react-settings-form'
-import { DataSourceSetter } from '@thienvu18/designable-formily-setters'
+  GlobalRegistry,
+  createBehavior,
+  createDesigner,
+  createResource,
+} from '@thienvu18/designable-core'
 import {
   Form as FormilyPreviewForm,
   Input as FormilyPreviewInput,
 } from '@thienvu18/designable-formily-antd'
-import { observer } from '@formily/react'
+import { DataSourceSetter } from '@thienvu18/designable-formily-setters'
 import {
-  createDesigner,
-  createResource,
-  createBehavior,
-  GlobalRegistry,
-} from '@thienvu18/designable-core'
+  CompositePanel,
+  Designer,
+  DesignerToolsWidget,
+  HistoryWidget,
+  IconWidget,
+  OutlineTreeWidget,
+  ResourceWidget,
+  SettingsPanel,
+  StudioPanel,
+  ToolbarPanel,
+  ViewPanel,
+  ViewToolsWidget,
+  ViewportPanel,
+  Workbench,
+  WorkspacePanel,
+} from '@thienvu18/designable-react'
+import {
+  ColorInput,
+  MonacoInput,
+  SettingsForm,
+} from '@thienvu18/designable-react-settings-form'
+import { Button, InputNumber, Radio, Space } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { createRoot } from 'react-dom/client'
 import { Content } from './content'
-import { Space, Button, InputNumber, Radio } from 'antd'
-import { GithubOutlined } from '@ant-design/icons'
 //import { Sandbox } from '@thienvu18/designable-react-sandbox'
-
 
 const RootBehavior = createBehavior({
   name: 'Root',

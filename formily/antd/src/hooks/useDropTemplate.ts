@@ -1,6 +1,6 @@
 import { AppendNodeEvent, TreeNode } from '@thienvu18/designable-core'
 import { useDesigner } from '@thienvu18/designable-react'
-import { matchComponent, matchChildComponent } from '../shared'
+import { matchChildComponent, matchComponent } from '../shared'
 
 export const useDropTemplate = (
   name: string,

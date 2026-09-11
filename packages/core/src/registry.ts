@@ -1,21 +1,20 @@
-import { each } from '@thienvu18/designable-shared'
 import { Path } from '@formily/path'
 import { observable } from '@formily/reactive'
-import {
-  IDesignerBehaviorStore,
-  IDesignerIconsStore,
-  IDesignerLocaleStore,
-  IDesignerLanguageStore,
-  IDesignerBehaviors,
-  IDesignerLocales,
-  IDesignerIcons,
-  IBehaviorLike,
-  IBehavior,
-} from './types'
-import { mergeLocales, lowerSnake, getBrowserLanguage } from './internals'
-import { isBehaviorHost } from './externals'
+import { each } from '@thienvu18/designable-shared'
+import { isBehaviorHost, isBehaviorList } from './externals'
+import { getBrowserLanguage, lowerSnake, mergeLocales } from './internals'
 import { TreeNode } from './models'
-import { isBehaviorList } from './externals'
+import {
+  IBehavior,
+  IBehaviorLike,
+  IDesignerBehaviorStore,
+  IDesignerBehaviors,
+  IDesignerIcons,
+  IDesignerIconsStore,
+  IDesignerLanguageStore,
+  IDesignerLocaleStore,
+  IDesignerLocales,
+} from './types'
 
 const getISOCode = (language: string) => {
   let isoCode = DESIGNER_LANGUAGE_STORE.value

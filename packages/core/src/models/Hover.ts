@@ -1,7 +1,7 @@
-import { observable, define, action } from '@formily/reactive'
+import { action, define, observable } from '@formily/reactive'
+import { HoverNodeEvent } from '../events'
 import { Operation } from './Operation'
 import { TreeNode } from './TreeNode'
-import { HoverNodeEvent } from '../events'
 
 export interface IHoverProps {
   operation: Operation

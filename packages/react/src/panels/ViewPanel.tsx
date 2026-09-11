@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { TreeNode, ITreeNode, WorkbenchTypes } from '@thienvu18/designable-core'
 import { observer } from '@formily/reactive-react'
-import { useTree, useWorkbench } from '../hooks'
-import { Viewport } from '../containers'
+import { ITreeNode, TreeNode, WorkbenchTypes } from '@thienvu18/designable-core'
 import { requestIdle } from '@thienvu18/designable-shared'
+import React, { useEffect, useState } from 'react'
+import { Viewport } from '../containers'
+import { useTree, useWorkbench } from '../hooks'
 
 export interface IViewPanelProps {
   type: WorkbenchTypes
@@ -43,11 +43,7 @@ export const ViewPanel: React.FC<IViewPanelProps> = observer((props) => {
   }
 
   if (workbench?.type === 'DESIGNABLE') {
-    return (
-      <Viewport dragTipsDirection={dragTipsDirection}>
-        {render()}
-      </Viewport>
-    )
+    return <Viewport dragTipsDirection={dragTipsDirection}>{render()}</Viewport>
   }
 
   return (

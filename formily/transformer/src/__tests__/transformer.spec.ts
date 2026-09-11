@@ -1,5 +1,5 @@
-import { transformToSchema, transformToTreeNode } from '../index'
 import { ITreeNode } from '@thienvu18/designable-core'
+import { transformToSchema, transformToTreeNode } from '../index'
 
 describe('@thienvu18/designable-formily-transformer', () => {
   it('should transform TreeNode to Formily schema', () => {

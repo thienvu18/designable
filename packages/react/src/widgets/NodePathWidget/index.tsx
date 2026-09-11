@@ -1,9 +1,9 @@
-import React from 'react'
+import { observer } from '@formily/reactive-react'
 import { Breadcrumb } from 'antd'
-import { useSelectedNode, useSelection, usePrefix, useHover } from '../../hooks'
+import React from 'react'
+import { useHover, usePrefix, useSelectedNode, useSelection } from '../../hooks'
 import { IconWidget } from '../IconWidget'
 import { NodeTitleWidget } from '../NodeTitleWidget'
-import { observer } from '@formily/reactive-react'
 import './styles.less'
 
 export interface INodePathWidgetProps {

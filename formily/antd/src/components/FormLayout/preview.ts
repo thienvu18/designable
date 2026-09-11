@@ -1,11 +1,11 @@
-import React from 'react'
-import { FormLayout as FormilyFormLayout } from '@thienvu18/formily-antd-v6'
 import { createBehavior, createResource } from '@thienvu18/designable-core'
 import { DnFC } from '@thienvu18/designable-react'
+import { FormLayout as FormilyFormLayout } from '@thienvu18/formily-antd-v6'
+import React from 'react'
 import { withContainer } from '../../common/Container'
-import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createVoidFieldSchema } from '../Field'
 
 export const FormLayout: DnFC<React.ComponentProps<typeof FormilyFormLayout>> =
   withContainer(FormilyFormLayout)

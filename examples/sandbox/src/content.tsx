@@ -1,7 +1,5 @@
-import React from 'react'
-import { ComponentTreeWidget, useTreeNode } from '@thienvu18/designable-react'
 import { observer } from '@formily/reactive-react'
-
+import { ComponentTreeWidget, useTreeNode } from '@thienvu18/designable-react'
 
 export const Content = () => (
   <ComponentTreeWidget

@@ -1,6 +1,6 @@
 import { EventDriver } from '@thienvu18/designable-shared'
+import { DragMoveEvent, DragStartEvent, DragStopEvent } from '../events'
 import { Engine } from '../models/Engine'
-import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
 
 const GlobalState = {
   dragging: false,

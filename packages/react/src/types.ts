@@ -1,5 +1,5 @@
+import { Engine, IBehavior, IResource } from '@thienvu18/designable-core'
 import React from 'react'
-import { Engine, IResource, IBehavior } from '@thienvu18/designable-core'
 
 export interface IDesignerLayoutProps {
   prefixCls?: string
@@ -32,7 +32,9 @@ export type DnFC<P = {}> = React.FC<React.PropsWithChildren<P>> & {
   Behavior?: IBehavior[]
 }
 
-export type DnComponent<P = {}> = React.ComponentType<React.PropsWithChildren<P>> & {
+export type DnComponent<P = {}> = React.ComponentType<
+  React.PropsWithChildren<P>
+> & {
   Resource?: IResource[]
   Behavior?: IBehavior[]
 }

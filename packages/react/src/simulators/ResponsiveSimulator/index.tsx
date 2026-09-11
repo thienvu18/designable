@@ -1,16 +1,16 @@
-import React, { useRef } from 'react'
 import { observer } from '@formily/reactive-react'
 import {
-  Engine,
-  DragStartEvent,
-  DragMoveEvent,
-  DragStopEvent,
   CursorDragType,
+  DragMoveEvent,
+  DragStartEvent,
+  DragStopEvent,
+  Engine,
 } from '@thienvu18/designable-core'
 import {
   calcSpeedFactor,
   createUniformSpeedAnimation,
 } from '@thienvu18/designable-shared'
+import React, { useRef } from 'react'
 import { useDesigner, usePrefix } from '../../hooks'
 import { IconWidget } from '../../widgets'
 import { ResizeHandle, ResizeHandleType } from './handle'
@@ -138,43 +138,44 @@ export interface IResponsiveSimulatorProps
   style?: React.CSSProperties
 }
 
-export const ResponsiveSimulator: React.FC<React.PropsWithChildren<IResponsiveSimulatorProps>> =
-  observer((props) => {
-    const container = useRef<HTMLDivElement>(null)
-    const content = useRef<HTMLDivElement>(null)
-    const prefix = usePrefix('responsive-simulator')
-    useDesigner((engine) => {
-      useResizeEffect(container, content, engine)
-    })
-    return (
+export const ResponsiveSimulator: React.FC<
+  React.PropsWithChildren<IResponsiveSimulatorProps>
+> = observer((props) => {
+  const container = useRef<HTMLDivElement>(null)
+  const content = useRef<HTMLDivElement>(null)
+  const prefix = usePrefix('responsive-simulator')
+  useDesigner((engine) => {
+    useResizeEffect(container, content, engine)
+  })
+  return (
+    <div
+      {...props}
+      className={cls(prefix, props.className)}
+      style={{
+        height: '100%',
+        width: '100%',
+        minHeight: '100%',
+        position: 'relative',
+        ...props.style,
+      }}
+      ref={container}
+    >
       <div
-        {...props}
-        className={cls(prefix, props.className)}
+        ref={content}
         style={{
           height: '100%',
           width: '100%',
-          minHeight: '100%',
-          position: 'relative',
-          ...props.style,
+          paddingRight: 4,
+          paddingBottom: 4,
         }}
-        ref={container}
       >
-        <div
-          ref={content}
-          style={{
-            height: '100%',
-            width: '100%',
-            paddingRight: 4,
-            paddingBottom: 4,
-          }}
-        >
-          {props.children}
-          <ResizeHandle type={ResizeHandleType.Resize}>
-            <IconWidget infer="Corner" style={{ pointerEvents: 'none' }} />
-          </ResizeHandle>
-          <ResizeHandle type={ResizeHandleType.ResizeWidth} />
-          <ResizeHandle type={ResizeHandleType.ResizeHeight} />
-        </div>
+        {props.children}
+        <ResizeHandle type={ResizeHandleType.Resize}>
+          <IconWidget infer="Corner" style={{ pointerEvents: 'none' }} />
+        </ResizeHandle>
+        <ResizeHandle type={ResizeHandleType.ResizeWidth} />
+        <ResizeHandle type={ResizeHandleType.ResizeHeight} />
       </div>
-    )
-  })
+    </div>
+  )
+})

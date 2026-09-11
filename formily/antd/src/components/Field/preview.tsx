@@ -1,25 +1,24 @@
-import React from 'react'
 import { FormPath } from '@formily/core'
-import { toJS } from '@formily/reactive'
 import {
   ArrayField,
+  ISchema,
   Field as InternalField,
   ObjectField,
+  Schema,
   VoidField,
   observer,
-  ISchema,
-  Schema,
 } from '@formily/react'
-import { FormItem } from '@thienvu18/formily-antd-v6'
+import { toJS } from '@formily/reactive'
 import { each, reduce } from '@formily/shared'
 import { createBehavior } from '@thienvu18/designable-core'
 import {
+  DnFC,
+  useComponents,
   useDesigner,
   useTreeNode,
-  useComponents,
-  DnFC,
 } from '@thienvu18/designable-react'
 import { isArr, isStr } from '@thienvu18/designable-shared'
+import { FormItem } from '@thienvu18/formily-antd-v6'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
 

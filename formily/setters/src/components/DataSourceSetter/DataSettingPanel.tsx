@@ -1,16 +1,16 @@
-import React, { useMemo, Fragment } from 'react'
-import { Button } from 'antd'
 import { PlusOutlined } from '@ant-design/icons'
-import { ArrayItems, Form, Input, FormItem } from '@thienvu18/formily-antd-v6'
-import { createForm, Form as FormCore } from '@formily/core'
-import { observer } from '@formily/reactive-react'
+import { Form as FormCore, createForm } from '@formily/core'
 import { createSchemaField } from '@formily/react'
+import { observer } from '@formily/reactive-react'
+import { TextWidget, usePrefix } from '@thienvu18/designable-react'
 import { ValueInput } from '@thienvu18/designable-react-settings-form'
-import { usePrefix, TextWidget } from '@thienvu18/designable-react'
+import { ArrayItems, Form, FormItem, Input } from '@thienvu18/formily-antd-v6'
+import { Button } from 'antd'
+import React, { Fragment, useMemo } from 'react'
 import { Header } from './Header'
 import { traverseTree } from './shared'
-import { ITreeDataSource } from './types'
 import './styles.less'
+import { ITreeDataSource } from './types'
 
 const SchemaField = createSchemaField({
   components: {

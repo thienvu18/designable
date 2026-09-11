@@ -1,9 +1,9 @@
-import React from 'react'
 import { createBehavior, createResource } from '@thienvu18/designable-core'
 import { DnFC } from '@thienvu18/designable-react'
-import { createFieldSchema } from '../Field'
+import React from 'react'
 import { Container } from '../../common/Container'
 import { AllLocales } from '../../locales'
+import { createFieldSchema } from '../Field'
 
 export const ObjectContainer: DnFC<React.ComponentProps<typeof Container>> =
   Container

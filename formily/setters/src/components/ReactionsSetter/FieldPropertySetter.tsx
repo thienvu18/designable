@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { TextWidget, usePrefix } from '@thienvu18/designable-react'
-import { Menu } from 'antd'
-import { MonacoInput } from '@thienvu18/designable-react-settings-form'
 import { isPlainObj, reduce } from '@formily/shared'
+import { TextWidget, usePrefix } from '@thienvu18/designable-react'
+import { MonacoInput } from '@thienvu18/designable-react-settings-form'
+import { Menu } from 'antd'
+import React, { useState } from 'react'
 import { FieldProperties } from './properties'
 export interface IFieldProperty {
   [key: string]: string

@@ -1,11 +1,11 @@
-import React from 'react'
 import { Card as AntdCard } from 'antd'
+import React from 'react'
 
 import { createBehavior, createResource } from '@thienvu18/designable-core'
 import { DnFC } from '@thienvu18/designable-react'
-import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createVoidFieldSchema } from '../Field'
 
 export const Card: DnFC<React.ComponentProps<typeof AntdCard>> = (props) => {
   return (

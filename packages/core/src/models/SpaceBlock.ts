@@ -1,8 +1,8 @@
 import {
-  calcExtendsLineSegmentOfRect,
-  calcDistanceOfSnapLineToEdges,
   LineSegment,
   Rect,
+  calcDistanceOfSnapLineToEdges,
+  calcExtendsLineSegmentOfRect,
 } from '@thienvu18/designable-shared'
 import { SnapLine } from './SnapLine'
 import { TransformHelper } from './TransformHelper'

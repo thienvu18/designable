@@ -1,8 +1,8 @@
-import path from 'path'
+import autoprefixer from 'autoprefixer'
 import fs from 'fs-extra'
 import { GlobSync } from 'glob'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
-import autoprefixer from 'autoprefixer'
+import path from 'path'
 //import { getThemeVariables } from 'antd/dist/theme'
 
 const getWorkspaceAlias = () => {

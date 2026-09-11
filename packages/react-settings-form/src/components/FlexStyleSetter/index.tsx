@@ -1,9 +1,9 @@
-import React from 'react'
-import { Field, useField, observer } from '@formily/react'
+import { Field, observer, useField } from '@formily/react'
+import { IconWidget, usePrefix } from '@thienvu18/designable-react'
 import { Radio } from '@thienvu18/formily-antd-v6'
-import { usePrefix, IconWidget } from '@thienvu18/designable-react'
-import { InputItems } from '../InputItems'
 import cls from 'classnames'
+import React from 'react'
+import { InputItems } from '../InputItems'
 import './styles.less'
 export interface IFlexStyleSetterProps {
   className?: string

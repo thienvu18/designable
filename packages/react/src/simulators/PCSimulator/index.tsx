@@ -1,5 +1,5 @@
-import React from 'react'
 import cls from 'classnames'
+import React from 'react'
 import { usePrefix } from '../../hooks'
 import './styles.less'
 export interface IPCSimulatorProps

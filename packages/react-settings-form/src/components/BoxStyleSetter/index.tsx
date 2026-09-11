@@ -1,10 +1,10 @@
-import React from 'react'
-import { useField, observer } from '@formily/react'
-import { usePrefix, IconWidget } from '@thienvu18/designable-react'
-import { FoldItem } from '../FoldItem'
-import { SizeInput } from '../SizeInput'
-import { InputItems } from '../InputItems'
+import { observer, useField } from '@formily/react'
+import { IconWidget, usePrefix } from '@thienvu18/designable-react'
 import cls from 'classnames'
+import React from 'react'
+import { FoldItem } from '../FoldItem'
+import { InputItems } from '../InputItems'
+import { SizeInput } from '../SizeInput'
 
 type Position = 'top' | 'right' | 'left' | 'bottom' | 'all'
 export interface IMarginStyleSetterProps {
@@ -55,9 +55,7 @@ export const BoxStyleSetter: React.FC<IMarginStyleSetterProps> = observer(
         onChange(val: string) {
           if (position === 'all') {
             setterProps.onChange?.(
-              `${val || '0px'} ${val || '0px'} ${val || '0px'} ${
-                val || '0px'
-              }`
+              `${val || '0px'} ${val || '0px'} ${val || '0px'} ${val || '0px'}`
             )
           } else {
             matched[PositionMap[position]] = val

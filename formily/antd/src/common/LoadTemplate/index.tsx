@@ -1,5 +1,5 @@
-import React from 'react'
 import { NodeActionsWidget } from '@thienvu18/designable-react'
+import React from 'react'
 
 export interface ITemplateAction {
   title: React.ReactNode

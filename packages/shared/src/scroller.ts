@@ -1,5 +1,5 @@
+import { calcSpeedFactor, createUniformSpeedAnimation } from './animation'
 import { IPoint } from './coordinate'
-import { createUniformSpeedAnimation, calcSpeedFactor } from './animation'
 import { isFn, isWindow } from './types'
 
 const MAX_SPEED = 80 // px/s

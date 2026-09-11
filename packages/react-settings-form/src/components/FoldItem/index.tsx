@@ -1,9 +1,9 @@
-import React, { Fragment, useRef, useMemo } from 'react'
-import { FormItem, IFormItemProps } from '@thienvu18/formily-antd-v6'
-import { useField, observer } from '@formily/react'
+import { observer, useField } from '@formily/react'
 import { observable } from '@formily/reactive'
 import { IconWidget, usePrefix } from '@thienvu18/designable-react'
+import { FormItem, IFormItemProps } from '@thienvu18/formily-antd-v6'
 import cls from 'classnames'
+import React, { Fragment, useMemo, useRef } from 'react'
 import './styles.less'
 
 const ExpandedMap = new Map<string, boolean>()

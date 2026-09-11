@@ -1,26 +1,26 @@
-import React, { Fragment } from 'react'
-import { Card, CardProps } from 'antd'
+import { observer } from '@formily/react'
 import { TreeNode, createResource } from '@thienvu18/designable-core'
 import {
-  useTreeNode,
-  TreeNodeWidget,
-  DroppableWidget,
-  useNodeIdProps,
   DnFC,
+  DroppableWidget,
+  TreeNodeWidget,
+  useNodeIdProps,
+  useTreeNode,
 } from '@thienvu18/designable-react'
 import { ArrayBase } from '@thienvu18/formily-antd-v6'
-import { observer } from '@formily/react'
+import { Card, CardProps } from 'antd'
+import cls from 'classnames'
+import { Fragment } from 'react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
 import {
+  createEnsureTypeItemsNode,
+  createNodeId,
+  findNodeByComponentPath,
   hasNodeByComponentPath,
   queryNodesByComponentPath,
-  createEnsureTypeItemsNode,
-  findNodeByComponentPath,
-  createNodeId,
 } from '../../shared'
 import { createArrayBehavior } from '../ArrayBase'
-import cls from 'classnames'
 import './styles.less'
 
 const ensureObjectItemsNode = createEnsureTypeItemsNode('object')

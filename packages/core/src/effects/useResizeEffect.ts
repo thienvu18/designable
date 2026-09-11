@@ -1,5 +1,5 @@
-import { Engine, CursorDragType } from '../models'
-import { DragStartEvent, DragMoveEvent, DragStopEvent } from '../events'
+import { DragMoveEvent, DragStartEvent, DragStopEvent } from '../events'
+import { CursorDragType, Engine } from '../models'
 
 export const useResizeEffect = (engine: Engine) => {
   const findStartNodeHandler = (target: HTMLElement) => {

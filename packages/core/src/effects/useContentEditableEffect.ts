@@ -1,7 +1,7 @@
 import { Path } from '@formily/path'
-import { requestIdle, globalThisPolyfill } from '@thienvu18/designable-shared'
+import { globalThisPolyfill, requestIdle } from '@thienvu18/designable-shared'
+import { MouseClickEvent, MouseDoubleClickEvent } from '../events'
 import { Engine, TreeNode } from '../models'
-import { MouseDoubleClickEvent, MouseClickEvent } from '../events'
 
 type GlobalState = {
   activeElements: Map<HTMLInputElement, TreeNode>

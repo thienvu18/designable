@@ -1,8 +1,7 @@
-import { EventDriver } from '@thienvu18/designable-shared'
-import { Engine } from '../models/Engine'
-import { ViewportResizeEvent } from '../events'
 import { ResizeObserver } from '@juggle/resize-observer'
-import { globalThisPolyfill } from '@thienvu18/designable-shared'
+import { EventDriver, globalThisPolyfill } from '@thienvu18/designable-shared'
+import { ViewportResizeEvent } from '../events'
+import { Engine } from '../models/Engine'
 
 export class ViewportResizeDriver extends EventDriver<Engine> {
   request: number | null = null
@@ -12,9 +11,7 @@ export class ViewportResizeDriver extends EventDriver<Engine> {
   resizeTarget: EventTarget | null = null
 
   onResize = (event: UIEvent | ResizeObserverEntry[]) => {
-    const target = Array.isArray(event)
-      ? event[0]?.target
-      : event.target
+    const target = Array.isArray(event) ? event[0]?.target : event.target
     this.resizeTarget = target ?? this.container
     if (this.request !== null) return
 

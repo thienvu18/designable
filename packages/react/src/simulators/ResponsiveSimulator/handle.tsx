@@ -1,6 +1,6 @@
+import cls from 'classnames'
 import React from 'react'
 import { useDesigner, usePrefix } from '../../hooks'
-import cls from 'classnames'
 export enum ResizeHandleType {
   Resize = 'RESIZE',
   ResizeWidth = 'RESIZE_WIDTH',

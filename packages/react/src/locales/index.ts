@@ -1,7 +1,7 @@
 import { GlobalRegistry } from '@thienvu18/designable-core'
-import icons from './icons'
-import panels from './panels'
 import global from './global'
+import icons from './icons'
 import operations from './operations'
+import panels from './panels'
 
 GlobalRegistry.registerDesignerLocales(icons, panels, global, operations)

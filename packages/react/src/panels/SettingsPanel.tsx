@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import { requestIdle } from '@thienvu18/designable-shared'
 import { observer } from '@formily/reactive-react'
-import { TextWidget, IconWidget } from '../widgets'
-import { usePrefix, useWorkbench } from '../hooks'
+import { requestIdle } from '@thienvu18/designable-shared'
 import cls from 'classnames'
+import React, { useEffect, useState } from 'react'
+import { usePrefix, useWorkbench } from '../hooks'
+import { IconWidget, TextWidget } from '../widgets'
 export interface ISettingPanelProps {
   title?: React.ReactNode
   extra?: React.ReactNode

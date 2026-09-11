@@ -1,20 +1,24 @@
-import React, { Fragment, useState } from 'react'
 import { observer } from '@formily/react'
-import { Tabs, type TabsProps } from 'antd'
-import { TreeNode, createBehavior, createResource } from '@thienvu18/designable-core'
 import {
+  TreeNode,
+  createBehavior,
+  createResource,
+} from '@thienvu18/designable-core'
+import {
+  DnFC,
+  DroppableWidget,
+  TreeNodeWidget,
   useNodeIdProps,
   useTreeNode,
-  TreeNodeWidget,
-  DroppableWidget,
-  DnFC,
 } from '@thienvu18/designable-react'
+import { Tabs, type TabsProps } from 'antd'
+import React, { Fragment, useState } from 'react'
 import { LoadTemplate } from '../../common/LoadTemplate'
 import { useDropTemplate } from '../../hooks'
-import { createVoidFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
 import { matchComponent } from '../../shared'
+import { createVoidFieldSchema } from '../Field'
 
 export interface TabPaneProps {
   tab?: React.ReactNode

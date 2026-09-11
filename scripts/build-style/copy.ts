@@ -1,4 +1,4 @@
-import { copy, existsSync } from 'fs-extra'
+import { copy } from 'fs-extra'
 import glob from 'glob'
 
 export interface CopyBaseOptions {

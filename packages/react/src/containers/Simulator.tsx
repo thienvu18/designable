@@ -1,7 +1,7 @@
-import React from 'react'
+import { observer } from '@formily/reactive-react'
 import { ScreenType } from '@thienvu18/designable-core'
 import { requestIdle } from '@thienvu18/designable-shared'
-import { observer } from '@formily/reactive-react'
+import React from 'react'
 import { useScreen } from '../hooks'
 import {
   MobileSimulator,

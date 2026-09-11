@@ -1,14 +1,14 @@
-import React, { Fragment } from 'react'
-import { Tree, Button, TreeProps } from 'antd'
-import { uid } from '@formily/shared'
 import { observer } from '@formily/reactive-react'
-import { usePrefix, TextWidget, IconWidget } from '@thienvu18/designable-react'
-import { Title } from './Title'
-import { Header } from './Header'
-import { traverseTree } from './shared'
-import { ITreeDataSource, INodeItem } from './types'
-import './styles.less'
+import { uid } from '@formily/shared'
 import { GlobalRegistry } from '@thienvu18/designable-core'
+import { IconWidget, TextWidget, usePrefix } from '@thienvu18/designable-react'
+import { Button, Tree, TreeProps } from 'antd'
+import React, { Fragment } from 'react'
+import { Header } from './Header'
+import { Title } from './Title'
+import { traverseTree } from './shared'
+import './styles.less'
+import { INodeItem, ITreeDataSource } from './types'
 
 const limitTreeDrag = ({ dropPosition }) => {
   if (dropPosition === 0) {

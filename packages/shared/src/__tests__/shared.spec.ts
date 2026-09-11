@@ -1,24 +1,24 @@
 import {
-  clone,
-  shallowClone,
-  uid,
-  Subscribable,
-  globalThisPolyfill,
   LRUMap,
-  requestIdle,
-  cancelIdle,
-  compose,
-  isFn,
-  isArr,
-  isPlainObj,
-  isStr,
-  isBool,
-  isNum,
-  isObj,
-  isValidNumber,
-  isHTMLElement,
+  Subscribable,
   calcDistancePointToEdge,
   calcSpeedFactor,
+  cancelIdle,
+  clone,
+  compose,
+  globalThisPolyfill,
+  isArr,
+  isBool,
+  isFn,
+  isHTMLElement,
+  isNum,
+  isObj,
+  isPlainObj,
+  isStr,
+  isValidNumber,
+  requestIdle,
+  shallowClone,
+  uid,
 } from '../index'
 
 describe('@thienvu18/designable-shared', () => {
@@ -75,7 +75,9 @@ describe('@thienvu18/designable-shared', () => {
       const unsubscribe = subscribable.subscribe(fn)
 
       subscribable.dispatch({ type: 'test', payload: 123 })
-      expect(fn).toHaveBeenCalledWith(expect.objectContaining({ type: 'test', payload: 123 }))
+      expect(fn).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'test', payload: 123 })
+      )
 
       unsubscribe()
       subscribable.dispatch({ type: 'test2' })
@@ -91,8 +93,12 @@ describe('@thienvu18/designable-shared', () => {
       const unsub2 = subscribable.subscribe(fn2)
 
       subscribable.dispatch({ type: 'event' })
-      expect(fn1).toHaveBeenCalledWith(expect.objectContaining({ type: 'event' }))
-      expect(fn2).toHaveBeenCalledWith(expect.objectContaining({ type: 'event' }))
+      expect(fn1).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'event' })
+      )
+      expect(fn2).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'event' })
+      )
 
       unsub1()
       subscribable.dispatch({ type: 'event2' })

@@ -1,10 +1,12 @@
-import React, { useContext, Fragment, useRef, useLayoutEffect } from 'react'
 import { each } from '@thienvu18/designable-shared'
+import cls from 'classnames'
+import React, { Fragment, useContext, useLayoutEffect, useRef } from 'react'
 import { DesignerLayoutContext } from '../context'
 import { IDesignerLayoutProps } from '../types'
-import cls from 'classnames'
 
-export const Layout: React.FC<React.PropsWithChildren<IDesignerLayoutProps>> = (props) => {
+export const Layout: React.FC<React.PropsWithChildren<IDesignerLayoutProps>> = (
+  props
+) => {
   const {
     theme = 'light',
     prefixCls = 'dn-',

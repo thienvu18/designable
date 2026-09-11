@@ -1,5 +1,5 @@
 import React from 'react'
-import { WorkspacePanel, IWorkspaceItemProps } from './WorkspacePanel'
+import { IWorkspaceItemProps, WorkspacePanel } from './WorkspacePanel'
 
 export const ToolbarPanel: React.FC<IWorkspaceItemProps> = (props) => {
   return (

@@ -1,7 +1,7 @@
 import { loader } from '@monaco-editor/react'
+import { format } from './format'
 import chromeTheme from './themes/chrome'
 import monokaiTheme from './themes/monokai'
-import { format } from './format'
 
 let initialized = false
 

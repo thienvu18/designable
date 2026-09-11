@@ -1,7 +1,7 @@
-import React from 'react'
-import { usePrefix, usePosition } from '../hooks'
-import { Layout } from '../containers'
 import cls from 'classnames'
+import React from 'react'
+import { Layout } from '../containers'
+import { usePosition, usePrefix } from '../hooks'
 export interface IStudioPanelProps {
   style?: React.CSSProperties
   className?: string

@@ -1,17 +1,21 @@
-import React from 'react'
-import { FormGrid as FormilyGird } from '@thienvu18/formily-antd-v6'
-import { TreeNode, createBehavior, createResource } from '@thienvu18/designable-core'
+import { observer } from '@formily/reactive-react'
+import {
+  TreeNode,
+  createBehavior,
+  createResource,
+} from '@thienvu18/designable-core'
 import {
   DnFC,
-  useTreeNode,
-  useNodeIdProps,
   DroppableWidget,
+  useNodeIdProps,
+  useTreeNode,
 } from '@thienvu18/designable-react'
-import { observer } from '@formily/reactive-react'
+import { FormGrid as FormilyGird } from '@thienvu18/formily-antd-v6'
+import React from 'react'
 import { LoadTemplate } from '../../common/LoadTemplate'
-import { createFieldSchema } from '../Field'
-import { AllSchemas } from '../../schemas'
 import { AllLocales } from '../../locales'
+import { AllSchemas } from '../../schemas'
+import { createFieldSchema } from '../Field'
 import './styles.less'
 
 type formilyGrid = typeof FormilyGird
