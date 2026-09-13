@@ -5125,7 +5125,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-react-settings-form@workspace:packages/react-settings-form"
   dependencies:
-    "@babel/parser": "npm:^7.24.0"
     "@formily/core": "npm:^2.3.7"
     "@formily/json-schema": "npm:^2.3.7"
     "@formily/path": "npm:^2.3.7"
@@ -5133,15 +5132,12 @@ __metadata:
     "@formily/reactive": "npm:^2.3.7"
     "@formily/reactive-react": "npm:^2.3.7"
     "@formily/shared": "npm:^2.3.7"
-    "@monaco-editor/react": "npm:^4.6.0"
     "@thienvu18/designable-core": "npm:2.0.2"
     "@thienvu18/designable-react": "npm:2.0.2"
     "@thienvu18/designable-shared": "npm:2.0.2"
     "@thienvu18/formily-antd-v6": "npm:^2.0.0"
     antd: "npm:^6.6.3"
     classnames: "npm:^2.3.2"
-    monaco-editor: "npm:^0.47.0"
-    prettier: "npm:^2.8.8"
     react: "npm:^19.2.8"
     react-dom: "npm:^19.2.8"
     react-is: "npm:^19.2.8"

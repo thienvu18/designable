@@ -1,331 +1,121 @@
-import { parse, parseExpression } from '@babel/parser'
-import Editor, { EditorProps, loader } from '@monaco-editor/react'
-import {
-  IconWidget,
-  TextWidget,
-  usePrefix,
-  useTheme,
-} from '@thienvu18/designable-react'
-import { uid } from '@thienvu18/designable-shared'
-import { Tooltip } from 'antd'
+import { IconWidget, TextWidget, usePrefix } from '@thienvu18/designable-react'
+import { Input, Tooltip } from 'antd'
 import cls from 'classnames'
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import React, { useEffect, useRef, useState } from 'react'
-import './config'
-import { initMonaco } from './config'
-import { format } from './format'
+import React, { useEffect, useState } from 'react'
 import './styles.less'
 
-export type Monaco = typeof monaco
-export interface MonacoInputProps extends EditorProps {
+/**
+ * Offline replacement for the former Monaco-backed editor.
+ *
+ * The settings form is embedded in desktop applications where loading an
+ * editor worker or formatter from a CDN is not acceptable. Keep the public
+ * value/onChange surface used by the setters, but use the host's native
+ * textarea instead. `language`, `options`, and `extraLib` are accepted for
+ * compatibility and intentionally have no network/runtime effect.
+ */
+export interface MonacoInputProps {
+  className?: string
+  style?: React.CSSProperties
+  language?: string
+  defaultLanguage?: string
+  width?: number | string
+  height?: number | string
   helpLink?: string | boolean
   helpCode?: string
   helpCodeViewWidth?: number | string
   extraLib?: string
+  value?: string
+  defaultValue?: string
+  placeholder?: string
+  disabled?: boolean
+  readOnly?: boolean
+  options?: Record<string, unknown>
   onChange?: (value: string) => void
 }
 
-export const MonacoInput: React.FC<MonacoInputProps> & {
-  loader?: typeof loader
-} = ({
+export type Monaco = never
+
+const formatInitialValue = (language: string | undefined, value: string) => {
+  if (language !== 'json' || !value.trim()) return value
+  try {
+    return JSON.stringify(JSON.parse(value), null, 2)
+  } catch {
+    return value
+  }
+}
+
+export const MonacoInput: React.FC<MonacoInputProps> = ({
   className,
+  style,
   language,
   defaultLanguage,
   width,
+  height,
   helpLink,
   helpCode,
   helpCodeViewWidth,
-  height,
-  onMount,
+  value,
+  defaultValue,
+  extraLib,
+  options,
   onChange,
   ...props
 }) => {
-  const [loaded, setLoaded] = useState(false)
-  const theme = useTheme()
-  const valueRef = useRef('')
-  const validateRef = useRef(null)
-  const submitRef = useRef(null)
-  const declarationRef = useRef<string[]>([])
-  const extraLibRef = useRef<monaco.IDisposable | null>(null)
-  const monacoRef = useRef<Monaco | null>(null)
-  const editorRef = useRef<monaco.editor.IStandaloneCodeEditor | null>(null)
-  const computedLanguage = useRef<string>(language || defaultLanguage)
-  const realLanguage = useRef<string>('')
-  const unmountedRef = useRef(false)
-  const changedRef = useRef(false)
-  const uidRef = useRef(uid())
   const prefix = usePrefix('monaco-input')
-  const input = props.value || props.defaultValue
+  void extraLib
+  void options
+  const [content, setContent] = useState(() =>
+    formatInitialValue(language || defaultLanguage, value ?? defaultValue ?? '')
+  )
 
   useEffect(() => {
-    unmountedRef.current = false
-    initMonaco()
-    return () => {
-      if (extraLibRef.current) {
-        extraLibRef.current.dispose()
-      }
-      unmountedRef.current = true
-    }
-  }, [])
+    if (value !== undefined) setContent(value)
+  }, [value])
 
-  useEffect(() => {
-    if (monacoRef.current && props.extraLib) {
-      updateExtraLib()
-    }
-  }, [props.extraLib])
+  const helpHref = typeof helpLink === 'string' ? helpLink : undefined
+  const input = (
+    <Input.TextArea
+      {...props}
+      value={content}
+      onChange={(event) => {
+        const next = event.target.value
+        setContent(next)
+        onChange?.(next)
+      }}
+      autoSize={false}
+      style={{
+        height: '100%',
+        resize: 'none',
+        fontFamily: 'ui-monospace, SFMono-Regular, Menlo, monospace',
+      }}
+    />
+  )
 
-  const updateExtraLib = () => {
-    if (extraLibRef.current) {
-      extraLibRef.current.dispose()
-    }
-    extraLibRef.current =
-      monacoRef.current.languages.typescript.typescriptDefaults.addExtraLib(
-        props.extraLib,
-        `${uidRef.current}.d.ts`
-      )
-  }
-
-  const isFileLanguage = () => {
-    const lang = computedLanguage.current
-    return lang === 'javascript' || lang === 'typescript'
-  }
-
-  const isExpLanguage = () => {
-    const lang = computedLanguage.current
-    return lang === 'javascript.expression' || lang === 'typescript.expression'
-  }
-
-  const renderHelper = () => {
-    const getHref = () => {
-      if (typeof helpLink === 'string') return helpLink
-      if (isFileLanguage()) {
-        return 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript'
-      }
-      if (isExpLanguage()) {
-        return 'https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators'
-      }
-    }
-    if (helpLink === false) return null
-    const href = getHref()
-    return (
-      href && (
+  return (
+    <div
+      className={cls(prefix, className, 'loaded')}
+      style={{ ...style, width, height }}
+    >
+      {helpHref && (
         <Tooltip
-          title={
-            <TextWidget token="SettingComponents.MonacoInput.helpDocument" />
-          }
+          title={<TextWidget token="SettingComponents.MonacoInput.helpDocument" />}
         >
           <div className={prefix + '-helper'}>
-            <a target="_blank" href={href} rel="noreferrer">
+            <a target="_blank" href={helpHref} rel="noreferrer">
               <IconWidget infer="Help" />
             </a>
           </div>
         </Tooltip>
-      )
-    )
-  }
-
-  const onMountHandler = (
-    editor: monaco.editor.IStandaloneCodeEditor,
-    monaco: Monaco
-  ) => {
-    editorRef.current = editor
-    monacoRef.current = monaco
-    onMount?.(editor, monaco)
-    const model = editor.getModel()
-    const currentValue = editor.getValue()
-    model['getDesignerLanguage'] = () => computedLanguage.current
-    if (currentValue) {
-      format(computedLanguage.current, currentValue)
-        .then((content) => {
-          editor.setValue(content)
-          setLoaded(true)
-        })
-        .catch(() => {
-          setLoaded(true)
-        })
-    } else {
-      setLoaded(true)
-    }
-    if (props.extraLib) {
-      updateExtraLib()
-    }
-    editor.onDidChangeModelContent(() => {
-      onChangeHandler(editor.getValue())
-    })
-  }
-
-  const submit = () => {
-    clearTimeout(submitRef.current)
-    submitRef.current = setTimeout(() => {
-      onChange?.(valueRef.current)
-    }, 1000)
-  }
-
-  const validate = () => {
-    if (realLanguage.current === 'typescript') {
-      clearTimeout(validateRef.current)
-      validateRef.current = setTimeout(() => {
-        try {
-          if (valueRef.current) {
-            if (isFileLanguage()) {
-              parse(valueRef.current, {
-                sourceType: 'module',
-                plugins: ['typescript', 'jsx'],
-              })
-            } else if (isExpLanguage()) {
-              parseExpression(valueRef.current, {
-                plugins: ['typescript', 'jsx'],
-              })
-            }
-          }
-          monacoRef.current.editor.setModelMarkers(
-            editorRef.current.getModel(),
-            computedLanguage.current,
-            []
-          )
-          declarationRef.current = editorRef.current.deltaDecorations(
-            declarationRef.current,
-            [
-              {
-                range: new monacoRef.current.Range(1, 1, 1, 1),
-                options: {},
-              },
-            ]
-          )
-          submit()
-        } catch (e) {
-          declarationRef.current = editorRef.current.deltaDecorations(
-            declarationRef.current,
-            [
-              {
-                range: new monacoRef.current.Range(
-                  e.loc.line,
-                  e.loc.column,
-                  e.loc.line,
-                  e.loc.column
-                ),
-                options: {
-                  isWholeLine: true,
-                  glyphMarginClassName: 'monaco-error-highline',
-                },
-              },
-            ]
-          )
-          monacoRef.current.editor.setModelMarkers(
-            editorRef.current.getModel(),
-            computedLanguage.current,
-            [
-              {
-                code: '1003',
-                severity: 8,
-                startLineNumber: e.loc.line,
-                startColumn: e.loc.column,
-                endLineNumber: e.loc.line,
-                endColumn: e.loc.column,
-                message: e.message,
-              },
-            ]
-          )
-        }
-      }, 240)
-    } else {
-      submit()
-      declarationRef.current = editorRef.current.deltaDecorations(
-        declarationRef.current,
-        [
-          {
-            range: new monacoRef.current.Range(1, 1, 1, 1),
-            options: {},
-          },
-        ]
-      )
-    }
-  }
-
-  const onChangeHandler = (value: string) => {
-    changedRef.current = true
-    valueRef.current = value
-    validate()
-  }
-  computedLanguage.current = language || defaultLanguage
-  realLanguage.current = /(?:javascript|typescript)/gi.test(
-    computedLanguage.current
-  )
-    ? 'typescript'
-    : computedLanguage.current
-
-  const renderHelpCode = () => {
-    if (!helpCode) return null
-    return (
-      <div
-        className={prefix + '-view'}
-        style={{ width: helpCodeViewWidth || '50%' }}
-      >
-        <Editor
-          value={helpCode}
-          theme={theme === 'dark' ? 'monokai' : 'chrome-devtools'}
-          defaultLanguage={realLanguage.current}
-          language={realLanguage.current}
-          options={{
-            ...props.options,
-            lineNumbers: 'off',
-            readOnly: true,
-            glyphMargin: false,
-            folding: false,
-            lineDecorationsWidth: 0,
-            lineNumbersMinChars: 0,
-            minimap: {
-              enabled: false,
-            },
-            tabSize: 2,
-            smoothScrolling: true,
-            scrollbar: {
-              verticalScrollbarSize: 5,
-              horizontalScrollbarSize: 5,
-              alwaysConsumeMouseWheel: false,
-            },
-          }}
-          width="100%"
-          height="100%"
-        />
-      </div>
-    )
-  }
-
-  return (
-    <div
-      className={cls(prefix, className, {
-        loaded,
-      })}
-      style={{ width, height }}
-    >
-      {renderHelper()}
-      <div className={prefix + '-view'}>
-        <Editor
-          {...props}
-          theme={theme === 'dark' ? 'monokai' : 'chrome-devtools'}
-          defaultLanguage={realLanguage.current}
-          language={realLanguage.current}
-          options={{
-            glyphMargin: true,
-            ...props.options,
-            tabSize: 2,
-            smoothScrolling: true,
-            scrollbar: {
-              verticalScrollbarSize: 5,
-              horizontalScrollbarSize: 5,
-              alwaysConsumeMouseWheel: false,
-            },
-          }}
-          value={input}
-          width="100%"
-          height="100%"
-          onMount={onMountHandler}
-        />
-      </div>
-      {renderHelpCode()}
+      )}
+      <div className={prefix + '-view'}>{input}</div>
+      {helpCode && (
+        <pre
+          className={prefix + '-help-code'}
+          style={{ width: helpCodeViewWidth || '50%' }}
+        >
+          <code>{helpCode}</code>
+        </pre>
+      )}
     </div>
   )
 }
-
-MonacoInput.loader = loader

@@ -21,10 +21,7 @@ import {
   Workspace,
   WorkspacePanel,
 } from '@thienvu18/designable-react'
-import {
-  SettingsForm,
-  setNpmCDNRegistry,
-} from '@thienvu18/designable-react-settings-form'
+import { SettingsForm } from '@thienvu18/designable-react-settings-form'
 import { useMemo } from 'react'
 import { createRoot } from 'react-dom/client'
 import {
@@ -64,8 +61,6 @@ import {
   PreviewWidget,
   SchemaEditorWidget,
 } from './widgets'
-
-setNpmCDNRegistry('//unpkg.com')
 
 GlobalRegistry.registerDesignerLocales({
   'zh-CN': {
@@ -222,7 +217,7 @@ const App = () => {
           </WorkspacePanel>
         </Workspace>
         <SettingsPanel title="panels.PropertySettings">
-          <SettingsForm uploadAction="https://www.mocky.io/v2/5cc8019d300000980a055e76" />
+          <SettingsForm />
         </SettingsPanel>
       </StudioPanel>
     </Designer>

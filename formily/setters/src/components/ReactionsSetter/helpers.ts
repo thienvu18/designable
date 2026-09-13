@@ -324,8 +324,7 @@ export const FulfillRunHelper = `
 
 $effect(()=>{
   $self.loading = true
-  fetch('//some.domain/getSomething')
-    .then(response=>response.json())
+  Promise.resolve({ data: [] })
     .then(({ data })=>{
       $self.loading = false
       $self.dataSource = data
@@ -352,8 +351,7 @@ $props({
 
 $effect(()=>{
   $self.loading = true
-  fetch(\`//some.domain/getSomething?q=\${state.keyword}\`)
-    .then(response=>response.json())
+  Promise.resolve({ data: [] })
     .then(({ data })=>{
       $self.loading = false
       $self.dataSource = data
@@ -379,8 +377,7 @@ $props({
 
 $effect(()=>{
   $self.loading = true
-  fetch(\`//some.domain/getSomething?q=\${state.keyword}&other=\${$deps.VariableName}\`)
-    .then(response=>response.json())
+  Promise.resolve({ data: [] })
     .then(({ data })=>{
       $self.loading = false
       $self.dataSource = data

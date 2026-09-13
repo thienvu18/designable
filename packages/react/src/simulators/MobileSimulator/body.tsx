@@ -2,15 +2,12 @@ import { observer } from '@formily/reactive-react'
 import React from 'react'
 import { usePrefix, useScreen, useTheme } from '../../hooks'
 
+const localMockup =
+  'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="946" height="946"%3E%3Crect width="946" height="946" rx="60" fill="%23f5f5f5"/%3E%3C/svg%3E'
+
 const MockupImages = {
-  dark: [
-    '//img.alicdn.com/imgextra/i3/O1CN01zXMc8W26oJZGUaCK1_!!6000000007708-55-tps-946-459.svg',
-    '//img.alicdn.com/imgextra/i3/O1CN012KWk2i1DLduN7InSK_!!6000000000200-55-tps-459-945.svg',
-  ],
-  light: [
-    '//img.alicdn.com/imgextra/i4/O1CN01vuXGe31tEy00v2xBx_!!6000000005871-55-tps-946-459.svg',
-    '//img.alicdn.com/imgextra/i4/O1CN01ehfzMc1QPqY6HONTJ_!!6000000001969-55-tps-459-945.svg',
-  ],
+  dark: [localMockup, localMockup],
+  light: [localMockup, localMockup],
 }
 
 export const MobileBody: React.FC<React.PropsWithChildren> = observer(

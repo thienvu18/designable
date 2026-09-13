@@ -1,38 +1,10 @@
-import {
-  MonacoInput,
-  getNpmCDNRegistry,
-} from '@thienvu18/designable-react-settings-form'
-
 export interface IDependency {
   name: string
   path: string
 }
 
-const loadDependencies = async (deps: IDependency[]) => {
-  return Promise.all(
-    deps.map(async ({ name, path }) => ({
-      name,
-      path,
-      library: await fetch(`${getNpmCDNRegistry()}/${name}/${path}`).then(
-        (res) => res.text()
-      ),
-    }))
-  )
-}
-
 export const initDeclaration = async () => {
-  return MonacoInput.loader.init().then(async (monaco) => {
-    const deps = await loadDependencies([
-      { name: '@formily/core', path: 'dist/formily.core.all.d.ts' },
-    ])
-    deps?.forEach(({ name, library }) => {
-      monaco.languages.typescript.typescriptDefaults.addExtraLib(
-        `declare module '${name}'{ ${library} }`,
-        `file:///node_modules/${name}/index.d.ts`
-      )
-    })
-    monaco.languages.typescript.typescriptDefaults.addExtraLib(
-      `
+  return Promise.resolve(`
     import { Form, Field } from '@formily/core'
     declare global {
       /*
@@ -64,8 +36,5 @@ export const initDeclaration = async () => {
        **/
       declare var $props: (props: any) => void
     }
-    `,
-      `file:///node_modules/formily_global.d.ts`
-    )
-  })
+  `)
 }
