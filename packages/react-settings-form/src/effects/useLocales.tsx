@@ -11,11 +11,13 @@ const takeIcon = (message: string) => {
 }
 
 const mapEnum = (dataSource: any[]) => (item: any, index: number) => {
-  const label = dataSource[index] || dataSource[item.value] || item.label
+  const option =
+    item && typeof item === 'object' ? item : { label: item, value: item }
+  const label = dataSource[index] ?? dataSource[option.value] ?? option.label
   const icon = takeIcon(label)
   return {
-    ...item,
-    value: item?.value ?? null,
+    ...option,
+    value: option.value ?? null,
     label: icon ? (
       <IconWidget infer={icon[0]} tooltip={icon[1]} />
     ) : (
@@ -53,9 +55,14 @@ export const useLocales = (node: TreeNode) => {
     if (!isVoidField(field)) {
       if (dataSource?.length) {
         if (field.dataSource?.length) {
-          field.dataSource = field.dataSource.map(mapEnum(dataSource))
+          field.dataSource = field.dataSource
+            .map(mapEnum(dataSource))
+            .filter(Boolean)
         } else {
-          field.dataSource = dataSource.slice()
+          field.dataSource = dataSource.map((item) => ({
+            label: item,
+            value: item,
+          }))
         }
       } else {
         field.dataSource = field.dataSource?.filter(Boolean)

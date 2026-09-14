@@ -16,6 +16,7 @@ import cls from 'classnames'
 import React, { useMemo } from 'react'
 import { SchemaField } from './SchemaField'
 import { useLocales, useSnapshot } from './effects'
+import { normalizeSettingsSchema } from './normalizeSettingsSchema'
 import { SettingsFormContext } from './shared/context'
 import './styles.less'
 import { ISettingFormProps } from './types'
@@ -34,7 +35,11 @@ export const SettingsForm: React.FC<ISettingFormProps> = observer(
     const node = useSelectedNode(currentWorkspaceId)
     const selected = useSelected(currentWorkspaceId)
     const prefix = usePrefix('settings-form')
-    const schema = node?.designerProps?.propsSchema
+    const rawSchema = node?.designerProps?.propsSchema
+    const schema = useMemo(
+      () => normalizeSettingsSchema(rawSchema) as any,
+      [rawSchema]
+    )
     const isEmpty = !(
       node &&
       node.designerProps?.propsSchema &&

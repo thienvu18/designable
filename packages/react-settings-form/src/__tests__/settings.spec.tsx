@@ -59,6 +59,12 @@ describe('@thienvu18/designable-react-settings-form', () => {
               'x-decorator': 'FormItem',
               'x-component': 'Input',
             },
+            size: {
+              type: 'string',
+              enum: ['middle', null],
+              'x-decorator': 'FormItem',
+              'x-component': 'Select',
+            },
           },
         },
       },
