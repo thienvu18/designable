@@ -4915,9 +4915,9 @@ __metadata:
     "@formily/reactive-react": "npm:^2.3.7"
     "@formily/shared": "npm:^2.3.7"
     "@thienvu18/designable-core": "npm:2.0.2"
-    "@thienvu18/designable-formily-setters": "npm:2.0.2"
+    "@thienvu18/designable-formily-setters": "npm:2.0.3"
     "@thienvu18/designable-formily-transformer": "npm:2.0.2"
-    "@thienvu18/designable-react": "npm:2.0.2"
+    "@thienvu18/designable-react": "npm:2.0.3"
     "@thienvu18/formily-antd-v6": "npm:^2.0.0"
     antd: "npm:^6.6.3"
     classnames: "npm:^2.3.2"
@@ -4958,7 +4958,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@thienvu18/designable-formily-setters@npm:2.0.2, @thienvu18/designable-formily-setters@workspace:formily/setters":
+"@thienvu18/designable-formily-setters@npm:2.0.3, @thienvu18/designable-formily-setters@workspace:formily/setters":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-formily-setters@workspace:formily/setters"
   dependencies:
@@ -4971,8 +4971,8 @@ __metadata:
     "@formily/shared": "npm:^2.3.7"
     "@thienvu18/designable-core": "npm:2.0.2"
     "@thienvu18/designable-formily-transformer": "npm:2.0.2"
-    "@thienvu18/designable-react": "npm:2.0.2"
-    "@thienvu18/designable-react-settings-form": "npm:2.0.2"
+    "@thienvu18/designable-react": "npm:2.0.3"
+    "@thienvu18/designable-react-settings-form": "npm:2.0.3"
     "@thienvu18/formily-antd-v6": "npm:^2.0.0"
     antd: "npm:^6.6.3"
     classnames: "npm:^2.3.2"
@@ -5081,7 +5081,7 @@ __metadata:
     "@formily/path": "npm:^2.3.7"
     "@formily/reactive": "npm:^2.3.7"
     "@formily/reactive-react": "npm:^2.3.7"
-    "@thienvu18/designable-react": "npm:2.0.2"
+    "@thienvu18/designable-react": "npm:2.0.3"
     "@thienvu18/designable-shared": "npm:2.0.2"
     antd: "npm:^6.6.3"
     react: "npm:^19.2.8"
@@ -5121,7 +5121,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@thienvu18/designable-react-settings-form@npm:2.0.2, @thienvu18/designable-react-settings-form@workspace:packages/react-settings-form":
+"@thienvu18/designable-react-settings-form@npm:2.0.3, @thienvu18/designable-react-settings-form@workspace:packages/react-settings-form":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-react-settings-form@workspace:packages/react-settings-form"
   dependencies:
@@ -5133,7 +5133,7 @@ __metadata:
     "@formily/reactive-react": "npm:^2.3.7"
     "@formily/shared": "npm:^2.3.7"
     "@thienvu18/designable-core": "npm:2.0.2"
-    "@thienvu18/designable-react": "npm:2.0.2"
+    "@thienvu18/designable-react": "npm:2.0.3"
     "@thienvu18/designable-shared": "npm:2.0.2"
     "@thienvu18/formily-antd-v6": "npm:^2.0.0"
     antd: "npm:^6.6.3"
@@ -5174,7 +5174,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@thienvu18/designable-react@npm:2.0.2, @thienvu18/designable-react@workspace:packages/react":
+"@thienvu18/designable-react@npm:2.0.3, @thienvu18/designable-react@workspace:packages/react":
   version: 0.0.0-use.local
   resolution: "@thienvu18/designable-react@workspace:packages/react"
   dependencies:
